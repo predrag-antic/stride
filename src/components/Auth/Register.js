@@ -1,8 +1,10 @@
 import React from 'react';
+import {Component} from 'react';
 import firebase from '../../firebase';
 import { Grid, Form, Segment, Button, Header, Message, Icon} from 'semantic-ui-react';
 import md5 from 'md5';
 import { Link } from 'react-router-dom';
+import gravatar from 'gravatar';
 
 class Register extends React.Component {
     state = {
@@ -11,8 +13,7 @@ class Register extends React.Component {
         password: '',
         passwordConfirmation: '',
         errors: [],
-        loading: false,
-        usersRef: firebase.database().ref('users')
+        loading: false
     }
 
     isFormValid = () => {
@@ -63,23 +64,7 @@ class Register extends React.Component {
             firebase
             .auth()
             .createUserWithEmailAndPassword(this.state.email, this.state.password)
-            .then(createdUser => {
-                console.log(createdUser);
-                createdUser.user.updateProfile({
-                    displayName: this.state.username,
-                    photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`
-                })
-                .then(() => {
-                    this.saveUser(createdUser).then(() => {
-                        console.log('user saved');
-                    })
-                })
-                .catch(err => {
-                    console.error(err);
-                    this.setState({errors: this.state.errors.concat(err), loading: false});
-                })
-                
-            })
+            .then(()=>this.addUserInfo())
             .catch(err => {
                 console.error(err)
                 this.setState({errors:this.state.errors.concat(err), loading: false})
@@ -87,10 +72,15 @@ class Register extends React.Component {
         }
     };
 
-    saveUser = createdUser => {
-        return this.state.usersRef.child(createdUser.user.uid).set({
-            name: createdUser.user.displayName,
-            avatar: createdUser.user.photoURL
+    addUserInfo = () => {
+        console.log("Calling addUser method")
+        const firestore= firebase.firestore();
+        firestore.settings({timestampsInSnapshots:true});
+        const usersRef=firestore.collection("Users")
+        return usersRef.add({
+            name: this.state.username,
+            email: this.state.email,
+            avatar: gravatar.url(this.state.email)
         });
     }
 
