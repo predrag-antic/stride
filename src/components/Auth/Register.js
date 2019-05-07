@@ -1,13 +1,14 @@
 import React from 'react';
 import {Component} from 'react';
 import firebase from '../../firebase';
-import { Grid, Form, Segment, Button, Header, Message, Icon} from 'semantic-ui-react';
+import { Grid, Form, Segment, Button, Header, Message, Icon , Label, GridColumn } from 'semantic-ui-react';
 import md5 from 'md5';
 import { Link } from 'react-router-dom';
 import gravatar from 'gravatar';
 
 class Register extends React.Component {
     state = {
+        userOrCompany:'',
         username: '',
         email: '',
         password: '',
@@ -25,6 +26,11 @@ class Register extends React.Component {
             this.setState({errors: errors.concat(error)});
             return false;
         }
+        else if(!this.isUserOrCompanyChosen(this.state)){
+            error = { message: 'Please choose User or Company' };
+            this.setState({errors: errors.concat(error)});
+            return false;
+        }
         else if (!this.isPasswordValid(this.state)){
             error = { message: 'Password is invalid' };
             this.setState({errors: errors.concat(error)});
@@ -33,6 +39,11 @@ class Register extends React.Component {
         else {
             return true;
         }
+    }
+    
+  
+    isUserOrCompanyChosen=({userOrCompany})=>{
+        return userOrCompany==''?false:true; 
     }
 
     isFormEmpty = ({username,email,password,passwordConfirmation}) => {
@@ -76,11 +87,13 @@ class Register extends React.Component {
         console.log("Calling addUser method")
         const firestore= firebase.firestore();
         firestore.settings({timestampsInSnapshots:true});
-        const usersRef=firestore.collection("Users")
+        const userOrCompany=this.state.userOrCompany;
+        const usersRef=firestore.collection(userOrCompany)
         return usersRef.add({
             name: this.state.username,
             email: this.state.email,
-            avatar: gravatar.url(this.state.email)
+            avatar: gravatar.url(this.state.email),
+            userOrCompany: this.state.userOrCompany
         });
     }
 
@@ -89,17 +102,30 @@ class Register extends React.Component {
     }
 
     render () {
-        const { username, email, password, passwordConfirmation, errors, loading} = this.state;
+        const {userOrCompany,username, email, password, passwordConfirmation, errors, loading} = this.state;
 
         return (
             <Grid textAlign="center" verticalAlign="middle" className="app">
                 <Grid.Column style={{maxWidth: 450}}>
                     <Header as="h2" icon color="blue" textAlign="center">
-                        <Icon name="graduation cap" color="blue" />
+                        <Icon name="suitcase" color="blue" />
                         Register for Stride
                     </Header>
                     <Form onSubmit={this.handleSubmit} size="large">
                         <Segment stacked>
+                            <p>User or Company (Please choose one)!</p>
+                            <Grid columns={2}><Grid.Row>
+                            <GridColumn>
+                                User
+                            <Form.Input fluid name='userOrCompany' 
+                            onChange={this.handleChange} value="User" type="radio"/>
+                            </GridColumn>
+                            <GridColumn>
+                                Company
+                            <Form.Input fluid name='userOrCompany'
+                            onChange={this.handleChange} value="Company" type="radio"/>
+                            </GridColumn>
+                            </Grid.Row></Grid>
                             <Form.Input fluid name="username" icon="user" iconPosition="left" placeholder="Username" onChange={this.handleChange} value={username} type="text" />
                             <Form.Input fluid name="email" icon="mail" iconPosition="left" placeholder="Email Address" onChange={this.handleChange} value={email} className={this.handleInputError(errors,'email')} type="email" />
                             <Form.Input fluid name="password" icon="lock" iconPosition="left" placeholder="Password" onChange={this.handleChange} value={password} className={this.handleInputError(errors,'password')} type="password" />
