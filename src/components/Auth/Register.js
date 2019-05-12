@@ -1,14 +1,12 @@
 import React from 'react';
-import {Component} from 'react';
 import firebase from '../../firebase';
-import { Grid, Form, Segment, Button, Header, Message, Icon , Label, GridColumn } from 'semantic-ui-react';
-import md5 from 'md5';
+import { Grid, Form, Segment, Button, Header, Message, Icon , GridColumn } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import gravatar from 'gravatar';
 
 class Register extends React.Component {
     state = {
-        userOrCompany:'',
+        userOrCompany: '',
         username: '',
         email: '',
         password: '',
@@ -43,7 +41,7 @@ class Register extends React.Component {
     
   
     isUserOrCompanyChosen=({userOrCompany})=>{
-        return userOrCompany==''?false:true; 
+        return userOrCompany===''?false:true; 
     }
 
     isFormEmpty = ({username,email,password,passwordConfirmation}) => {
@@ -75,7 +73,8 @@ class Register extends React.Component {
             firebase
             .auth()
             .createUserWithEmailAndPassword(this.state.email, this.state.password)
-            .then(()=>this.addUserInfo())
+            .then(()=>this.addUserInfo()
+                .then(()=> this.setState({loading:false})))
             .catch(err => {
                 console.error(err)
                 this.setState({errors:this.state.errors.concat(err), loading: false})
@@ -89,6 +88,7 @@ class Register extends React.Component {
         firestore.settings({timestampsInSnapshots:true});
         const userOrCompany=this.state.userOrCompany;
         const usersRef=firestore.collection(userOrCompany)
+        
         return usersRef.add({
             name: this.state.username,
             email: this.state.email,
@@ -102,12 +102,12 @@ class Register extends React.Component {
     }
 
     render () {
-        const {userOrCompany,username, email, password, passwordConfirmation, errors, loading} = this.state;
+        const { username, email, password, passwordConfirmation, errors, loading } = this.state;
 
         return (
             <Grid textAlign="center" verticalAlign="middle" className="app">
                 <Grid.Column style={{maxWidth: 450}}>
-                    <Header as="h2" icon color="blue" textAlign="center">
+                    <Header as="h1" icon color="blue" textAlign="center">
                         <Icon name="suitcase" color="blue" />
                         Register for Stride
                     </Header>
