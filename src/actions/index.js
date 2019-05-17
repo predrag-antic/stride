@@ -1,5 +1,4 @@
 import * as actionTypes from './types';
-import firebase from '../firebase';
 
 export const setUser = user => {
     return {

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import {BrowserRouter , Router, Switch, Route, withRouter} from 'react-router-dom';
+import Info from '../components/Info/Info';
+import { Grid,Menu, GridColumn, Segment } from 'semantic-ui-react';
 import './App.css';
 
 import ColorPanel from './ColorPanel/ColorPanel';
@@ -8,16 +10,24 @@ import Messages from './Messages/Messages';
 import MetaPanel from './MetaPanel/MetaPanel';
 
 const App = () => (
-  <Grid columns="equal" className="app" stype={{background: '#eee'}}>
-    <ColorPanel/>
-      <SidePanel/>
-        <Grid.Column style={{marginLeft:320}}>
-           <Messages/>  
-        </Grid.Column>
-        <Grid.Column width={4}>
-          <MetaPanel/>
-        </Grid.Column>
-  </Grid>
+  
+  <BrowserRouter>
+    <div>
+      <Menu size="large" inverted fixed="top"  style={{background: '#4c3c4c',fontSize:'1.2re'}} >
+        <Menu.Item position="right">
+            <Messages />  
+        </Menu.Item>
+        <Menu.Item>
+            <MetaPanel/> 
+        </Menu.Item>    
+      </Menu>
+            <Grid columns="equal" className="app" style={{background: '#eee'}} >
+              <ColorPanel/>
+              <SidePanel/>
+              <Route path='/info' component={Info}></Route>
+            </Grid>
+    </div>
+  </BrowserRouter>
 )
 
 export default App;
