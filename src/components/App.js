@@ -1,33 +1,41 @@
 import React from 'react';
 import {BrowserRouter , Router, Switch, Route, withRouter} from 'react-router-dom';
-import Info from '../components/Info/Info';
-import { Grid,Menu, GridColumn, Segment } from 'semantic-ui-react';
+import { Grid,Menu, GridColumn, Segment, Container } from 'semantic-ui-react';
 import './App.css';
 
-import ColorPanel from './ColorPanel/ColorPanel';
-import SidePanel from './SidePanel/SidePanel';
-import Messages from './Messages/Messages';
-import MetaPanel from './MetaPanel/MetaPanel';
+import Sidebar from './Bars/Sidebar';
+import Navbar from './Bars/Navbar';
+import routes from '../routes';
 
-const App = () => (
-  
-  <BrowserRouter>
-    <div>
-      <Menu size="large" inverted fixed="top"  style={{background: '#4c3c4c',fontSize:'1.2re'}} >
-        <Menu.Item position="right">
-            <Messages />  
-        </Menu.Item>
-        <Menu.Item>
-            <MetaPanel/> 
-        </Menu.Item>    
-      </Menu>
-            <Grid columns="equal" className="app" style={{background: '#eee'}} >
-              <ColorPanel/>
-              <SidePanel/>
-              <Route path='/info' component={Info}></Route>
-            </Grid>
-    </div>
-  </BrowserRouter>
-)
+class App extends React.Component{
+
+  getRoutes = routes => {
+    return routes.map((prop, key) => {
+      if (prop.layout === "") {
+        return (
+          <Route path={prop.layout + prop.path}
+            component={prop.component}
+            key={key}
+          />
+        );
+      } else {
+        console.log("VRACA NULL");
+        return null;
+      }
+    });
+  };
+
+  render(){
+    return(
+          <>
+              <Sidebar/>
+              <div style={{position:"absolute",height: "100%",width: "100%",left:"0",top:"0",backgroundColor:"white",                  marginLeft:"250px"}}> 
+              <Navbar/>
+              <Switch>{this.getRoutes(routes)}</Switch>
+              </div>
+          </>
+  );
+  }
+}
 
 export default App;
