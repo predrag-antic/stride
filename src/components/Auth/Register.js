@@ -73,7 +73,7 @@ class Register extends React.Component {
             firebase
             .auth()
             .createUserWithEmailAndPassword(this.state.email, this.state.password)
-            .then(()=>this.addUserInfo()
+            .then((user)=>this.addUserInfo(user)
                 .then(()=> this.setState({loading:false})))
             .catch(err => {
                 console.error(err)
@@ -82,14 +82,13 @@ class Register extends React.Component {
         }
     };
 
-    addUserInfo = () => {
+    addUserInfo = (user) => {
         console.log("Calling addUser method")
         const firestore= firebase.firestore();
-        firestore.settings({timestampsInSnapshots:true});
         const userOrCompany=this.state.userOrCompany;
-        const usersRef=firestore.collection(userOrCompany)
+        const usersRef=firestore.collection(userOrCompany).doc(user.user.email)
         
-        return usersRef.add({
+        return usersRef.set({
             name: this.state.username,
             email: this.state.email,
             avatar: gravatar.url(this.state.email),
