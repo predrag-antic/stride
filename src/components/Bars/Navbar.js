@@ -1,6 +1,8 @@
-import React from 'react';
 import { Menu,Header,Icon, Label, Container } from 'semantic-ui-react';
+
+import React from 'react';
 import { NavLink,Link } from 'react-router-dom';
+
 import Logout from '../Auth/Logout';
 
 class Navbar extends React.Component

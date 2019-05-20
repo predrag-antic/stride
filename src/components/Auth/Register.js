@@ -1,8 +1,12 @@
-import React from 'react';
-import firebase from '../../firebase';
-import { Grid, Form, Segment, Button, Header, Message, Icon , GridColumn } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import gravatar from 'gravatar';
+import { Grid, Form, Segment, Button, Header, Message, Icon , GridColumn } from 'semantic-ui-react';
+
+import React from 'react';
+import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
+
+import {register} from '../../store/actions/authActions';
 
 class Register extends React.Component {
     state = {
@@ -38,7 +42,6 @@ class Register extends React.Component {
             return true;
         }
     }
-    
   
     isUserOrCompanyChosen=({userOrCompany})=>{
         return userOrCompany===''?false:true; 
@@ -70,31 +73,17 @@ class Register extends React.Component {
         event.preventDefault();
         if(this.isFormValid()) {
             this.setState({errors: [], loading: true});
-            firebase
-            .auth()
-            .createUserWithEmailAndPassword(this.state.email, this.state.password)
-            .then((user)=>this.addUserInfo(user)
-                .then(()=> this.setState({loading:false})))
-            .catch(err => {
-                console.error(err)
-                this.setState({errors:this.state.errors.concat(err), loading: false})
-            });
+            this.props.register(this.state);
+
+            setTimeout(()=>{  //da bi firebase zavrsila posao zato se ceka ovde
+                if(this.props.error!==null){
+                this.setState({
+                    errors:this.state.errors.concat(this.props.error),
+                    loading: false
+                });
+            }},1000);
         }
     };
-
-    addUserInfo = (user) => {
-        console.log("Calling addUser method")
-        const firestore= firebase.firestore();
-        const userOrCompany=this.state.userOrCompany;
-        const usersRef=firestore.collection(userOrCompany).doc(user.user.email)
-        
-        return usersRef.set({
-            name: this.state.username,
-            email: this.state.email,
-            avatar: gravatar.url(this.state.email),
-            userOrCompany: this.state.userOrCompany
-        });
-    }
 
     handleInputError = (errors,inputName) => {
        return errors.some(error=>error.message.toLowerCase().includes(inputName))? 'error' : ''
@@ -102,6 +91,8 @@ class Register extends React.Component {
 
     render () {
         const { username, email, password, passwordConfirmation, errors, loading } = this.state;
+
+        if(this.props.auth.uid) return <Redirect to="/home" />
 
         return (
             <Grid textAlign="center" verticalAlign="middle" className="app">
@@ -146,4 +137,18 @@ class Register extends React.Component {
     }
 }
 
-export default Register;
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        register:(newUser)=>dispatch(register(newUser))
+    }
+}
+
+const mapStateToProps=state=>{
+    console.log(state);
+    return{
+        auth: state.firebase.auth,
+        error: state.auth.authError
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Register);

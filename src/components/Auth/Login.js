@@ -1,7 +1,12 @@
-import React from 'react';
-import firebase from '../../firebase';
 import { Grid, Form, Segment, Button, Header, Message, Icon } from 'semantic-ui-react';
+
+import React from 'react';
+import { connect } from 'react-redux'
+
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+
+import { signIn } from '../../store/actions/authActions'
 
 class Login extends React.Component {
     state = {
@@ -11,7 +16,6 @@ class Login extends React.Component {
         loading: false
     }
     
-
     displayErrors = errors => errors.map((error,i) => <p key={i}>{error.message}</p>);
 
     handleChange = event => {
@@ -22,20 +26,18 @@ class Login extends React.Component {
         event.preventDefault();
         if(this.isFormValid(this.state)) {
             this.setState({errors: [], loading: true});
-            firebase
-            .auth()
-            .signInWithEmailAndPassword(this.state.email,this.state.password)
-            .then(signedInUser => {
-                console.log(signedInUser);
-            })
-            .catch(err => {
-                console.error(err);
-                this.setState({
-                    errors: this.state.errors.concat(err),
-                    loading: false
-                });
-            })
+            this.props.signIn(this.state);
         }
+
+        setTimeout(()=>{  //ceka se da firebase zavrsi posao zato 1 sekunda
+            if(this.props.error!==null){
+            this.setState({
+                errors:this.state.errors.concat(this.props.error),
+                loading: false
+            });
+            }
+            },1000);
+        
     };
 
     isFormValid = ({email,password}) => email && password;
@@ -47,6 +49,8 @@ class Login extends React.Component {
 
     render () {
         const {email, password, errors, loading } = this.state;
+
+        if(this.props.auth.uid) return <Redirect to="/home" />
 
         return (
             <Grid textAlign="center" verticalAlign="middle" className="app">
@@ -76,4 +80,19 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+
+const mapDispatchToProps=dispatch=>{
+    return{
+        signIn:(credential)=>dispatch(signIn(credential))
+    }
+}
+
+const mapStateToProps=state=>{
+    return{
+        auth: state.firebase.auth,
+        error: state.auth.authError
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
+

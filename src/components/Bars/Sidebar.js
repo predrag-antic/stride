@@ -1,7 +1,7 @@
-import React from 'react';
 import { Menu,Header,Icon, Label, Container } from 'semantic-ui-react';
-import { NavLink,Link } from 'react-router-dom';
 
+import React from 'react';
+import { NavLink,Link } from 'react-router-dom';
 
 class Sidebar extends React.Component
 {

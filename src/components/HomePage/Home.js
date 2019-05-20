@@ -1,5 +1,6 @@
-import React from 'react';
 import {Button, Container } from 'semantic-ui-react';
+
+import React from 'react';
 
 class Home extends React.Component
 {

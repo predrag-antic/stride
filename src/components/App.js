@@ -1,10 +1,14 @@
-import React from 'react';
-import {BrowserRouter , Router, Switch, Route, withRouter} from 'react-router-dom';
-import { Grid,Menu, GridColumn, Segment, Container } from 'semantic-ui-react';
 import './App.css';
 
+import React from 'react';
+import {BrowserRouter , Switch, Route,Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
+
+import Login from './Auth/Login'
+import Register from './Auth/Register';
 import Sidebar from './Bars/Sidebar';
 import Navbar from './Bars/Navbar';
+
 import routes from '../routes';
 
 class App extends React.Component{
@@ -18,24 +22,32 @@ class App extends React.Component{
             key={key}
           />
         );
-      } else {
-        console.log("VRACA NULL");
+      }else{
         return null;
       }
     });
   };
 
   render(){
+    if(!this.props.auth.uid) return <Redirect to="/login" />
     return(
           <>
-              <Sidebar/>
+          <BrowserRouter>
+            <Sidebar/>
               <div style={{position:"absolute",height: "100%",width: "100%",left:"0",top:"0",backgroundColor:"white",                  marginLeft:"250px"}}> 
               <Navbar/>
               <Switch>{this.getRoutes(routes)}</Switch>
               </div>
+          </BrowserRouter> 
           </>
-  );
+    );
   }
 }
 
-export default App;
+const mapStateToProps=state=>{
+  return{
+    auth : state.firebase.auth
+  }
+}
+
+export default connect(mapStateToProps,null)(App);

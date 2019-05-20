@@ -1,63 +1,63 @@
+import './index.css';
+import 'semantic-ui-css/semantic.min.css';
+import registerServiceWorker from './registerServiceWorker';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
-import registerServiceWorker from './registerServiceWorker';
-import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
-import 'semantic-ui-css/semantic.min.css';
-import firebase from './firebase';
-import Spinner from './Spinner';
-import {BrowserRouter as Router, Switch, Route, withRouter,Redirect} from 'react-router-dom';
-import {createStore} from 'redux';
-import {Provider, connect} from 'react-redux';
+import { createStore, applyMiddleware,compose } from 'redux';
+import {BrowserRouter,Route,Switch,withRouter,IndexRoute} from 'react-router-dom';
+import { Provider,connect } from 'react-redux';
+import { reactReduxFirebase,getFirebase } from 'react-redux-firebase';
+import { reduxFirestore,getFirestore } from 'redux-firestore';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import rootReducer from './reducers';
-import {setUser,clearUser} from './actions';
+import thunk from 'redux-thunk';
 
-const store = createStore((rootReducer), composeWithDevTools());
+import rootReducer from './store/reducers/rootReducer'
+import {signIn,signOut} from './store/actions/authActions'
 
+import App from './components/App';
+import Login from './components/Auth/Login'
+import Register from './components/Auth/Register'
 
-class Root extends React.Component {
-    componentDidMount(){
-        firebase
-        .auth()
-        .onAuthStateChanged(user => {
-            if(user){
-                this.props.setUser(user);
-                this.props.history.push("/home"); //moramo da sredimo ovo(ne moze uvek da nas preusmerava na home)
-            }else{                                  //mora nekad da nam dozvoli i dozvoljenu putanju da unesemo rucno npr
-                this.props.history.push("/login"); //moramo da sredimo ovo
-                this.props.clearUser();
-            }
-        });
-    }
+import firebase from './firebase'
+
+const store=createStore(rootReducer,
+    composeWithDevTools(
+    applyMiddleware(thunk.withExtraArgument({getFirebase,getFirestore})),
+    reduxFirestore(firebase),
+    reactReduxFirebase(firebase, {useFirestoreForProfile:true,userProfile:'profiles',attachAuthIsReady:true})
+    )
+);
+
+class Root extends React.Component{
 
     render(){
-        return this.props.isLoading ? <Spinner /> : (
-            <Switch>
-                <Route exact path="/home" component={App} />
-                <Route path="/login" component={Login} />
-                <Route path="/register" component={Register} />
-                <Route path="/" render={props => <App {...props} />} /> 
-            </Switch>
-        );
+    return ( 
+        <div>
+        <Switch>
+            <Route exact path="/" component={App}/>
+            <Route path='/login' component={Login}/>
+            <Route path='/register' component={Register}/>
+            <Route path="/" render={props => <App {...props} />} />
+        </Switch>
+        </div>
+    )
     }
 }
 
-const mapStateFromProps = state => ({
-    isLoading: state.user.isLoading
-});
+const RootWithAuth = withRouter(Root);
 
-const RootWithAuth = withRouter(connect(mapStateFromProps, {setUser,clearUser})(Root));
-
-ReactDOM.render(
+store.firebaseAuthIsReady.then(()=>{
+    ReactDOM.render(
     <Provider store={store}>
-        <Router>
+        <BrowserRouter>
             <RootWithAuth />
-        </Router>
-    </Provider>
-, document.getElementById('root'));
-registerServiceWorker();
+        </BrowserRouter>
+    </Provider>, document.getElementById('root'));
+    // If you want your app to work offline and load faster, you can change
+    // unregister() to register() below. Note this comes with some pitfalls.
+    // Learn more about service workers: https://bit.ly/CRA-PWA
+    registerServiceWorker(); 
+})
 
 export default Root;
