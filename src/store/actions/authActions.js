@@ -39,7 +39,8 @@ export const register= (newUser) => {
                 name: newUser.username,
                 email: newUser.email,
                 avatar: gravatar.url(newUser.email),
-                userOrCompany: newUser.userOrCompany
+                userOrCompany: newUser.userOrCompany,
+                firstAccess:true
             })
         })
         .then(()=>{
