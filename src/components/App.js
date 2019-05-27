@@ -10,6 +10,7 @@ import Sidebar from './Bars/Sidebar';
 import Navbar from './Bars/Navbar';
 
 import routes from '../routes';
+import { Container } from 'semantic-ui-react';
 
 class App extends React.Component{
 
@@ -31,7 +32,7 @@ class App extends React.Component{
   render(){
     if(!this.props.auth.uid) return <Redirect to="/login" />
     return(
-          <>
+          <Container style={{height: "100%",width: "100%"}}>
           <BrowserRouter>
             <Sidebar/>
               <div style={{position:"absolute",height: "100%",width: "100%",left:"0",top:"0",backgroundColor:"white",                  marginLeft:"250px"}}> 
@@ -39,7 +40,7 @@ class App extends React.Component{
               <Switch>{this.getRoutes(routes)}</Switch>
               </div>
           </BrowserRouter> 
-          </>
+          </Container>
     );
   }
 }

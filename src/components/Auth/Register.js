@@ -104,18 +104,20 @@ class Register extends React.Component {
                     <Form onSubmit={this.handleSubmit} size="large">
                         <Segment stacked>
                             <p>User or Company (Please choose one)!</p>
-                            <Grid columns={2}><Grid.Row>
-                            <GridColumn>
-                                User
-                            <Form.Input fluid name='userOrCompany' 
-                            onChange={this.handleChange} value="User" type="radio"/>
-                            </GridColumn>
-                            <GridColumn>
-                                Company
-                            <Form.Input fluid name='userOrCompany'
-                            onChange={this.handleChange} value="Company" type="radio"/>
-                            </GridColumn>
-                            </Grid.Row></Grid>
+                            <Grid columns={2}>
+                                <Grid.Row>
+                                    <GridColumn>
+                                        User
+                                    <Form.Input fluid name='userOrCompany' 
+                                    onChange={this.handleChange} value="User" type="radio"/>
+                                    </GridColumn>
+                                    <GridColumn>
+                                        Company
+                                    <Form.Input fluid name='userOrCompany'
+                                    onChange={this.handleChange} value="Company" type="radio"/>
+                                    </GridColumn>
+                                </Grid.Row>
+                            </Grid>
                             <Form.Input fluid name="username" icon="user" iconPosition="left" placeholder="Username" onChange={this.handleChange} value={username} type="text" />
                             <Form.Input fluid name="email" icon="mail" iconPosition="left" placeholder="Email Address" onChange={this.handleChange} value={email} className={this.handleInputError(errors,'email')} type="email" />
                             <Form.Input fluid name="password" icon="lock" iconPosition="left" placeholder="Password" onChange={this.handleChange} value={password} className={this.handleInputError(errors,'password')} type="password" />
