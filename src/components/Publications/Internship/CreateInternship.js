@@ -1,8 +1,6 @@
 import {Button, Container, Form,TextArea,Checkbox } from 'semantic-ui-react';
 
 import React from 'react';
-import {connect} from 'react-redux';
-import { updateProfile } from '../../store/actions/updateProfile'
 
 const internshipTechnologyOptions = [
     {text:'Backend',value:'Backend'},

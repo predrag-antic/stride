@@ -9,7 +9,7 @@ const jobReducer = (state=initState,action)=>{
         case 'CREATE_JOB_SUCCES':            
             console.log("CREATE_JOB_SUCCES")
             return {
-                state
+                state  //treba da se dopuni
             }
         case 'CREATE_JOB_ERROR':
             console.log("CREATE_JOB_ERROR")

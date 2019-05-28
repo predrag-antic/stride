@@ -2,7 +2,7 @@ import {Button, Container,Form,Checkbox,TextArea,Select } from 'semantic-ui-reac
 
 import React from 'react';
 import {connect} from 'react-redux';
-import {createJob} from '../../store/actions/jobAction'
+import {createJob} from '../../../store/actions/jobAction'
 
 const jobPositionsOptions = [
     {text:'Junior Developer',value:'junior'},

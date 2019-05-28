@@ -1,7 +1,7 @@
 import UserProfile from './components/Profiles/UserProfile'
 import Home from './components/HomePage/Home'
-import CreateJob from './components/Publications/CreateJob'
-import CreateInternship from './components/Publications/CreateInternship'
+import CreateJob from './components/Publications/Job/CreateJob'
+import CreateInternship from './components/Publications/Internship/CreateInternship'
 
 
 var routes = [

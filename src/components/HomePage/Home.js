@@ -2,6 +2,7 @@ import { Button, Container } from 'semantic-ui-react';
 
 import {connect} from 'react-redux';
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import Welcome from './Welcome';
 import Spinner from '../../Spinner'
@@ -21,8 +22,25 @@ class Home extends React.Component{
             return (
                 <Container  style={{width:"100%",height:"100%"}}>
                     <h1 style={{textAlign:"center",marginRight:"250px",marginTop:"50px"}}>
-                        Ovde oglasi idu!
+                        EXPLORE JOBS/INTERNSHIP/PROJECTS
                     </h1>
+                    <Container style={{textAlign:"center"}}>
+                        <Container>
+                            <Link to="/jobs" style={{marginRight:"250px"}}>
+                                EXPLORE JOBS
+                            </Link>
+                        </Container>
+                        <Container >
+                            <Link to="/internship" style={{marginRight:"250px"}}>
+                                EXPLORE INTERNSHIP
+                            </Link>
+                        </Container>
+                        <Container>
+                            <Link to="/projects" style={{marginRight:"250px"}}>
+                                EXPLORE PROJECTS
+                            </Link>
+                        </Container>
+                    </Container>
                 </Container>
             )
         }
