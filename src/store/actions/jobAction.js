@@ -2,7 +2,6 @@ export const createJob= (newJob) => {
     return(dispatch,getState,{getFirebase,getFirestore})=>{
 
         const firestore=getFirestore();
-        const profile=getState().firebase.profile;
         const uid=getState().firebase.auth.uid;
 
         firestore
@@ -10,7 +9,6 @@ export const createJob= (newJob) => {
         .add
         ({
             authorId:uid,
-            name:profile.name,
             title:newJob.title,
             description:newJob.description,
             position:newJob.position,
