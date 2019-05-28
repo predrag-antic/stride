@@ -7,7 +7,7 @@ import { updateProfile } from '../../store/actions/updateProfile'
 class UserProfile extends React.Component{
     state={
         popunioProfil:true,
-        name: '',
+        userName: '',
         lastname: '',
         city: '',
         address: '',
@@ -28,7 +28,7 @@ class UserProfile extends React.Component{
     }    
 
     render(){
-        const { popunioPrifil, name, lastname, city, address, country, postcode, informations } = this.state;
+        const { popunioPrifil, userName, lastname, city, address, country, postcode, informations } = this.state;
         return(                
 
             <Container style={{width:"100%",height:"100%"}}>
@@ -38,7 +38,7 @@ class UserProfile extends React.Component{
 
                     <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>
                         <label>Name: </label>
-                        <Form.Input fluid name="name" style={{maxWidth: 650}} placeholder={this.props.Sname} value={name} type="text" onChange={this.handleChange}/ >
+                        <Form.Input fluid name="userName" style={{maxWidth: 650}} placeholder={this.props.SuserName} value={userName} type="text" onChange={this.handleChange}/ >
                     </Form.Field>
                     <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>
                         <label>Lastname: </label>
@@ -84,7 +84,7 @@ const mapDispatchToProps=(dispatch)=>{
 const mapStateToProps=(state)=>{
     console.log(state);
     return{
-        Sname:state.firebase.profile.name,
+        SuserName:state.firebase.profile.name,
         Slastname: state.firebase.profile.lastname,
         Saddress: state.firebase.profile.address,
         Scity: state.firebase.profile.city,

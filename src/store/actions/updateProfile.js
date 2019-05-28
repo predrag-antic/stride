@@ -1,4 +1,4 @@
-export const updateProfile=(companyInfo)=>{
+export const updateProfile=(profileInfo)=>{
     return (dispatch,getState,{getFirestore})=>{
         
         const firestore=getFirestore();
@@ -18,20 +18,20 @@ export const updateProfile=(companyInfo)=>{
                 firstAccess:false,
                 name:profile.name,
                 userOrCompany:profile.userOrCompany,
-                name: companyInfo.name,
-                lastname: companyInfo.lastname,
-                city: companyInfo.city,
-                address: companyInfo.address,
-                country: companyInfo.country,
-                postcode: companyInfo.postcode,
-                informations: companyInfo.informations
+                userName: profileInfo.userName,
+                lastname: profileInfo.lastname,
+                city: profileInfo.city,
+                address: profileInfo.address,
+                country: profileInfo.country,
+                postcode: profileInfo.postcode,
+                informations: profileInfo.informations
 
             })
             .then(()=>{
                 dispatch({type:"UPDATE_USER_SUCCES"})
             })
             .catch((error)=>{
-                dispatch({type:"UPDATE_ERROR"})
+                dispatch({type:"UPDATE_USER_ERROR"})
             })
         }
         else{
@@ -45,18 +45,18 @@ export const updateProfile=(companyInfo)=>{
                 firstAccess:false,
                 name:profile.name,
                 userOrCompany:profile.userOrCompany,
-                companyName: companyInfo.companyName,
-                established: companyInfo.established,
-                address: companyInfo.address,
-                eMail: companyInfo.eMail,
-                phoneNumber: companyInfo.phoneNumber,
-                website: companyInfo.website
+                companyName: profileInfo.companyName,
+                established: profileInfo.established,
+                address: profileInfo.address,
+                eMail: profileInfo.eMail,
+                phoneNumber: profileInfo.phoneNumber,
+                website: profileInfo.website
             })
             .then(()=>{
                 dispatch({type:"UPDATE_COMPANY_SUCCES"})
             })
             .catch((error)=>{
-                dispatch({type:"UPDATE_ERROR"})
+                dispatch({type:"UPDATE_COMPANY_ERROR"})
             })
         }
     }
