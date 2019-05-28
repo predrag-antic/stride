@@ -1,4 +1,4 @@
-export const updateProfile=()=>{
+export const updateProfile=(companyInfo)=>{
     return (dispatch,getState,{getFirestore})=>{
         
         const firestore=getFirestore();
@@ -25,7 +25,8 @@ export const updateProfile=()=>{
             .catch((error)=>{
                 dispatch({type:"UPDATE_ERROR"})
             })
-        }else{
+        }
+        else{
             console.log("COMPANY UPDATE");
             firestore
             .collection("profiles")
@@ -35,7 +36,13 @@ export const updateProfile=()=>{
                 email:profile.email,
                 firstAccess:false,
                 name:profile.name,
-                userOrCompany:profile.userOrCompany
+                userOrCompany:profile.userOrCompany,
+                companyName: companyInfo.companyName,
+                established: companyInfo.established,
+                address: companyInfo.address,
+                eMail: companyInfo.eMail,
+                phoneNumber: companyInfo.phoneNumber,
+                website: companyInfo.website
             })
             .then(()=>{
                 dispatch({type:"UPDATE_COMPANY_SUCCES"})

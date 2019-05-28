@@ -2,6 +2,7 @@ import UserProfile from './components/Profiles/UserProfile'
 import Home from './components/HomePage/Home'
 import CreateJob from './components/Publications/Job/CreateJob'
 import CreateInternship from './components/Publications/Internship/CreateInternship'
+import Company from './components/Profiles/Company';
 
 
 var routes = [
@@ -31,6 +32,13 @@ var routes = [
     name: "Internship",
     icon: "ni ni-tv-2 text-primary",
     component: CreateInternship,
+    layout: ""
+  },
+  {
+    path: "/company",
+    name: "Company",
+    icon: "ni ni-tv-2 text-primary",
+    component: Company,
     layout: ""
   }
 ];
