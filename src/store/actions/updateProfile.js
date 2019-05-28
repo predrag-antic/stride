@@ -17,7 +17,15 @@ export const updateProfile=(companyInfo)=>{
                 email:profile.email,
                 firstAccess:false,
                 name:profile.name,
-                userOrCompany:profile.userOrCompany
+                userOrCompany:profile.userOrCompany,
+                name: companyInfo.name,
+                lastname: companyInfo.lastname,
+                city: companyInfo.city,
+                address: companyInfo.address,
+                country: companyInfo.country,
+                postcode: companyInfo.postcode,
+                informations: companyInfo.informations
+
             })
             .then(()=>{
                 dispatch({type:"UPDATE_USER_SUCCES"})

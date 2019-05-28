@@ -28,6 +28,7 @@ class Welcome extends React.Component{
                     </p> 
                     </Container>
                 <Container style={{textAlign:"center",marginTop:"50px"}}> 
+                    {console.log()}
                 {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
                     <Button style={{marginRight:"250px"}} as={NavLink} to="/profile" > 
@@ -46,7 +47,8 @@ class Welcome extends React.Component{
 
 const mapStateToProps=state=>{
     return{
-        userName: state.firebase.profile.name
+        userName: state.firebase.profile.name,
+        userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 
