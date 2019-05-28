@@ -72,7 +72,7 @@ class Company extends React.Component{
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        updateProfile:(companyInfo)=>dispatch(updateProfile(companyInfo))
+        updateProfile:(profileInfo)=>dispatch(updateProfile(profileInfo))
     }
 }
 

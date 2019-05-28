@@ -1,6 +1,8 @@
 import {Button, Container, Form,TextArea,Checkbox } from 'semantic-ui-react';
 
 import React from 'react';
+import {connect} from 'react-redux';
+import {createInternship} from '../../../store/actions/internshipAction'
 
 const internshipTechnologyOptions = [
     {text:'Backend',value:'Backend'},
@@ -48,6 +50,7 @@ class CreateInternship extends React.Component{
     handlePublish=event=>{
         console.log(this.state);
         //ovde da se preko reduxa salju podaci ps. napravi reducer/akcije
+        this.props.createInternship(this.state);
     }
 
     render(){
@@ -67,7 +70,7 @@ class CreateInternship extends React.Component{
                     <Form.Field>
                         <label>Internship Description</label>
                         <TextArea name="description" value={description} onChange={this.handleChange} 
-                         placeholder='Please describe a job...' style={{width:"75%"}}/>
+                         placeholder='Please describe a internship...' style={{width:"75%"}}/>
                     </Form.Field>
                     <Form.Field >
                         <label>Internship technology</label>
@@ -95,4 +98,17 @@ class CreateInternship extends React.Component{
     }
 }
 
-export default CreateInternship;
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        createInternship:(newInternship)=>dispatch(createInternship(newInternship))
+    }
+}
+
+const mapStateToProps=(state)=>{
+    console.log(state);
+    return{
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateInternship);
