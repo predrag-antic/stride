@@ -1,4 +1,4 @@
-import { Menu,Header,Icon, Label, Container } from 'semantic-ui-react';
+import { Menu,Header,Icon, Label, Container, Dropdown, DropdownItem, DropdownMenu} from 'semantic-ui-react';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -11,20 +11,50 @@ class Navbar extends React.Component
 {
     render(){
 
-        const {userOrCompany}=this.props;
+        const {userOrCompany,userName}=this.props;
 
         return(
         <>
-            <Menu size="mini" inverted borderless style={{background: '#4c3c4c',fontSize:'1.2re',marginRight:"250px"}} >
+            <Menu size="massive" inverted borderless style={{background: '#4c3c4c',fontSize:'1.2re',marginRight:"250px"}} >
                 <Container fluid>
                     <Menu.Item position="right">
-                    {this.props.userOrCompany===undefined?
-                    <p/>:this.props.userOrCompany==="User"?
-                    <h1>User navigation</h1>:<NavbarCompanyLinks/>
+                    {userOrCompany===undefined?
+                    <p/>:userOrCompany==="User"?
+                    <h3>User navigation</h3>:<NavbarCompanyLinks/>
                     }
                     </Menu.Item>
+                    <Menu.Item position="right">
+                       <Dropdown direction='left' icon='envelope' title='notification'>
+                        <DropdownMenu>
+                            <DropdownItem>Notification 1</DropdownItem>
+                            <DropdownItem>Notification 2</DropdownItem>
+                            <DropdownItem>Notification 3</DropdownItem>
+                            <DropdownItem>Notification 4</DropdownItem>
+                        </DropdownMenu>
+                       </Dropdown>
+                    </Menu.Item>
                     <Menu.Item>
-                        <Logout/> 
+                        <Dropdown direction='left' icon='user circle' >
+                        <Dropdown.Menu>
+                        {userOrCompany===undefined?
+                        <div/>:userOrCompany==="User"?
+                            <DropdownItem to='/profile' as={NavLink}>
+                                <i /> My profile
+                            </DropdownItem>
+                            :
+                            <DropdownItem to='/company' as={NavLink}>
+                                <i /> My profile
+                            </DropdownItem>
+                             }
+                            <DropdownItem to='/resume' as={NavLink}>
+                            <i />
+                                Resume
+                            </DropdownItem>
+                            <Dropdown.Item icon='cancel'>
+                                <Logout />
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                        </Dropdown>
                     </Menu.Item>  
                 </Container>  
             </Menu>

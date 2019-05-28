@@ -8,7 +8,7 @@ class Welcome extends React.Component{
     
     render(){
 
-        const {userName}=this.props;
+        const {userName, userOrCompany}=this.props;
 
         return(
             <Container  style={{width:"100%",height:"100%"}}>
@@ -28,9 +28,16 @@ class Welcome extends React.Component{
                     </p> 
                     </Container>
                 <Container style={{textAlign:"center",marginTop:"50px"}}> 
+                {userOrCompany===undefined?
+                        <div/>:userOrCompany==="User"?
                     <Button style={{marginRight:"250px"}} as={NavLink} to="/profile" > 
                         Complete Profile
                     </Button>
+                    :
+                    <Button style={{marginRight:"250px"}} as={NavLink} to="/company" > 
+                        Complete Profile
+                    </Button>
+                }
                 </Container>
             </Container>    
         )

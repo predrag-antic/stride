@@ -5,7 +5,11 @@ import { NavLink,Link } from 'react-router-dom';
 
 class Sidebar extends React.Component
 {
+    
+
     render(){
+        const {userOrCompany} = this.props;
+
         return(
                 <Menu size="large" borderless inverted fixed="left" vertical style={{background: '#4c3c4c', textAlign:"center",fontSize:'1.2re'}}> 
                     <Container fluid>  
@@ -16,12 +20,7 @@ class Sidebar extends React.Component
                         <Menu.Item style={{fontSize:"15px"}} as={NavLink} to="/home" >
                             Home
                         </Menu.Item>
-                        <Menu.Item style={{fontSize:"15px"}} as={NavLink} to="/profile">
-                            Profile
-                        </Menu.Item>
-                        <Menu.Item style={{fontSize:"15px"}} as={NavLink} to="/company">
-                            Company
-                        </Menu.Item>
+                        
                         <Menu.Item style={{fontSize:"15px"}} as={NavLink} to="/information">
                             Information
                         </Menu.Item>

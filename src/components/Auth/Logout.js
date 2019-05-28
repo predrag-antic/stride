@@ -13,9 +13,9 @@ class Logout extends React.Component{
     render(){
         return(
             <div>
-                <Button size="mini" inverted onClick={this.handleSignOut}>
+                <div onClick={this.handleSignOut}>
                         Logout
-                </Button>
+                </div>
             </div>
         )
     }
