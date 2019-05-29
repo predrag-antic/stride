@@ -11,9 +11,9 @@ class Sidebar extends React.Component
         const {userOrCompany} = this.props;
 
         return(
-                <Menu size="large" borderless inverted fixed="left" vertical style={{background: '#4c3c4c', textAlign:"center",fontSize:'1.2re'}}> 
+                <Menu size="large" borderless inverted fixed="left" vertical style={{background: '#1167b1', textAlign:"center",fontSize:'1.2re'}}> 
                     <Container fluid>  
-                        <Menu.Header style={{padding: '0.5em',marginBottom:"100px"}} as="h1" >
+                        <Menu.Header style={{padding: '0.5em',marginBottom:"100px", fontSize:"2em", marginTop:"10px"}} as={NavLink} to='/home'>
                             <Icon inverted name="briefcase" ></Icon>
                             <span style={{color:"white"}} >Stride</span> 
                         </Menu.Header>

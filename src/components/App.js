@@ -32,10 +32,10 @@ class App extends React.Component{
   render(){
     if(!this.props.auth.uid) return <Redirect to="/login" />
     return(
-          <Container style={{height: "100%",width: "100%"}}>
+          <Container style={{height: "100%",width: "100%", backgroundColor:"white"}}>
           <BrowserRouter>
             <Sidebar/>
-              <div style={{position:"absolute",height: "100%",width: "100%",left:"0",top:"0",backgroundColor:"white",                  marginLeft:"250px"}}> 
+              <div style={{position:"absolute",height: "100%",width: "100%",left:"0",top:"0",marginLeft:"250px"}}> 
               <Navbar/>
               <Switch>{this.getRoutes(routes)}</Switch>
               </div>

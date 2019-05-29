@@ -15,7 +15,7 @@ class Navbar extends React.Component
 
         return(
         <>
-            <Menu size="massive" inverted borderless style={{background: '#4c3c4c',fontSize:'1.2re',marginRight:"250px"}} >
+            <Menu size="massive" inverted borderless style={{background: '#187bcd',fontSize:'1.2re',marginRight:"250px"}} >
                 <Container fluid>
                     <Menu.Item position="right">
                     {userOrCompany===undefined?
@@ -50,7 +50,7 @@ class Navbar extends React.Component
                             <i />
                                 Resume
                             </DropdownItem>
-                            <Dropdown.Item icon='cancel'>
+                            <Dropdown.Item>
                                 <Logout />
                             </Dropdown.Item>
                         </Dropdown.Menu>
