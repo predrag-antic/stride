@@ -31,7 +31,7 @@ class Home extends React.Component{
                             </Link>
                         </Container>
                         <Container >
-                            <Link to="/internship" style={{marginRight:"250px"}}>
+                            <Link to="/internships" style={{marginRight:"250px"}}>
                                 EXPLORE INTERNSHIP
                             </Link>
                         </Container>

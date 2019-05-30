@@ -5,6 +5,10 @@ import CreateInternship from './components/Publications/Internship/CreateInterns
 import Company from './components/Profiles/Company';
 import JobPage from './components/Publications/Job/JobPage'
 import JobDetails from './components/Publications/Job/JobDetails'
+import InternshipPage from './components/Publications/Internship/InternshipPage'
+import InternshipDetails from './components/Publications/Internship/InternshipDetails'
+
+
 
 
 var routes = [
@@ -55,6 +59,20 @@ var routes = [
     name: "Job Details",
     icon: "ni ni-tv-2 text-primary",
     component: JobDetails,
+    layout: ""
+  },
+  {
+    path: "/internships",
+    name: "Internship Page",
+    icon: "ni ni-tv-2 text-primary",
+    component: InternshipPage,
+    layout: ""
+  },
+  {
+    path: "/internshipdetail/:id",
+    name: "Internship Details",
+    icon: "ni ni-tv-2 text-primary",
+    component: InternshipDetails,
     layout: ""
   }
 ];

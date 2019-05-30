@@ -14,7 +14,8 @@ export const createInternship= (newInternship) => {
             title:newInternship.title,
             description:newInternship.description,
             technology:newInternship.technology,
-            duration:newInternship.duration
+            duration:newInternship.duration,
+            createdAt: new Date().toString()
         })
         .then(()=>{
             dispatch({type:"CREATE_INTERNSHIP_SUCCES"})
