@@ -13,7 +13,8 @@ export const createJob= (newJob) => {
             description:newJob.description,
             position:newJob.position,
             availablePositions:newJob.availablePosition,
-            remote:newJob.remote
+            remote:newJob.remote,
+            createdAt: new Date().toString()
         })
         .then(()=>{
             dispatch({type:"CREATE_JOB_SUCCES"})

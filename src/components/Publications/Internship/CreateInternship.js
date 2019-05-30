@@ -51,6 +51,7 @@ class CreateInternship extends React.Component{
         console.log(this.state);
         //ovde da se preko reduxa salju podaci ps. napravi reducer/akcije
         this.props.createInternship(this.state);
+        this.props.history.push('/home');
     }
 
     render(){

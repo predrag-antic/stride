@@ -4,6 +4,7 @@ import CreateJob from './components/Publications/Job/CreateJob'
 import CreateInternship from './components/Publications/Internship/CreateInternship'
 import Company from './components/Profiles/Company';
 import JobPage from './components/Publications/Job/JobPage'
+import JobDetails from './components/Publications/Job/JobDetails'
 
 
 var routes = [
@@ -47,6 +48,13 @@ var routes = [
     name: "Job Page",
     icon: "ni ni-tv-2 text-primary",
     component: JobPage,
+    layout: ""
+  },
+  {
+    path: "/job-detail/:id",
+    name: "Job Details",
+    icon: "ni ni-tv-2 text-primary",
+    component: JobDetails,
     layout: ""
   }
 ];

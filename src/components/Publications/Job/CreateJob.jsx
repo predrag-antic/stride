@@ -39,7 +39,7 @@ class CreateJob extends React.Component{
         //ovde da se preko reduxa salju podaci ps. napravi reducer/akcije
         //uhvati greske ovde!
         this.props.createJob(this.state);
-
+        this.props.history.push('/home');
     }
 
     render(){
