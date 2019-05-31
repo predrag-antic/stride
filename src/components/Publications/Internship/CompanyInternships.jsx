@@ -8,24 +8,24 @@ import {Link } from 'react-router-dom';
 
 import React from 'react';
 
-class CompanyJobs extends React.Component{
+class CompanyInternships extends React.Component{
 
     render(){
-        const {myJobs}=this.props;
+        const {myInternships}=this.props;
                    
-        if(myJobs){
+        if(myInternships){
             return(
                 <Container style={{width:"100%",height:"100%"}}>
-                    <h1 style={{textAlign:"center",marginRight:"250px"}}> COMPANY JOBS </h1>
+                    <h1 style={{textAlign:"center",marginRight:"250px"}}> COMPANY INTERNSHIPS </h1>
                     <Container style={{textAlign:"center",marginTop:"50px",width:"100%",height:"100%"}}>
                         <Container >
                         <div>
-                            {this.props.myJobs.map((job)=>{
+                            {this.props.myInternships.map((internship)=>{
                                 return (
-                                <div key={job.id} style={{textAlign:"center",marginRight:"250px",height:"150px",marginTop:"5px",
+                                <div key={internship.id} style={{textAlign:"center",marginRight:"250px",height:"150px",marginTop:"5px",
                                 borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
-                                    <h3>{job.title}</h3>
-                                    <Link to={`job-detail/${job.id}`}>
+                                    <h3>{internship.title}</h3>
+                                    <Link to={`/internshipdetail/${internship.id}`}>
                                     <Button>
                                         Details
                                     </Button>
@@ -46,11 +46,11 @@ class CompanyJobs extends React.Component{
                 </Container>
             )
         }
-        else
+        else if(myInternships!=undefined)
         {
             return (
                 <div style={{textAlign: 'center', marginRight: "250px"}}>
-                    <p>You didn't add jobs publication yet</p>
+                    <h1>You didn't add internship publication yet</h1>
                 </div>
                 )
         }
@@ -59,22 +59,21 @@ class CompanyJobs extends React.Component{
 
 const mapStateToProps = (state) => {
     
-    const jobs = state.firestore.ordered.jobs; 
+    const internships = state.firestore.ordered.internships;
     const userId=state.firebase.auth.uid; 
-    const myJobs=[]
-    if(jobs!==undefined){
-        jobs.map((job)=>{
-            if(job.authorId===userId){
-                myJobs.push(job);
-                console.log(job.title);
+    const myInternships=[]
+    if(internships!==undefined){
+        internships.map((internship)=>{
+            if(internship.authorId===userId){
+                myInternships.push(internship);
+                console.log(internship.title);
             }
         })
     }
     
     return {
-         myJobs: myJobs
+        myInternships: myInternships
     }
 }
 
-export default compose(connect(mapStateToProps), firestoreConnect([{ collection: 'jobs' } 
-    ])) (CompanyJobs)
+export default compose(connect(mapStateToProps), firestoreConnect([{ collection:'internships' }])) (CompanyInternships)
