@@ -26,7 +26,7 @@ class UserProfile extends React.Component{
             [e.target.name]: e.target.value
         });
     }    
-
+    
     render(){
         const { popunioPrifil, userName, lastname, city, address, country, postcode, informations } = this.state;
         return(                
@@ -37,11 +37,11 @@ class UserProfile extends React.Component{
                 <Container style={{textAlign:"center",marginTop:"50px"}}>
 
                     <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>
-                        <label>Name: </label>
+                        <label>Userame: </label>
                         <Form.Input fluid name="userName" style={{maxWidth: 650}} placeholder={this.props.SuserName} value={userName} type="text" onChange={this.handleChange}/ >
                     </Form.Field>
                     <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>
-                        <label>Lastname: </label>
+                        <label>Full name: </label>
                         <Form.Input fluid name="lastname" style={{maxWidth: 650}} placeholder={this.props.Slastname} value={lastname} type="text" onChange={this.handleChange}/>
                     </Form.Field>
                     <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>

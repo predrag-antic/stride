@@ -7,7 +7,8 @@ import JobPage from './components/Publications/Job/JobPage'
 import JobDetails from './components/Publications/Job/JobDetails'
 import InternshipPage from './components/Publications/Internship/InternshipPage'
 import InternshipDetails from './components/Publications/Internship/InternshipDetails'
-import CompanyDetails from './components/Profiles/CompanyDetails'
+import CompanyJobs from './components/Publications/Job/CompanyJobs'
+
 
 
 
@@ -76,10 +77,10 @@ var routes = [
     layout: ""
   },
   {
-    path: "/companyDetails/:id",
-    name: "Company Details",
+    path: "/companyJobs",
+    name: "Company Jobs",
     icon: "ni ni-tv-2 text-primary",
-    component: CompanyDetails,
+    component: CompanyJobs,
     layout: ""
   }
 ];

@@ -34,6 +34,5 @@ const mapStateToProps=(state)=>{
         jobs:state.firestore.ordered.jobs
     }
 }
-
 export default compose(connect(mapStateToProps,null),
     firestoreConnect([{collection:'jobs'}]))(JobPage);

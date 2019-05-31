@@ -23,7 +23,7 @@ class NavbarCompanyLinks extends React.Component{
                     <Button.Content hidden>
                         <Icon name='briefcase'/>
                     </Button.Content>
-                </Button> 
+                </Button>
             </div>
         )
     }
