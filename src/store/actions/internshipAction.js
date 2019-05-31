@@ -4,6 +4,7 @@ export const createInternship= (newInternship) => {
         const firestore=getFirestore();
         const profile=getState().firebase.profile;
         const uid=getState().firebase.auth.uid;
+        const internshipAuthor = getState().firebase.profile;
 
         firestore
         .collection("internships")
@@ -15,7 +16,8 @@ export const createInternship= (newInternship) => {
             description:newInternship.description,
             technology:newInternship.technology,
             duration:newInternship.duration,
-            createdAt: new Date().toString()
+            createdAt: new Date().toString(),
+            internshipAuthorName: internshipAuthor.companyName
         })
         .then(()=>{
             dispatch({type:"CREATE_INTERNSHIP_SUCCES"})
