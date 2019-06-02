@@ -14,7 +14,7 @@ class Sidebar extends React.Component
                 <Menu size="large" borderless inverted fixed="left" vertical style={{background: '#1167b1', textAlign:"center", fontSize:'1.2re'}}> 
                     <Container fluid>  
                         <Menu.Header style={{padding: '1em', marginBottom:"200px"}} as={NavLink} to='/home'>
-                            <Image centered src={require('../../strideLogo.png')} size='small'></Image>
+                            <Image centered src={require('../../images/strideLogo.png')} size='small'></Image>
                         </Menu.Header>
                         <Menu.Item as={NavLink} to="/home" >
                             Home
