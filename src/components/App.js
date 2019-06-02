@@ -30,15 +30,15 @@ class App extends React.Component{
   };
 
   render(){
-    if(!this.props.auth.uid) return <Redirect to="/login" />
+    if(!this.props.auth.uid) return <Redirect to="/appWelcome" />
     return(
-          <Container style={{height: "100%",width: "100%", backgroundColor:"white"}}>
+          <Container style={{height: "100%",width: "100%"}}>
           <BrowserRouter>
+            <Navbar/>
             <Sidebar/>
-              <div style={{position:"absolute",height: "100%",width: "100%",left:"0",top:"0",marginLeft:"250px"}}> 
-              <Navbar/>
+            <div style={{height: "100%",width: "100%",marginTop:"100px",marginLeft:"250px"}}> 
               <Switch>{this.getRoutes(routes)}</Switch>
-              </div>
+            </div>
           </BrowserRouter> 
           </Container>
     );

@@ -20,23 +20,23 @@ class Home extends React.Component{
             return  <Welcome/>
         }else{
             return (
-                <Container  style={{width:"100%",height:"100%"}}>
-                    <h1 style={{textAlign:"center",marginRight:"250px",marginTop:"50px"}}>
+                <Container  style={{paddingRight:"250px",width:"100%",height:"100%"}}>
+                    <h1 style={{textAlign:"center",}}>
                         EXPLORE JOBS/INTERNSHIP/PROJECTS
                     </h1>
                     <Container style={{textAlign:"center"}}>
                         <Container>
-                            <Link to="/jobs" style={{marginRight:"250px"}}>
+                            <Link to="/jobs" >
                                 EXPLORE JOBS
                             </Link>
                         </Container>
                         <Container >
-                            <Link to="/internships" style={{marginRight:"250px"}}>
+                            <Link to="/internships" >
                                 EXPLORE INTERNSHIP
                             </Link>
                         </Container>
                         <Container>
-                            <Link to="/projects" style={{marginRight:"250px"}}>
+                            <Link to="/projects">
                                 EXPLORE PROJECTS
                             </Link>
                         </Container>

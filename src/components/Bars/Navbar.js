@@ -11,16 +11,16 @@ class Navbar extends React.Component
 {
     render(){
 
-        const {userOrCompany,userName}=this.props;
+        const {userOrCompany,userName, }=this.props;
 
         return(
         <>
-            <Menu size="massive" inverted borderless style={{background: '#187bcd',fontSize:'1.2re',marginRight:"250px"}} >
+            <Menu size="massive" inverted fixed="top" borderless style={{background: '#187bcd',fontSize:'1.2re',paddingLeft:'380px', height:'60px'}} >
                 <Container fluid>
                     <Menu.Item position="right">
                     {userOrCompany===undefined?
                     <p/>:userOrCompany==="User"?
-                    <h3>User navigation</h3>:<NavbarCompanyLinks/>
+                    <h3>Welcome, {userName}</h3>:<NavbarCompanyLinks/>
                     }
                     </Menu.Item>
                     <Menu.Item position="right">
@@ -86,7 +86,8 @@ class Navbar extends React.Component
 
 const mapStateToProps=state=>{
     return{
-        userOrCompany: state.firebase.profile.userOrCompany
+        userOrCompany: state.firebase.profile.userOrCompany,
+        userName: state.firebase.profile.name
     }
 }
 

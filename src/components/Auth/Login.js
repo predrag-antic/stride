@@ -1,10 +1,10 @@
-import { Grid, Form, Segment, Button, Header, Message, Icon } from 'semantic-ui-react';
+import { Grid, Form, Segment, Button, Header, Message, Icon, Image } from 'semantic-ui-react';
 
 import React from 'react';
 import { connect } from 'react-redux'
 
 import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+import { Redirect,NavLink } from 'react-router-dom';
 
 import { signIn } from '../../store/actions/authActions'
 
@@ -53,10 +53,10 @@ class Login extends React.Component {
         if(this.props.auth.uid) return <Redirect to="/home" />
 
         return (
-            <Grid textAlign="center" verticalAlign="middle" className="app">
+            <Grid textAlign="center" verticalAlign="middle" className="welcome" style={{marginLeft:'0rem',marginTop:'0rem'}}>
                 <Grid.Column style={{maxWidth: 450}}>
-                    <Header as="h1" icon color="blue" textAlign="center">
-                        <Icon name="suitcase" color="blue" />
+                    <Header as="h1" textAlign="center" style={{color:"white",fontSize:"px",fontFamily:"Nexa",fontWeight:"600"}}>
+                        <Image src={require('../../logo.png')} to='/appWelcome' as={NavLink}/><br></br>
                         Login to Stride
                     </Header>
                     <Form onSubmit={this.handleSubmit} size="large">

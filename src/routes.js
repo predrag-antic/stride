@@ -10,6 +10,7 @@ import InternshipDetails from './components/Publications/Internship/InternshipDe
 import CompanyJobs from './components/Publications/Job/CompanyJobs'
 import CompanyDetails from './components/Profiles/CompanyDetails'
 import CompanyInternships from './components/Publications/Internship/CompanyInternships';
+import AppWelcome from './components/AppWelcome';
 
 
 
@@ -96,6 +97,13 @@ var routes = [
     name: "Company Internships",
     icon: "ni ni-tv-2 text-primary",
     component: CompanyInternships,
+    layout: ""
+  },
+  {
+    path: "/appWelcome",
+    name: "App Welcome",
+    icon: "ni ni-tv-2 text-primary",
+    component: AppWelcome,
     layout: ""
   }
 ];

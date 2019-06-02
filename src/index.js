@@ -20,6 +20,7 @@ import Login from './components/Auth/Login'
 import Register from './components/Auth/Register'
 
 import firebase from './firebase'
+import AppWelcome from './components/AppWelcome';
 
 const store=createStore(rootReducer,
     composeWithDevTools(
@@ -38,6 +39,7 @@ class Root extends React.Component{
             <Route exact path="/" component={App}/>
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
+            <Route path='/appWelcome' component={AppWelcome}/>
             <Route path="/" render={props => <App {...props} />} />
         </Switch>
         </div>
