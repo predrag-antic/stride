@@ -57,7 +57,14 @@ class Navbar extends React.Component
                                 <i /> Company jobs
                             </DropdownItem>
                              }
-
+                        {userOrCompany===undefined?
+                        <div/>:userOrCompany==="User"?
+                            <DropdownItem to='/myapplications' as={NavLink}>
+                                <i /> My applications
+                            </DropdownItem>
+                            :
+                            null
+                             }
                         {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
                             null

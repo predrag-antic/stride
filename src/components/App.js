@@ -11,6 +11,7 @@ import Navbar from './Bars/Navbar';
 
 import routes from '../routes';
 import { Container } from 'semantic-ui-react';
+import {getAllMyInternshipApplications} from '../store/actions/internshipApplicationsAction'
 
 class App extends React.Component{
 
@@ -30,7 +31,11 @@ class App extends React.Component{
   };
 
   render(){
+
+    const { getAllMyInternshipApplications } = this.props;
+
     if(!this.props.auth.uid) return <Redirect to="/appWelcome" />
+    {getAllMyInternshipApplications()}
     return(
           <Container style={{height: "100%",width: "100%"}}>
           <BrowserRouter>
@@ -45,10 +50,16 @@ class App extends React.Component{
   }
 }
 
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    getAllMyInternshipApplications:()=>dispatch(getAllMyInternshipApplications())
+  }
+}
+
 const mapStateToProps=state=>{
   return{
     auth : state.firebase.auth
   }
 }
 
-export default connect(mapStateToProps,null)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);

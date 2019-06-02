@@ -11,8 +11,7 @@ import CompanyJobs from './components/Publications/Job/CompanyJobs'
 import CompanyDetails from './components/Profiles/CompanyDetails'
 import CompanyInternships from './components/Publications/Internship/CompanyInternships';
 import AppWelcome from './components/AppWelcome';
-
-
+import MyApplicationsPage from './components/Applications/MyApplicationsPage';
 
 var routes = [
   {
@@ -104,6 +103,13 @@ var routes = [
     name: "App Welcome",
     icon: "ni ni-tv-2 text-primary",
     component: AppWelcome,
+    layout: ""
+  },
+  {
+    path: "/myapplications",
+    name: "My Applications Page",
+    icon: "ni ni-tv-2 text-primary",
+    component: MyApplicationsPage,
     layout: ""
   }
 ];
