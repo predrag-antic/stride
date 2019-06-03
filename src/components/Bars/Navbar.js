@@ -48,19 +48,29 @@ class Navbar extends React.Component
                              }
 
                         {userOrCompany===undefined?
-                        <div/>:userOrCompany==="User"?
-                            <DropdownItem to='/profile-posts' as={NavLink}>
-                                <i /> My posts
-                            </DropdownItem>
+                        <div/>:userOrCompany==="User"?  
+                            null
                             :
                             <DropdownItem to='/company-jobs' as={NavLink}>
                                 <i /> Company jobs
                             </DropdownItem>
                              }
+                             {/*<DropdownItem to='/profile-posts' as={NavLink}>
+                                <i /> My posts
+                            </DropdownItem>*/}
+                            
                         {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
                             <DropdownItem to='/my-applications' as={NavLink}>
-                                <i /> My applications
+                                <i /> My internship applications
+                            </DropdownItem>
+                            :
+                            null
+                             }
+                        {userOrCompany===undefined?
+                        <div/>:userOrCompany==="User"?
+                            <DropdownItem to='/my-job-applications' as={NavLink}>
+                                <i /> My job applications
                             </DropdownItem>
                             :
                             null

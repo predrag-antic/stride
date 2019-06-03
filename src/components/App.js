@@ -12,6 +12,7 @@ import Navbar from './Bars/Navbar';
 import routes from '../routes';
 import { Container } from 'semantic-ui-react';
 import {getAllMyInternshipApplications} from '../store/actions/internshipApplicationsAction'
+import {getAllMyJobApplications} from '../store/actions/jobApplicationsAction'
 
 class App extends React.Component{
 
@@ -32,10 +33,11 @@ class App extends React.Component{
 
   render(){
 
-    const { getAllMyInternshipApplications } = this.props;
+    const { getAllMyInternshipApplications, getAllMyJobApplications } = this.props;
 
     if(!this.props.auth.uid) return <Redirect to="/app-welcome" />
     {getAllMyInternshipApplications()}
+    {getAllMyJobApplications()}
     return(
           <Container style={{height: "100%",width: "100%"}}>
           <BrowserRouter>
@@ -52,7 +54,8 @@ class App extends React.Component{
 
 const mapDispatchToProps=(dispatch)=>{
   return{
-    getAllMyInternshipApplications:()=>dispatch(getAllMyInternshipApplications())
+    getAllMyInternshipApplications:()=>dispatch(getAllMyInternshipApplications()),
+    getAllMyJobApplications:()=>dispatch(getAllMyJobApplications())
   }
 }
 

@@ -5,10 +5,23 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import moment from 'moment'
 import {Link} from 'react-router-dom'
+import { render } from 'react-dom';
+
+import { applyUserToJob } from '../../../store/actions/jobApplicationsAction';
+import {Button, Container, Form,TextArea,Checkbox,Divider } from 'semantic-ui-react';
  
-const JobDetails = (props) => {
-    const { job } = props; 
-    if (job) {
+class JobDetails extends React.Component {
+
+    handleApply=()=>{
+        console.log("APPLY");
+        this.props.applyUserToJob(this.props.job,this.props.jobId);
+    }
+
+    render(){
+    
+        const { job, alreadyApplied } = this.props;
+        
+    if (job && (alreadyApplied!==undefined)) {
         return (
             <div style={{textAlign:'center', marginRight: 250, marginTop:"250px",
                 borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
@@ -18,8 +31,16 @@ const JobDetails = (props) => {
                         <p style={{fontSize: 20}}> Job description: <br/> { job.description }</p>
                         <p style={{fontSize: 20}}>Job position: <br/> { job.position }</p>
                         <p style={{fontSize: 20}}>Available positions: <br/> { job.availablePositions }</p>
+                        {
+                                alreadyApplied? 
+                                <h4>Hey there! You already applied for this!</h4>
+                                :
+                                <Button onClick={this.handleApply}>
+                                    Apply
+                                </Button>
+                        }
                         <Link to = {'/company-detail/' + job.authorId}>
-                            <p>Published by: {job.jobAuthorName} </p>
+                            <p>Published by: {job.id} </p>
                         </Link>
                         <p>Published:  {moment(job.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
                     </div>
@@ -35,19 +56,34 @@ const JobDetails = (props) => {
             )
     }
 }
+}
 
-const mapStateToProps = (state, ovdeProps) => {
-    const id = ovdeProps.match.params.id;
-    const jobs = state.firestore.data.jobs;
-    const job = jobs ? jobs[id] : null
-    return {
-         job: job,
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        applyUserToJob:
+        (thisJob,thisJobId)=>dispatch(applyUserToJob(thisJob,thisJobId))
     }
 }
 
-export default compose(
-    connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'jobs' }
-    ])
-)(JobDetails)
+const mapStateToProps = (state, ovdeProps) => {
+    const jobId = ovdeProps.match.params.id;
+
+    const myJobApplicationsId=state.jobApplications;
+    var  alreadyApplied=false;
+    myJobApplicationsId.map((myJobId)=>{
+        if(myJobId===jobId)
+        alreadyApplied=true
+    })
+    console.log(alreadyApplied);
+
+
+    const jobs = state.firestore.data.jobs;
+    const job = jobs ? jobs[jobId] : null
+    return {
+         job: job,
+         jobId: jobId,
+         alreadyApplied:alreadyApplied
+    }
+}
+
+export default compose(connect(mapStateToProps, mapDispatchToProps),firestoreConnect([{ collection: 'jobs' }]))(JobDetails)
