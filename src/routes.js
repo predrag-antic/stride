@@ -93,7 +93,7 @@ var routes = [
     layout: ""
   },
   {
-    path: "/update-internship",
+    path: "/update-internship/:id",
     name: "Update Internship",
     icon: "ni ni-tv-2 text-primary",
     component: UpdateInternship,

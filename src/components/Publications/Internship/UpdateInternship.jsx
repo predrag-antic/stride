@@ -1,25 +1,38 @@
-import {Button, Container,Form,Checkbox,TextArea,Select } from 'semantic-ui-react';
+import {Button, Container, Form,TextArea,Checkbox } from 'semantic-ui-react';
 
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 import React from 'react';
 import {connect} from 'react-redux';
-import {createJob} from '../../../store/actions/jobAction'
-import { firestoreConnect } from 'react-redux-firebase'
-import { stat } from 'fs';
+import {createInternship} from '../../../store/actions/internshipAction'
 
-const jobPositionsOptions = [
-    {text:'Junior Developer',value:'junior'},
-    {text:'Senior Developer',value:'senior'},
-    {text:'Other',value:'other'}
+const internshipTechnologyOptions = [
+    {text:'Backend',value:'Backend'},
+    {text:'Frontend',value:'Frontend'},
+    {text:'C#',value:'C#'},
+    {text:'Java',value:'Java'},
+    {text:'Angular',value:'Angular'},
+    {text:'React',value:'React'},
+    {other:'Other',value:'Other'}
   ]
 
-class UpdateJob extends React.Component{
-    
+  const internshipDurationOptions = [
+    {text:'2 weeks',value:'2 weeks'},
+    {text:'3 weeks',value:'3 weeks'},
+    {text:'month',value:'month'},
+    {text:'2 months',value:'2 months'},
+    {text:'3 months',value:'3 months'},
+    {text:'6 months',value:'6 months'},
+  ]
+
+
+class UpdateInternship extends React.Component{
+ 
     state = {
         title: '',
         description: '',
-        position: '',
-        availablePosition: '',
-        remote:false,
+        technology: '',
+        duration:'',
         errors: [],
         loading: false
     }
@@ -36,53 +49,54 @@ class UpdateJob extends React.Component{
         this.setState({remote:data.checked})
     }
 
+    handleUpdate=event=>{
+        console.log(this.state);
+        //ovde da se preko reduxa salju podaci ps. napravi reducer/akcije
+        //this.props.history.push('/company-internships');
+    }
     
 
-    handlePublish=event=>{
-        console.log(this.state);
-        this.props.createJob(this.state);
-        this.props.history.push('/home');
-    }
-
     render(){
-
-        const {title,description,position,availablePosition,remote} = this.state;
-
+        const {internship}=this.props;
+        const {title,description,technology,duration} = this.state;
+        
         return(
             <Container style={{width:"100%",height:"100%"}}>
-                <h1 style={{textAlign:"center",marginRight:"250px"}}> Job </h1>
+                <h1 style={{textAlign:"center",marginRight:"250px"}}> Internship </h1>
                 <Container style={{textAlign:"center",marginTop:"50px"}}> 
-                <Form onSubmit={this.handlePublish} style={{marginRight:"250px"}}>
+                <Form onSubmit={this.handleUpdate} style={{marginRight:"250px"}}>
                     <Form.Field >
                         <label>Title</label>
-                        <input name="title" value={title} onChange={this.handleChange} placeholder={this.state.title} 
+                        <input name="title" value={title} onChange={this.handleChange} placeholder={internship.title}
                                 style={{width:"75%"}}/>
                     </Form.Field>
                     <Form.Field>
-                        <label>Job Description</label>
+                        <label>Internship Description</label>
                         <TextArea name="description" value={description} onChange={this.handleChange} 
-                         placeholder='Please describe a job...' style={{width:"75%"}}/>
+                         placeholder={internship.description} style={{width:"75%"}}/>
                     </Form.Field>
                     <Form.Field >
-                        <label>Job position</label>
-                        <Form.Select  onChange={this.handleSelectChange} options={jobPositionsOptions} placeholder="Job position" name="position" style={{width:"75%"}}>
+                        <label>Internship technology</label>
+                        <Form.Select  onChange={this.handleSelectChange} options={internshipTechnologyOptions} placeholder={internship.technology} name="technology" style={{width:"75%"}}>
                         </Form.Select>
                     </Form.Field>
                     <Form.Field >
-                        <label>Number of available positon for this jos</label>
-                        <input name="availablePosition" value={availablePosition} onChange={this.handleChange}            placeholder='Available position for this job'type="number" min="1"  style={{width:"75%"}}/>
+                        <label>Internship duration</label>
+                        <Form.Select  onChange={this.handleSelectChange} options={internshipDurationOptions}             placeholder={internship.duration} name="duration" style={{width:"75%"}}>
+                        </Form.Select>
                     </Form.Field>
                     <Form.Field inline>
-                        <label>Remote</label>
-                        <Checkbox value="remote" name="remote" onChange={this.handleChangeRemote} toggle />
+                        <label>Deadline for applying</label>
+                        <label>Date picker</label>
                     </Form.Field>
-                    <Button style={{marginTop:"50px"}} type='submit'>
-                        Update
-                    </Button>
-                    <Button style={{textAlign:"center", borderColor:"#dee2e8",borderWidth:"1px"}}>
-                        Disable
-                    </Button>
+                    <Form.Field inline>
+                        <label>Earliest start date</label>
+                        <label>Date picker</label>
+                    </Form.Field>
+                    <Button style={{marginTop:"50px"}} type='submit'>Update</Button>
                 </Form>
+                    
+                    <Button style={{marginTop:"50px"}} >Disable</Button>
                 </Container>
             </Container>
         )
@@ -91,15 +105,25 @@ class UpdateJob extends React.Component{
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        createJob:(newJob)=>dispatch(createJob(newJob))
+        //update internship
+        //disable internship
     }
 }
 
-const mapStateToProps = (dispatch)=>{
+const mapStateToProps = (state, ownProps) => {
+
+    const thisInternshipId = ownProps.match.params.id;
+    const internships = state.firestore.data.internships;
+    const internship = internships ? internships[thisInternshipId] : null
     return {
-
+        internship: internship,
+        internshipId:thisInternshipId,
     }
 }
 
-
-export default connect(mapStateToProps,mapDispatchToProps)(UpdateJob);
+export default compose(
+    connect(mapStateToProps,mapDispatchToProps),
+    firestoreConnect([
+        { collection: 'internships' }
+    ])
+)(UpdateInternship)

@@ -26,14 +26,13 @@ class CompanyJobs extends React.Component{
                                 borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
                                     <h3>{job.title}</h3>
                                     <Link to={`job-detail/${job.id}`}>
-                                    <Button>
-                                        Details
-                                    </Button>
-                                    <Button style={{textAlign:"center", borderColor:"#dee2e8",borderWidth:"1px"}}>
-                                        Update
-                                    </Button>
-                                    
-                                </Link>
+                                        <Button>
+                                            Details
+                                        </Button>
+                                        <Button style={{textAlign:"center", borderColor:"#dee2e8",borderWidth:"1px"}}>
+                                            Update
+                                        </Button>
+                                    </Link>
                                 </div>
                                 )
                             })}

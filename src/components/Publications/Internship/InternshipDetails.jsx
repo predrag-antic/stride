@@ -58,11 +58,6 @@ class InternshipDetails extends React.Component{
         }
     }
 
-    { /* 36 linija koda. kad se klikne disable da se onemoguci. Applay button na dnu ako nije prijavljen i nije disableovan 
-        Oglas disable-ovan dobijam iz inteshipt.oglasDisableovan. 
-        Treba da dugme promeni oglas. True false. 
-    
-    */ }
 
 const mapDispatchToProps=(dispatch)=>{
     return{
