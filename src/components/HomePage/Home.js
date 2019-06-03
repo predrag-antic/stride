@@ -21,7 +21,7 @@ class Home extends React.Component{
         }else{
             return (
                 <Container  style={{paddingRight:"250px",width:"100%",height:"100%"}}>
-                    <h1 style={{textAlign:"center",}}>
+                    <h1 style={{textAlign:"center"}}>
                         EXPLORE JOBS/INTERNSHIP/PROJECTS
                     </h1>
                     <Container style={{textAlign:"center"}}>

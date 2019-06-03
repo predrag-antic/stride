@@ -49,17 +49,17 @@ class Navbar extends React.Component
 
                         {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
-                            <DropdownItem to='/profilePosts' as={NavLink}>
+                            <DropdownItem to='/profile-posts' as={NavLink}>
                                 <i /> My posts
                             </DropdownItem>
                             :
-                            <DropdownItem to='/companyJobs' as={NavLink}>
+                            <DropdownItem to='/company-jobs' as={NavLink}>
                                 <i /> Company jobs
                             </DropdownItem>
                              }
                         {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
-                            <DropdownItem to='/myapplications' as={NavLink}>
+                            <DropdownItem to='/my-applications' as={NavLink}>
                                 <i /> My applications
                             </DropdownItem>
                             :
@@ -69,7 +69,7 @@ class Navbar extends React.Component
                         <div/>:userOrCompany==="User"?
                             null
                             :
-                            <DropdownItem to='/companyInternships' as={NavLink}>
+                            <DropdownItem to='/company-internships' as={NavLink}>
                                 <i /> Company's Internships
                             </DropdownItem>
                              }

@@ -16,11 +16,11 @@ class InternshipList extends React.Component{
                             return (
                             <div key={internship.id} style={{textAlign:"center",marginRight:"250px",height:"150px",     marginTop:"5px",borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
                                 <h3>{internship.title}</h3>
-                                <Link to = {'/companyDetails/' + internship.authorId}>
+                                <Link to = {'/company-detail/' + internship.authorId}>
                                     <p>Published by: {internship.internshipAuthorName} </p>
                                 </Link>
                                 <p>Published:  {moment(internship.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
-                                <Link to={`internshipdetail/${internship.id}`}>
+                                <Link to={`internship-detail/${internship.id}`}>
                                     <Button>
                                         Internship Details
                                     </Button>

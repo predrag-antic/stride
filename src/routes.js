@@ -57,7 +57,7 @@ var routes = [
     layout: ""
   },
   {
-    path: "/jobdetail/:id",
+    path: "/job-detail/:id",
     name: "Job Details",
     icon: "ni ni-tv-2 text-primary",
     component: JobDetails,
@@ -71,42 +71,42 @@ var routes = [
     layout: ""
   },
   {
-    path: "/internshipdetail/:id",
+    path: "/internship-detail/:id",
     name: "Internship Details",
     icon: "ni ni-tv-2 text-primary",
     component: InternshipDetails,
     layout: ""
   },
   {
-    path: "/companyJobs",
+    path: "/company-jobs",
     name: "Company Jobs",
     icon: "ni ni-tv-2 text-primary",
     component: CompanyJobs,
     layout: ""
   },
   {
-    path: "/companyDetails/:id",
+    path: "/company-detail/:id",
     name: "Company Details",
     icon: "ni ni-tv-2 text-primary",
     component: CompanyDetails,
     layout: ""
   },
   {
-    path: "/companyInternships",
+    path: "/company-internships",
     name: "Company Internships",
     icon: "ni ni-tv-2 text-primary",
     component: CompanyInternships,
     layout: ""
   },
   {
-    path: "/appWelcome",
+    path: "/app-welcome",
     name: "App Welcome",
     icon: "ni ni-tv-2 text-primary",
     component: AppWelcome,
     layout: ""
   },
   {
-    path: "/myapplications",
+    path: "/my-applications",
     name: "My Applications Page",
     icon: "ni ni-tv-2 text-primary",
     component: MyApplicationsPage,

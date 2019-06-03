@@ -19,7 +19,7 @@ class Sidebar extends React.Component
                         <Menu.Item as={NavLink} to="/home" >
                             Home
                         </Menu.Item>
-                        <Menu.Item as={NavLink} to="/aboutUs">
+                        <Menu.Item as={NavLink} to="/about-us">
                             About us
                         </Menu.Item>
                         <Menu.Item as={NavLink} to="/jobs">

@@ -39,7 +39,7 @@ class Root extends React.Component{
             <Route exact path="/" component={App}/>
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
-            <Route path='/appWelcome' component={AppWelcome}/>
+            <Route path='/app-welcome' component={AppWelcome}/>
             <Route path="/" render={props => <App {...props} />} />
         </Switch>
         </div>

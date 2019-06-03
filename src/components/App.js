@@ -34,7 +34,7 @@ class App extends React.Component{
 
     const { getAllMyInternshipApplications } = this.props;
 
-    if(!this.props.auth.uid) return <Redirect to="/appWelcome" />
+    if(!this.props.auth.uid) return <Redirect to="/app-welcome" />
     {getAllMyInternshipApplications()}
     return(
           <Container style={{height: "100%",width: "100%"}}>

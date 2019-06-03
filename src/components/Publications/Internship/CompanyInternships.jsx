@@ -25,7 +25,7 @@ class CompanyInternships extends React.Component{
                                 <div key={internship.id} style={{textAlign:"center",marginRight:"250px",height:"150px",marginTop:"5px",
                                 borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
                                     <h3>{internship.title}</h3>
-                                    <Link to={`/internshipdetail/${internship.id}`}>
+                                    <Link to={`/internship-detail/${internship.id}`}>
                                     <Button>
                                         Details
                                     </Button>

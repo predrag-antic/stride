@@ -13,7 +13,7 @@ class AppWelcome extends React.Component{
                     <Menu.Item>
                         <Image src={require("../images/strideLogo.png")} size='small'></Image>
                     </Menu.Item>
-                    <Menu.Item  position="right" as={NavLink} to="/aboutUs" style={{fontSize:'18px',color:'white'}}>
+                    <Menu.Item  position="right" as={NavLink} to="/about-us" style={{fontSize:'18px',color:'white'}}>
                             <Icon name="question circle"/>About Us
                     </Menu.Item>  
                     <Menu.Item  as={NavLink} to="/login" style={{fontSize:'18px',color:'white'}}>

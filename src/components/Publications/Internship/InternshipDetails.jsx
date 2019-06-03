@@ -40,7 +40,7 @@ class InternshipDetails extends React.Component{
                                     Apply
                                 </Button>
                             }
-                            <Link to = {'/companyDetails/' + internship.authorId}>
+                            <Link to = {'/company-detail/' + internship.authorId}>
                                 <p>Published by: {internship.internshipAuthorName} </p>
                             </Link>
                             <p>Published:  {moment(internship.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>

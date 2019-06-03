@@ -18,7 +18,7 @@ const JobDetails = (props) => {
                         <p style={{fontSize: 20}}> Job description: <br/> { job.description }</p>
                         <p style={{fontSize: 20}}>Job position: <br/> { job.position }</p>
                         <p style={{fontSize: 20}}>Available positions: <br/> { job.availablePositions }</p>
-                        <Link to = {'/companyDetails/' + job.authorId}>
+                        <Link to = {'/company-detail/' + job.authorId}>
                             <p>Published by: {job.jobAuthorName} </p>
                         </Link>
                         <p>Published:  {moment(job.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>

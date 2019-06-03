@@ -45,8 +45,8 @@ const CompanyDetails = (props) => {
     }
 }
 
-const mapStateToProps = (state, ovdeProps) => {
-    const id = ovdeProps.match.params.id;
+const mapStateToProps = (state, ownProps) => {
+    const id = ownProps.match.params.id;
     const profiles = state.firestore.data.profiles;
     const profile = profiles ? profiles[id] : null
     return {
