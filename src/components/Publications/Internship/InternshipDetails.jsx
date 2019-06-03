@@ -33,7 +33,7 @@ class InternshipDetails extends React.Component{
                             <p>Published:{moment(internship.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
                             <p>Post by:{internship.name} </p>
                             {
-                                alreadyApplied?
+                                alreadyApplied? 
                                 <h4>Hey there! You already applied for this!</h4>
                                 :
                                 <Button onClick={this.handleApply}>
@@ -57,6 +57,12 @@ class InternshipDetails extends React.Component{
                 } 
         }
     }
+
+    { /* 36 linija koda. kad se klikne disable da se onemoguci. Applay button na dnu ako nije prijavljen i nije disableovan 
+        Oglas disable-ovan dobijam iz inteshipt.oglasDisableovan. 
+        Treba da dugme promeni oglas. True false. 
+    
+    */ }
 
 const mapDispatchToProps=(dispatch)=>{
     return{

@@ -91,7 +91,8 @@ class CreateInternship extends React.Component{
                         <label>Earliest start date</label>
                         <label>Date picker</label>
                     </Form.Field>
-                    <Button style={{marginTop:"50px"}} type='submit'>Publish</Button>
+                    <Button style={{marginTop:"50px"}} type='submit'>Update</Button>
+                    <Button style={{marginTop:"50px"}} type='submit'>Disable</Button>
                 </Form>
                 </Container>
             </Container>

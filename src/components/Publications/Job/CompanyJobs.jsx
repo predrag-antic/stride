@@ -32,9 +32,6 @@ class CompanyJobs extends React.Component{
                                     <Button style={{textAlign:"center", borderColor:"#dee2e8",borderWidth:"1px"}}>
                                         Update
                                     </Button>
-                                    <Button style={{textAlign:"center", borderColor:"#dee2e8",borderWidth:"1px"}}>
-                                        Delete
-                                    </Button>
                                     
                                 </Link>
                                 </div>
