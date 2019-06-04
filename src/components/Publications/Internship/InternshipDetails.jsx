@@ -36,9 +36,12 @@ class InternshipDetails extends React.Component{
                                 alreadyApplied? 
                                 <h4>Hey there! You already applied for this!</h4>
                                 :
+                                internship.isAvailable?
                                 <Button onClick={this.handleApply}>
                                     Apply
                                 </Button>
+                                :
+                                <h4>This internship is closed!</h4>
                             }
                             <Link to = {'/company-detail/' + internship.authorId}>
                                 <p>Published by: {internship.internshipAuthorName} </p>

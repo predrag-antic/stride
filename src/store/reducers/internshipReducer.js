@@ -26,6 +26,16 @@ const internshipReducer = (state=initState,action)=>{
             return {
                 state
             }
+        case 'INTERNSHIP_DISABLE_SUCCESS':
+            console.log("INTERNSHIP_DISABLE_SUCCESS");
+            return {
+                state
+            }
+        case 'INTERNSHIP_DISABLE_ERROR':
+                console.log("INTERNSHIP_DISABLE_ERROR");
+                return {
+                    state
+                }
         default:
             return state;
     }

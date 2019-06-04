@@ -6,7 +6,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {createInternship} from '../../../store/actions/internshipAction'
 import Spinner from '../../../Spinner'
-import {updateInternship} from '../../../store/actions/internshipAction'
+import {updateInternship,disableInternship} from '../../../store/actions/internshipAction'
 
 const internshipTechnologyOptions = [
     {text:'Backend',value:'Backend'},
@@ -76,8 +76,11 @@ class UpdateInternship extends React.Component{
     }
 
     handleDisable=()=>{
+        const {internshipId}=this.props;
         console.log("Disable");
-        //disable
+        
+        this.props.disableInternship(internshipId);
+        this.props.history.push('/company-internships');
     }
 
     render(){
@@ -152,8 +155,8 @@ class UpdateInternship extends React.Component{
 const mapDispatchToProps=(dispatch)=>{
     return{
         updateInternship:
-        (updatedInternship,updatedInternshipId)=>dispatch(updateInternship(updatedInternship,updatedInternshipId))
-        //disable internship
+        (updatedInternship,updatedInternshipId)=>dispatch(updateInternship(updatedInternship,updatedInternshipId)),
+        disableInternship:(thisInternshipId)=>dispatch(disableInternship(thisInternshipId))
     }
 }
 

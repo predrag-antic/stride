@@ -18,6 +18,7 @@ export const createInternship= (newInternship) => {
             duration:newInternship.duration,
             createdAt: new Date().toString(),
             internshipAuthorName: internshipAuthor.companyName,
+            isAvailable:true
         })
         .then(()=>{
             dispatch({type:"CREATE_INTERNSHIP_SUCCESS"})
@@ -86,6 +87,32 @@ export const updateInternship= (updatedInternship,updatedInternshipId) => {
         })
         .catch((error)=>{
             dispatch({type:"UPDATE_INTERNSHIP_ERROR"})
+        })
+    }
+}
+
+export const disableInternship= (internshipId) => {
+    return(dispatch, getState, {getFirebase, getFirestore})=>{
+
+        const firestore=getFirestore();
+        const profile=getState().firebase.profile;
+        const uid=getState().firebase.auth.uid;
+        const internshipAuthor = getState().firebase.profile;
+
+        console.log(internshipId);
+
+        firestore
+        .collection("internships")
+        .doc(internshipId)
+        .update
+        ({
+            isAvailable:false
+        })
+        .then(()=>{
+            dispatch({type:"INTERNSHIP_DISABLE_SUCCESS"})
+        })
+        .catch((error)=>{
+            dispatch({type:"INTERNSHIP_DISABLE_ERROR"})
         })
     }
 }
