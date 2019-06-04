@@ -1,10 +1,12 @@
-import {Button, Container, Form,TextArea,Checkbox } from 'semantic-ui-react';
+import {Button, Container, Form,TextArea,Checkbox,Confirm } from 'semantic-ui-react';
 
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import React from 'react';
 import {connect} from 'react-redux';
 import {createInternship} from '../../../store/actions/internshipAction'
+import Spinner from '../../../Spinner'
+import {updateInternship} from '../../../store/actions/internshipAction'
 
 const internshipTechnologyOptions = [
     {text:'Backend',value:'Backend'},
@@ -34,7 +36,9 @@ class UpdateInternship extends React.Component{
         technology: '',
         duration:'',
         errors: [],
-        loading: false
+        loading: false,
+        isDisabled:true,
+        conformationIsOpen:false
     }
 
     handleChange = (event) => {
@@ -45,24 +49,53 @@ class UpdateInternship extends React.Component{
         this.setState({[data.name]:data.value})
     }
 
-    handleChangeRemote=(event,data)=>{
-        this.setState({remote:data.checked})
-    }
-
-    handleUpdate=event=>{
+    handleUpdate=()=>{
         console.log(this.state);
-        //ovde da se preko reduxa salju podaci ps. napravi reducer/akcije
-        //this.props.history.push('/company-internships');
+        const {internshipId}=this.props;
+        this.props.updateInternship(this.state,internshipId);
+        this.props.history.push('/company-internships');
     }
     
+    setInitialState=()=>{
+        const {internship}=this.props;
+        this.setState({
+            title:internship.title,
+            description:internship.description,
+            technology:internship.technology,
+            duration:internship.duration,
+            isDisabled:false
+        })
+    }
+
+    handleOpenConformation=()=>{
+        this.setState({conformationIsOpen:true})
+    }
+
+    handleCloseConformation=()=>{
+        this.setState({conformationIsOpen:false})
+    }
+
+    handleDisable=()=>{
+        console.log("Disable");
+        //disable
+    }
 
     render(){
         const {internship}=this.props;
-        const {title,description,technology,duration} = this.state;
-        
+        const {title,description,isDisabled,conformationIsOpen} = this.state;
+
+        if(internship!==null){
         return(
             <Container style={{width:"100%",height:"100%"}}>
                 <h1 style={{textAlign:"center",marginRight:"250px"}}> Internship </h1>
+                <Container style={{textAlign:"center"}}>
+                    <p style={{marginRight:"250px"}}>
+                        If you want to update Internship, please set initial state first!
+                    </p>
+                    <Button onClick={this.setInitialState} style={{marginRight:"250px"}}>
+                        Set Initial State
+                    </Button>
+                </Container>
                 <Container style={{textAlign:"center",marginTop:"50px"}}> 
                 <Form onSubmit={this.handleUpdate} style={{marginRight:"250px"}}>
                     <Form.Field >
@@ -93,19 +126,33 @@ class UpdateInternship extends React.Component{
                         <label>Earliest start date</label>
                         <label>Date picker</label>
                     </Form.Field>
-                    <Button style={{marginTop:"50px"}} type='submit'>Update</Button>
+                    <Button disabled={isDisabled} style={{marginTop:"50px",marginBottom:"50px"}} type='submit'>
+                        Update Changes
+                    </Button>
                 </Form>
-                    
-                    <Button style={{marginTop:"50px"}} >Disable</Button>
+                <Container style={{textAlign:"center"}}>
+                    <p style={{marginRight:"250px"}}>
+                        Disable option:WHAT IS DISABLE OPTION!
+                    </p>
+
+                    <Button onClick={this.handleOpenConformation} style={{marginRight:"250px"}} >
+                        Disable Internship
+                    </Button>
+                    <Confirm open={conformationIsOpen} onCancel={this.handleCloseConformation} onConfirm={this.handleDisable}  content='Are you sure that you want to disable this internship?' confirmButton="Disable"/>
+                </Container>    
                 </Container>
             </Container>
         )
+        }else{
+            return  <Spinner/>;
+        }
     }
 }
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        //update internship
+        updateInternship:
+        (updatedInternship,updatedInternshipId)=>dispatch(updateInternship(updatedInternship,updatedInternshipId))
         //disable internship
     }
 }

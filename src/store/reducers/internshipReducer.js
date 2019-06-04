@@ -6,13 +6,23 @@ const initState={
 
 const internshipReducer = (state=initState,action)=>{
     switch (action.type) {
-        case 'CREATE_INTERNSHIP_SUCCES':            
-            console.log("CREATE_INTERNSHIP_SUCCES")
+        case 'CREATE_INTERNSHIP_SUCCESS':            
+            console.log("CREATE_INTERNSHIP_SUCCESS")
             return {
                 state  
             }
         case 'CREATE_INTERNSHIP_ERROR':
             console.log("CREATE_INTERNSHIP_ERROR")
+            return {
+                state
+            }
+        case 'UPDATE_INTERNSHIP_SUCCESS':
+                console.log("UPDATE_INTERNSHIP_SUCCESS");
+                return {
+                    state
+                    }
+        case 'UPDATE_INTERNSHIP_ERROR':
+            console.log("UPDATE_INTERNSHIP_ERROR");
             return {
                 state
             }

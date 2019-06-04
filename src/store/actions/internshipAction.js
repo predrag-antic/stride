@@ -20,10 +20,72 @@ export const createInternship= (newInternship) => {
             internshipAuthorName: internshipAuthor.companyName,
         })
         .then(()=>{
-            dispatch({type:"CREATE_INTERNSHIP_SUCCES"})
+            dispatch({type:"CREATE_INTERNSHIP_SUCCESS"})
         })
         .catch((error)=>{
             dispatch({type:"CREATE_INTERNSHIP_ERROR"})
+        })
+    }
+}
+
+export const updateInternship= (updatedInternship,updatedInternshipId) => {
+    return(dispatch, getState, {getFirebase, getFirestore})=>{
+
+        const firestore=getFirestore();
+        const companyeName=getState().firebase.profile.name;
+
+        console.log(updatedInternship);
+        console.log(updatedInternshipId);
+
+        firestore
+        .collection("internships")
+        .doc(updatedInternshipId)
+        .update    //update internship with this id
+        ({
+            title:updatedInternship.title,
+            description:updatedInternship.description,
+            technology:updatedInternship.technology,
+            duration:updatedInternship.duration
+        })
+        .then(()=>{   //this part is for updating all users 
+
+        firestore
+        .collection("profiles")
+        .get()
+        .then((profilesSnapShot)=>{
+            profilesSnapShot.docs.map((profile)=>{
+                firestore
+                .collection("profiles")
+                .doc(profile.id)
+                .collection("myInternshipApplications") //for every doc(profile.id) check if there is myIA collection
+                .where("internshipId","==",updatedInternshipId) //always return only one "collection"
+                .get()
+                .then((myInternships)=>{ 
+                    myInternships.docs.map((myapplication)=>{  //myApplication collection -> docs
+                        firestore
+                        .collection("profiles")
+                        .doc(profile.id)   //profiles/{id}/myInternshipApplicaton/{myapplication.id}.SET(UPDATE)
+                        .collection("myInternshipApplications")
+                        .doc(myapplication.id)
+                        .set({ 
+                            internshipId:updatedInternshipId,
+                            internshipTitle:updatedInternship.title,
+                            internshipAuthorName:companyeName,
+                            type:"internship"
+                        })
+                        .then(()=>{
+                            dispatch({type:"UPDATE_INTERNSHIP_SUCCESS"})
+                        })
+                        .catch(()=>{
+                            dispatch({type:"UPDATE_INTERNSHIP_ERROR"})
+                        })
+                    })
+                })
+            })
+        })  
+        })
+        .catch((error)=>{
+            dispatch({type:"UPDATE_INTERNSHIP_ERROR"})
         })
     }
 }
