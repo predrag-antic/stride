@@ -1,11 +1,16 @@
+body{
+    background-color:#eee;
+    height: 0%
+}
+
 .app {
     height: 100vh;
-    background: white;
+    background-color: #eee;
     
 }
 
 .welcome {
-    background-image: url('../images/welcome.jpg');
+    background-image: url('../assets/welcome.jpg');
     background-size: cover;
     height: 100vh;
     width: 100%;

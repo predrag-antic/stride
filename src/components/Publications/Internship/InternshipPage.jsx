@@ -13,9 +13,9 @@ class InternshipPage extends React.Component{
     render(){
         const {internships}=this.props;
         return(
-            <Container style={{width:"100%",height:"100%"}}>
-                <h1 style={{textAlign:"center",marginRight:"250px"}}> Internships PAGE </h1>
-                <Container style={{textAlign:"center",marginTop:"50px",width:"100%",height:"100%"}}>
+            <Container style={{width:"100%",height:"100%",marginTop:"5em"}}>
+                <h1 style={{textAlign:"center"}}> Internships PAGE </h1>
+                <Container style={{textAlign:"center",width:"100%",height:"100%"}}>
                     <Container >
                         <InternshipList listOfInternships={internships}>
 

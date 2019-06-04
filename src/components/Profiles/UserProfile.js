@@ -1,4 +1,4 @@
-import {Button, Container, Checkbox, Form } from 'semantic-ui-react';
+import {Button, Container, Checkbox, Form, Card, Grid, Divider } from 'semantic-ui-react';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -31,42 +31,47 @@ class UserProfile extends React.Component{
         const { popunioPrifil, userName, lastname, city, address, country, postcode, informations } = this.state;
         return(                
 
-            <Container style={{width:"100%",height:"100%"}}>
-                <h1 style={{textAlign:"center",marginRight:"250px"}}> User info </h1>
+            <Container style={{marginTop:"7em"}}>
+                <h1 style={{textAlign:"center", fontSize:"30px", fontFamily:"Nexa"}}> User info </h1>
 
-                <Container style={{textAlign:"center",marginTop:"50px"}}>
-
-                    <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>
-                        <label>Userame: </label>
-                        <Form.Input fluid name="userName" style={{maxWidth: 650}} placeholder={this.props.SuserName} value={userName} type="text" onChange={this.handleChange}/ >
+                <Container style={{textAlign:"left",marginTop:"30px"}}>
+                <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
+                    <Form.Field >
+                        <Form.Input fluid label={"Usrname:"} name="userName" placeholder={this.props.SuserName} value={userName} type="text" onChange={this.handleChange} style={{marginTop:"5px"}} />
                     </Form.Field>
-                    <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>
-                        <label>Full name: </label>
-                        <Form.Input fluid name="lastname" style={{maxWidth: 650}} placeholder={this.props.Slastname} value={lastname} type="text" onChange={this.handleChange}/>
+                    <Form.Field style={{marginTop:"30px"}}>
+                        <Form.Input fluid label={"Full name:"} name="lastname" placeholder={this.props.Slastname} value={lastname} type="text" onChange={this.handleChange} style={{marginTop:"5px"}} />
                     </Form.Field>
-                    <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>
-                        <label>City: </label>
-                        <Form.Input fluid name="city" style={{maxWidth: 650}} placeholder={this.props.Scity} value={city} type="text" onChange={this.handleChange}/ >
+                    <Divider style={{marginTop:"30px"}}></Divider>
+                    <Form.Field style={{marginTop:"10px"}}>
+                        <Form.Input fluid name="address" label={"Address:"} placeholder={this.props.Saddress} value={address} type="text" onChange={this.handleChange} style={{marginTop:"5px"}} />
                     </Form.Field>
-                    <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>
-                        <label>Address: </label>
-                        <Form.Input fluid name="address" style={{maxWidth: 650}} placeholder={this.props.Saddress} value={address} type="text" onChange={this.handleChange}/ >
-                    </Form.Field>
-                    <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>
-                        <label>Country: </label>
-                        <Form.Input fluid name="country" style={{maxWidth: 650}} placeholder={this.props.Scountry} value={country} type="text" onChange={this.handleChange}/ >
-                    </Form.Field>
-                    <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>
-                        <label>Postcode: </label>
-                        <Form.Input fluid name="postcode" style={{maxWidth: 650}} placeholder={this.props.Spostcode} value={postcode} type="text" onChange={this.handleChange}/>
-                    </Form.Field>
-                    <Form.Field style={{marginRight:"250px",textAlign:"left",marginTop:"30px"}}>
-                        <label>Skills: </label>
-                        <Form.Input fluid name="informations" style={{maxWidth: 650}} placeholder={this.props.Sinformations} value={informations} type="text" onChange={this.handleChange}/>
+                    <Grid stackable >
+                        <Grid.Row columns={3}>
+                            <Grid.Column>
+                            <Form.Field style={{marginTop:"30px"}}>
+                                <Form.Input fluid name="city" label={"City:"} placeholder={this.props.Scity} value={city} type="text" onChange={this.handleChange} style={{marginTop:"5px"}} />
+                            </Form.Field>
+                            </Grid.Column>
+                            <Grid.Column>
+                            <Form.Field style={{marginTop:"30px"}}>
+                                <Form.Input fluid name="country" label={"Country:"} placeholder={this.props.Scountry} value={country} type="text" onChange={this.handleChange} style={{marginTop:"5px"}} />
+                            </Form.Field>
+                            </Grid.Column>
+                            <Grid.Column>
+                            <Form.Field style={{marginTop:"30px"}}>
+                                <Form.Input fluid name="postcode" label={"Postcode:"} placeholder={this.props.Spostcode} value={postcode} type="text" onChange={this.handleChange} style={{marginTop:"5px"}} />
+                            </Form.Field>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                    <Divider style={{marginTop:"30px"}}></Divider>
+                    <Form.Field style={{marginTop:"20px"}}>
+                        <Form.Input fluid name="informations" label={"Skills:"} placeholder={this.props.Sinformations} value={informations} type="text" onChange={this.handleChange} style={{marginTop:"5px"}} />
                     </Form.Field>                
                 
-                    <Button onClick={this.updateProfile} style={{marginRight:"250px", marginTop:"30px"}}>Submit</Button>
-                
+                    <Button onClick={this.updateProfile} style={{marginTop:"30px"}}>Submit</Button>
+                </Card>
 
                 </Container>
             </Container>

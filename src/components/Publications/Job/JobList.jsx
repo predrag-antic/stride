@@ -14,7 +14,7 @@ class JobList extends React.Component{
                 <div>
                     {this.props.listOfJobs.map((job)=>{
                             return (
-                            <div key={job.id} style={{textAlign:"center",marginRight:"250px",height:"150px",marginTop:"5px",
+                            <div key={job.id} style={{textAlign:"center",height:"150px",marginTop:"5px",
                             borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
                                 <h3>{job.title}</h3>
                                 <Link to = {'/company-detail/' + job.authorId}>

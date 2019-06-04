@@ -14,7 +14,7 @@ class InternshipList extends React.Component{
                 <div>
                     {this.props.listOfInternships.map((internship)=>{
                             return (
-                            <div key={internship.id} style={{textAlign:"center",marginRight:"250px",height:"150px",     marginTop:"5px",borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
+                            <div key={internship.id} style={{textAlign:"center",height:"150px",marginTop:"5px",borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
                                 <h3>{internship.title}</h3>
                                 <Link to = {'/company-detail/' + internship.authorId}>
                                     <p>Published by: {internship.internshipAuthorName} </p>

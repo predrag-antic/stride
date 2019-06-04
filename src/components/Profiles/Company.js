@@ -1,4 +1,4 @@
-import {Button, Form, Container} from 'semantic-ui-react';
+import {Button, Form, Container, Card, Grid} from 'semantic-ui-react';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -27,43 +27,48 @@ class Company extends React.Component{
 
     handleChange = (e) => {
         this.setState({ 
-            [e.target.id]: e.target.value
+            [e.target.name]: e.target.value
         })
     }
     
     render(){
         const {popunioProfil, companyName, established, address, website, phoneNumber, eMail} = this.state;
         return (
-            <Container style={{width: '100%', height:'100%'}}>
-                <h1 style={{ color: '#187bcd', fontWeight: 'bold', fontSize: 50, textAlign:'center', marginRight: 250}}>Company info</h1>
-                <Container style={{textAlign: 'center', marginTop: '50px'}}>
-                    <Form onSubmit={this.handleSubmit} style={{marginRight: 250}}>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25}}>Name</label>
-                            <input id="companyName" type="text" placeholder={this.props.CName} onChange={this.handleChange} focus style={{width: '75%'}}/>
+            <Container style={{marginTop:"7em"}}>
+                <h1 style={{textAlign:"center", fontSize:"30px", fontFamily:"Nexa"}}>Company info</h1>
+
+                <Container style={{textAlign:"left", marginTop:"30px"}}>
+                <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
+                        <Form.Field >
+                            <Form.Input fluid name="companyName" label={"Name:"} type="text" placeholder={this.props.CName} onChange={this.handleChange}  style={{marginTop:"5px"}}/>
                         </Form.Field>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25}}>Established</label>
-                            <input id="established" type="text" placeholder={this.props.CEstablished} onChange={this.handleChange} focus style={{width: '75%'}} />
+                        <Form.Field style={{marginTop:"30px"}}>
+                            <Form.Input fluid name="website" type="text" label={"Website:"} placeholder={this.props.CWebsite} onChange={this.handleChange}  style={{marginTop:"5px"}} />
                         </Form.Field>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25}}>Address</label>
-                            <input id="address" type="text" placeholder={this.props.CAddress} onChange={this.handleChange} focus style={{width: '75%'}} />
+                        <Grid stackable >
+                            <Grid.Row columns={2}>
+                                <Grid.Column>
+                                    <Form.Field style={{marginTop:"30px"}}>
+                                        <Form.Input fluid name="established" type="text" label={"Established:"} placeholder={this.props.CEstablished} onChange={this.handleChange} style={{marginTop:"5px"}} />
+                                    </Form.Field>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <Form.Field style={{marginTop:"30px"}}>
+                                        <Form.Input fluid name="eMail" type="text" label={"Email:"} placeholder={this.props.CEmail} onChange={this.handleChange}  style={{marginTop:"5px"}} />
+                                    </Form.Field>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                        <Form.Field style={{marginTop:"30px"}}>
+                            <Form.Input fluid name="address" type="text" label={"Address:"} placeholder={this.props.CAddress} onChange={this.handleChange}  style={{marginTop:"5px"}} />
                         </Form.Field>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25}}>Website</label>
-                            <input id="website" type="text" placeholder={this.props.CWebsite} onChange={this.handleChange} focus style={{width: '75%'}} />
+                        <Form.Field style={{marginTop:"30px"}}>
+                            <Form.Input fluid name="phoneNumber" type="text" label={"Phone:"} placeholder={this.props.CPhoneNumber} onChange={this.handleChange}  style={{marginTop:"5px"}} />
                         </Form.Field>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25}}>E-mail</label>
-                            <input id="eMail" type="text" placeholder={this.props.CEmail} onChange={this.handleChange} focus style={{width: '75%'}} />
-                        </Form.Field>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25}}>Phone number</label>
-                            <input id="phoneNumber" type="text" placeholder={this.props.CPhoneNumber} onChange={this.handleChange} focus style={{width: '75%'}} />
-                        </Form.Field>
-                        <Button type="submit" onClick={this.updateProfile} style={{ color: 'white', border: 'black', background: '#187bcd'}}>Submit</Button>
-                    </Form>
+
+                        <Button type="submit" onClick={this.updateProfile} style={{marginTop:"30px"}}>Submit</Button>
+                    
+                </Card>
                 </Container>
             </Container>
         )
