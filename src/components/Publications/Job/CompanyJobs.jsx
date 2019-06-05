@@ -5,6 +5,8 @@ import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
 import {Link } from 'react-router-dom';
 
+import { NavLink } from 'react-router-dom';
+
 
 import React from 'react';
 
@@ -25,14 +27,12 @@ class CompanyJobs extends React.Component{
                                 <div key={job.id} style={{textAlign:"center",marginRight:"250px",height:"150px",marginTop:"5px",
                                 borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
                                     <h3>{job.title}</h3>
-                                    <Link to={`job-detail/${job.id}`}>
-                                        <Button>
-                                            Details
-                                        </Button>
-                                        <Button style={{textAlign:"center", borderColor:"#dee2e8",borderWidth:"1px"}}>
-                                            Update
-                                        </Button>
-                                    </Link>
+                                    <Button as={NavLink} to={`job-detail/${job.id}`}>
+                                        Details
+                                    </Button>
+                                    <Button as={NavLink} to={`update-job/${job.id}`} style={{textAlign:"center", borderColor:"#dee2e8",borderWidth:"1px"}}>
+                                        Update
+                                    </Button>   
                                 </div>
                                 )
                             })}

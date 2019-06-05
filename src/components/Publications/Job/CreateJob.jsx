@@ -67,7 +67,7 @@ class CreateJob extends React.Component{
                         </Form.Select>
                     </Form.Field>
                     <Form.Field >
-                        <label>Number of available positon for this jos</label>
+                        <label>Number of available positons for this job</label>
                         <input name="availablePosition" value={availablePosition} onChange={this.handleChange}            placeholder='Available position for this job'type="number" min="1"  style={{width:"75%"}}/>
                     </Form.Field>
                     <Form.Field inline>

@@ -35,9 +35,12 @@ class JobDetails extends React.Component {
                                 alreadyApplied? 
                                 <h4>Hey there! You already applied for this!</h4>
                                 :
+                                job.isAvailable?
                                 <Button onClick={this.handleApply}>
                                     Apply
                                 </Button>
+                                :
+                                <h4>This job is closed!</h4>
                         }
                         <Link to = {'/company-detail/' + job.authorId}>
                             <p>Published by: {job.jobAuthorName} </p>

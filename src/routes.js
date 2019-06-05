@@ -15,6 +15,7 @@ import MyApplicationsPage from './components/Applications/MyApplicationsPage';
 import MyJobApplicationsPage from './components/Applications/MyJobApplicationsPage';
 import UpdateInternship from './components/Publications/Internship/UpdateInternship';
 import CreateProject from './components/Publications/Project/CreateProject';
+import UpdateJob from './components/Publications/Job/UpdateJob';
 
 var routes = [
   {
@@ -99,6 +100,13 @@ var routes = [
     name: "Update Internship",
     icon: "ni ni-tv-2 text-primary",
     component: UpdateInternship,
+    layout: ""
+  },
+  {
+    path: "/update-job/:id",
+    name: "Update Job",
+    icon: "ni ni-tv-2 text-primary",
+    component: UpdateJob,
     layout: ""
   },
   {
