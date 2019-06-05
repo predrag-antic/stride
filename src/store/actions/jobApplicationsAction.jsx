@@ -13,7 +13,7 @@ export const applyUserToJob= (job,jobId) => {
         ({
             jobId:jobId,
             jobTitle:job.title,
-            //jobAuthorName: job.name,
+            jobAuthorName: job.jobAuthorName,
             type:"job"
         })
         .then(()=>{

@@ -19,7 +19,7 @@ class JobDetails extends React.Component {
 
     render(){
     
-        const { job, alreadyApplied } = this.props;
+        const { job, alreadyApplied, jobAuthorName } = this.props;
         
     if (job && (alreadyApplied!==undefined)) {
         return (
@@ -40,9 +40,10 @@ class JobDetails extends React.Component {
                                 </Button>
                         }
                         <Link to = {'/company-detail/' + job.authorId}>
-                            <p>Published by: {job.id} </p>
+                            <p>Published by: {job.jobAuthorName} </p>
                         </Link>
                         <p>Published:  {moment(job.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
+                        
                     </div>
                 </div>
             </div>
