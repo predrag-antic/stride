@@ -45,7 +45,7 @@ class JobDetails extends React.Component {
                         <Link to = {'/company-detail/' + job.authorId}>
                             <p>Published by: {job.jobAuthorName} </p>
                         </Link>
-                        <p>Published:  {moment(job.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
+                        <p>Published:  {moment(job.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
                         
                     </div>
                 </div>

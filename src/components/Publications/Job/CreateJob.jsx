@@ -10,12 +10,24 @@ const jobPositionsOptions = [
     {text:'Other',value:'other'}
   ]
 
+const jobTechnologyOptions = [
+{text:'Backend',value:'Backend'},
+{text:'Frontend',value:'Frontend'},
+{text:'C#',value:'C#'},
+{text:'Java',value:'Java'},
+{text:'Angular',value:'Angular'},
+{text:'React',value:'React'},
+{other:'Other',value:'Other'}
+]
+
+
 class CreateJob extends React.Component{
     
     state = {
         title: '',
         description: '',
         position: '',
+        technology:'',
         availablePosition: '',
         remote:false,
         errors: [],
@@ -26,7 +38,11 @@ class CreateJob extends React.Component{
         this.setState({ [event.target.name]: event.target.value})
     }
 
-    handleSelectChange=(event,data)=>{
+    handlePositionSelectChange=(event,data)=>{
+        this.setState({[data.name]:data.value})
+    }
+
+    handleTechnologySelectChange=(event,data)=>{
         this.setState({[data.name]:data.value})
     }
 
@@ -63,11 +79,16 @@ class CreateJob extends React.Component{
                     </Form.Field>
                     <Form.Field >
                         <label>Job position</label>
-                        <Form.Select  onChange={this.handleSelectChange} options={jobPositionsOptions} placeholder="Job position" name="position" style={{width:"75%"}}>
+                        <Form.Select  onChange={this.handlePositionSelectChange} options={jobPositionsOptions} placeholder="Job position" name="position" style={{width:"75%"}}>
                         </Form.Select>
                     </Form.Field>
                     <Form.Field >
-                        <label>Number of available positons for this job</label>
+                        <label>Technology</label>
+                        <Form.Select  onChange={this.handleTechnologySelectChange} options={jobTechnologyOptions} placeholder="Technology" name="technology" style={{width:"75%"}}>
+                        </Form.Select>
+                    </Form.Field>
+                    <Form.Field >
+                        <label>Number of available positon for this jos</label>
                         <input name="availablePosition" value={availablePosition} onChange={this.handleChange}            placeholder='Available position for this job'type="number" min="1"  style={{width:"75%"}}/>
                     </Form.Field>
                     <Form.Field inline>

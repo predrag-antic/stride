@@ -13,9 +13,10 @@ export const createJob= (newJob) => {
             title:newJob.title,
             description:newJob.description,
             position:newJob.position,
+            technology:newJob.technology,
             availablePositions:newJob.availablePosition,
             remote:newJob.remote,
-            createdAt: new Date().toString(),
+            createdAt: new Date(),
             jobAuthorName: jobAuthor.companyName,
             isAvailable: true
         })

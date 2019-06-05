@@ -16,7 +16,7 @@ export const createInternship= (newInternship) => {
             description:newInternship.description,
             technology:newInternship.technology,
             duration:newInternship.duration,
-            createdAt: new Date().toString(),
+            createdAt: new Date(),
             internshipAuthorName: internshipAuthor.companyName,
             isAvailable:true
         })

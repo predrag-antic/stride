@@ -30,7 +30,7 @@ class InternshipDetails extends React.Component{
                             <p>{internship.description}</p>
                             <p>Duration:{internship.duration} </p>
                             <p>Technology:{internship.technology} </p>
-                            <p>Published:{moment(internship.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
+                            <p>Published:{moment(internship.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
                             <p>Post by: {internship.name} </p>
                             {
                                 alreadyApplied? 
@@ -47,7 +47,7 @@ class InternshipDetails extends React.Component{
                             <Link to = {'/company-detail/' + internship.authorId}>
                                  {internship.internshipAuthorName} 
                             </Link>
-                            <p>Published:  {moment(internship.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
+                            <p>Published:  {moment(internship.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
                         </div>
                     </div>
                 </div>

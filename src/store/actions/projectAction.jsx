@@ -14,7 +14,7 @@ export const createProject= (newProject) => {
             description:newProject.description,
             technology:newProject.technology,
             duration:newProject.duration,
-            createdAt: new Date().toString(),
+            createdAt: new Date(),
         })
         .then(()=>{
             dispatch({type:"CREATE_PROJECT_SUCCES"})
