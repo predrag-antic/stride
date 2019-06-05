@@ -11,7 +11,7 @@ class AppWelcome extends React.Component{
                 <Menu secondary size="small" inverted fixed='top' style={{margin:'20px 50px',paddingRight:'100px'}} >
                 <Container fluid >
                     <Menu.Item>
-                        <Image src={require("../images/strideLogo.png")} size='small'></Image>
+                        <Image src={require("../assets/strideLogo.png")} size='small'></Image>
                     </Menu.Item>
                     <Menu.Item  position="right" as={NavLink} to="/about-us" style={{fontSize:'18px',color:'white'}}>
                             <Icon name="question circle"/>About Us

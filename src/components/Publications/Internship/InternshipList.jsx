@@ -1,4 +1,4 @@
-import { Button, Container } from 'semantic-ui-react';
+import { Button, Container, Grid, Card, Divider } from 'semantic-ui-react';
 import {Link } from 'react-router-dom'
 import Spinner from '../../../Spinner'
 import moment from 'moment'
@@ -11,24 +11,34 @@ class InternshipList extends React.Component{
             return  <Spinner/>;
         }else{ 
             return(
-                <div>
+                <Grid stackable >
+                    <Grid.Row columns={3}>
                     {this.props.listOfInternships.map((internship)=>{
                             return (
-                            <div key={internship.id} style={{textAlign:"center",height:"150px",marginTop:"5px",borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
-                                <h3>{internship.title}</h3>
-                                <Link to = {'/company-detail/' + internship.authorId}>
-                                    <p>Published by: {internship.internshipAuthorName} </p>
-                                </Link>
-                                <p>Published:  {moment(internship.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
-                                <Link to={`internship-detail/${internship.id}`}>
-                                    <Button>
-                                        Internship Details
-                                    </Button>
-                                </Link>
-                            </div>
+                                <Grid.Column>
+                                    <Card color='blue' fluid key={internship.id} style={{ marginBottom:"30px", padding:"20px 10px"}}>    
+                                        {/* <Image circular src={require("../../../assets/jobs.jpg")}></Image> */}
+                                        <Card.Header style={{marginBottom:"10px", marginTop:"10px", fontSize:"20px",fontWeight:"600"}}>{internship.title}</Card.Header>
+                                        <Divider style={{marginBottom:"20px"}}></Divider> 
+                                        <div>
+                                            <Link to={`internship-detail/${internship.id}`} style={{color:'black'}}> 
+                                                <Button style={{verticalAlign:"bottom", width:"100px", marginTop:"0px", background:"#d0efff"}}>
+                                                Details
+                                                </Button>
+                                            </Link>
+                                        </div >
+                                        <p style={{marginTop:"20px"}}>Published by:
+                                                <Link to = {'/company-detail/' + internship.authorId} style={{marginLeft:"5px"}}>
+                                                    {internship.internshipAuthorName}
+                                                </Link>
+                                            </p>
+                                        <p>{moment(internship.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
+                                    </Card>
+                                </Grid.Column>
                             )
                     })}
-                </div>
+                    </Grid.Row>
+                </Grid>
             )
             }
         

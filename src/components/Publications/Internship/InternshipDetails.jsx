@@ -31,7 +31,7 @@ class InternshipDetails extends React.Component{
                             <p>Duration:{internship.duration} </p>
                             <p>Technology:{internship.technology} </p>
                             <p>Published:{moment(internship.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
-                            <p>Post by:{internship.name} </p>
+                            <p>Post by: {internship.name} </p>
                             {
                                 alreadyApplied? 
                                 <h4>Hey there! You already applied for this!</h4>
@@ -43,8 +43,9 @@ class InternshipDetails extends React.Component{
                                 :
                                 <h4>This internship is closed!</h4>
                             }
+                            <label style={{marginRight:"5px"}}>Published by:</label>
                             <Link to = {'/company-detail/' + internship.authorId}>
-                                <p>Published by: {internship.internshipAuthorName} </p>
+                                 {internship.internshipAuthorName} 
                             </Link>
                             <p>Published:  {moment(internship.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
                         </div>

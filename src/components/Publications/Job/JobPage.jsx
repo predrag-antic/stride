@@ -14,9 +14,9 @@ class JobPage extends React.Component{
     render(){
         const {jobs}=this.props;
         return(
-            <Container style={{width:"100%",height:"100%",marginTop:"5em"}}>
-                <h1 style={{textAlign:"center"}}> JOBS PAGE </h1>
-                <Container style={{textAlign:"center",width:"100%",height:"100%"}}>
+            <Container style={{width:"100%",height:"100%",marginTop:"7em"}}>
+                <h1 style={{textAlign:"center", fontFamily:"Nexa", fonSize:"30px"}}>Jobs</h1>
+                <Container style={{textAlign:"center", marginTop:"30px"}}>
                     <Container >
                         <JobList listOfJobs={jobs}>
 
