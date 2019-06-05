@@ -14,12 +14,13 @@ export const updateProfile=(profileInfo)=>{
             .doc(uid)
             .set({
                 avatar:profile.avatar,
-                email:profile.email,
-                firstAccess:false,
-                name:profile.name,
-                userOrCompany:profile.userOrCompany,
+                email: profile.email,
+                firstAccess: false,
+                name: profile.name,
+                userOrCompany: profile.userOrCompany,
                 userName: profileInfo.userName,
-                lastname: profileInfo.lastname,
+                fullname: profileInfo.fullname,
+                eMail: profileInfo.eMail,
                 city: profileInfo.city,
                 address: profileInfo.address,
                 country: profileInfo.country,
@@ -45,12 +46,15 @@ export const updateProfile=(profileInfo)=>{
                 firstAccess:false,
                 name:profile.name,
                 userOrCompany:profile.userOrCompany,
+                userName: profileInfo.userName,
                 companyName: profileInfo.companyName,
-                established: profileInfo.established,
-                address: profileInfo.address,
+                founded: profileInfo.founded,
+                headquarters: profileInfo.headquarters,
                 eMail: profileInfo.eMail,
                 phoneNumber: profileInfo.phoneNumber,
-                website: profileInfo.website
+                website: profileInfo.website,
+                aboutUs: profileInfo.aboutUs,
+                numOfEmployees: profileInfo.numOfEmployees
             })
             .then(()=>{
                 dispatch({type:"UPDATE_COMPANY_SUCCES"})

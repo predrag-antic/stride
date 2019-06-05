@@ -15,7 +15,7 @@ class InternshipList extends React.Component{
                     <Grid.Row columns={3}>
                     {this.props.listOfInternships.map((internship)=>{
                             return (
-                                <Grid.Column>
+                                <Grid.Column key={internship.id}>
                                     <Card color='blue' fluid key={internship.id} style={{ marginBottom:"30px", padding:"20px 10px"}}>    
                                         {/* <Image circular src={require("../../../assets/jobs.jpg")}></Image> */}
                                         <Card.Header style={{marginBottom:"10px", marginTop:"10px", fontSize:"20px",fontWeight:"600"}}>{internship.title}</Card.Header>
@@ -32,7 +32,7 @@ class InternshipList extends React.Component{
                                                     {internship.internshipAuthorName}
                                                 </Link>
                                             </p>
-                                        <p>{moment(internship.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
+                                        <p>{moment(internship.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
                                     </Card>
                                 </Grid.Column>
                             )
