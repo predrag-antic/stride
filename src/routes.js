@@ -14,6 +14,7 @@ import AppWelcome from './components/AppWelcome';
 import MyApplicationsPage from './components/Applications/MyApplicationsPage';
 import MyJobApplicationsPage from './components/Applications/MyJobApplicationsPage';
 import UpdateInternship from './components/Publications/Internship/UpdateInternship';
+import CreateProject from './components/Publications/Project/CreateProject';
 
 var routes = [
   {
@@ -105,6 +106,13 @@ var routes = [
     name: "Company Internships",
     icon: "ni ni-tv-2 text-primary",
     component: CompanyInternships,
+    layout: ""
+  },
+  {
+    path: "/post-project",
+    name: "Create Project",
+    icon: "ni ni-tv-2 text-primary",
+    component: CreateProject,
     layout: ""
   },
   {

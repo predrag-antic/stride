@@ -1,4 +1,4 @@
-import { Menu,Header,Icon, Label, Container, Dropdown, DropdownItem, DropdownMenu} from 'semantic-ui-react';
+import { Button, Menu,Header,Icon, Label, Container, Dropdown, DropdownItem, DropdownMenu} from 'semantic-ui-react';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -20,7 +20,18 @@ class Navbar extends React.Component
                     <Menu.Item position="right">
                     {userOrCompany===undefined?
                     <p/>:userOrCompany==="User"?
-                    <h3>Welcome, {userName}</h3>:<NavbarCompanyLinks/>
+                    //<h3>Welcome, {userName}</h3>
+                    <div>
+                        <Button animated size="mini" inverted as={NavLink} to="/post-project" >
+                            <Button.Content visible>
+                                Post Project
+                            </Button.Content>
+                            <Button.Content hidden>
+                            <Icon name="laptop"/>
+                            </Button.Content>
+                            </Button>
+                    </div>                    
+                    :<NavbarCompanyLinks/>
                     }
                     </Menu.Item>
                     <Menu.Item position="right">
