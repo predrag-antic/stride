@@ -7,6 +7,7 @@ import jobApplicationReducer from './jobApplicationsReducer';
 import { combineReducers } from 'redux';
 import { firebaseReducer } from 'react-redux-firebase';
 import  projectReducer from './projectReducer';
+import jobFilterReducer from './jobFilterReducer'
 
 const rootReducer = combineReducers({
     auth: authReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     internshipApplications:internshipApplicationReducer,
     jobApplications: jobApplicationReducer,
     firestore: firestoreReducer,
-    firebase: firebaseReducer
+    firebase: firebaseReducer,
+    jobfilters:jobFilterReducer
 });
 
 export default rootReducer;

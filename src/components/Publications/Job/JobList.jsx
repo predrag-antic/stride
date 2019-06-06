@@ -33,7 +33,7 @@ class JobList extends React.Component{
                                                     {job.jobAuthorName}
                                                 </Link>
                                             </p>
-                                            <p>{moment(job.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
+                                            <p>{moment(job.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
                                         </Card>
                                     </Grid.Column>
                                 )

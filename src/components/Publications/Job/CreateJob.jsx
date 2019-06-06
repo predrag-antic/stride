@@ -10,15 +10,38 @@ const jobPositionsOptions = [
     {text:'Other',value:'other'}
   ]
 
-const jobTechnologyOptions = [
-{text:'Backend',value:'Backend'},
-{text:'Frontend',value:'Frontend'},
-{text:'C#',value:'C#'},
-{text:'Java',value:'Java'},
-{text:'Angular',value:'Angular'},
-{text:'React',value:'React'},
-{other:'Other',value:'Other'}
-]
+  const jobTechnologyOptions = [
+    {text:'All',value:'All'},
+    {text:'.NET',value:'.NET'},
+    {text:'ASP.NET',value:'ASP.NET'},
+    {text:'Angular',value:'Angular'},
+    {text:'Bach/Shell',value:'Bash/Shell'},
+    {text:'C',value:'C'},
+    {text:'C#',value:'C#'},
+    {text:'C++',value:'C++'},
+    {text:'Django',value:'Django'},
+    {text:'Elixir',value:'Elixir'},
+    {text:'Express',value:'Express'},
+    {text:'Flash',value:'Flash'},
+    {text:'Go',value:'Go'},
+    {text:'HTML/CSS',value:'HTML/CSS'},
+    {text:'Java',value:'Java'},
+    {text:'JavaScript',value:'JavaScript'},
+    {text:'Kotlin',value:'Kotlin'},
+    {text:'Laravel',value:'Laravel'},
+    {text:'Node.js',value:'Node.js'},
+    {text:'Objective-C',value:'Objective-C'},
+    {text:'PHP',value:'PHP'},
+    {text:'Python',value:'Python'},
+    {text:'React',value:'React'},
+    {text:'React Native',value:'React Native'},
+    {text:'Ruby',value:'Ruby'},
+    {text:'Spring',value:'Spring'},
+    {text:'Swift',value:'Swift'},
+    {text:'TypeScript',value:'TypeScript'},
+    {text:'Vue',value:'Vue'},
+    {text:'jQuery',value:'jQuery'}
+  ]
 
 
 class CreateJob extends React.Component{

@@ -32,7 +32,7 @@ class InternshipList extends React.Component{
                                                     {internship.internshipAuthorName}
                                                 </Link>
                                             </p>
-                                        <p>{moment(internship.createdAt).format('MMMM Do YYYY h:mm:ss a')}</p>
+                                        <p>{moment(internship.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
                                     </Card>
                                 </Grid.Column>
                             )
