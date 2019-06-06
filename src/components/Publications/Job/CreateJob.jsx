@@ -11,7 +11,6 @@ const jobPositionsOptions = [
   ]
 
   const jobTechnologyOptions = [
-    {text:'All',value:'All'},
     {text:'.NET',value:'.NET'},
     {text:'ASP.NET',value:'ASP.NET'},
     {text:'Angular',value:'Angular'},

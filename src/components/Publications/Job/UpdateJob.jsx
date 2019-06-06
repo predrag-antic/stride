@@ -14,12 +14,45 @@ const jobPositionsOptions = [
     {text:'Other',value:'other'}
   ]
 
+  const jobTechnologyOptions = [
+    {text:'.NET',value:'.NET'},
+    {text:'ASP.NET',value:'ASP.NET'},
+    {text:'Angular',value:'Angular'},
+    {text:'Bach/Shell',value:'Bash/Shell'},
+    {text:'C',value:'C'},
+    {text:'C#',value:'C#'},
+    {text:'C++',value:'C++'},
+    {text:'Django',value:'Django'},
+    {text:'Elixir',value:'Elixir'},
+    {text:'Express',value:'Express'},
+    {text:'Flash',value:'Flash'},
+    {text:'Go',value:'Go'},
+    {text:'HTML/CSS',value:'HTML/CSS'},
+    {text:'Java',value:'Java'},
+    {text:'JavaScript',value:'JavaScript'},
+    {text:'Kotlin',value:'Kotlin'},
+    {text:'Laravel',value:'Laravel'},
+    {text:'Node.js',value:'Node.js'},
+    {text:'Objective-C',value:'Objective-C'},
+    {text:'PHP',value:'PHP'},
+    {text:'Python',value:'Python'},
+    {text:'React',value:'React'},
+    {text:'React Native',value:'React Native'},
+    {text:'Ruby',value:'Ruby'},
+    {text:'Spring',value:'Spring'},
+    {text:'Swift',value:'Swift'},
+    {text:'TypeScript',value:'TypeScript'},
+    {text:'Vue',value:'Vue'},
+    {text:'jQuery',value:'jQuery'}
+  ]
+
 class UpdateJob extends React.Component{
     
     state = {
         title: '',
         description: '',
         position: '',
+        technology:'',
         availablePosition: '',
         remote:false,
         errors: [],
@@ -49,9 +82,10 @@ class UpdateJob extends React.Component{
             title:job.title,
             description:job.description,
             position:job.position,
-            availablePosition:job.availablePosition,
+            technology:job.technology,
+            availablePosition:job.availablePositions,
             remote: job.remote,
-            isDisabled:false
+            isDisabled:!this.state.isDisabled
         })
     }
 
@@ -78,7 +112,7 @@ class UpdateJob extends React.Component{
 
     render(){
         const {job,userApplications} = this.props;
-        const {title,description,position,availablePosition,remote,isDisabled,conformationIsOpen} = this.state;
+        const {title,description,position,availablePositions,remote,isDisabled,conformationIsOpen} = this.state;
         
         if(job!==null) {
             return(
@@ -88,9 +122,7 @@ class UpdateJob extends React.Component{
                     <p style={{marginRight:"250px"}}>
                         If you want to update Internship, please set initial state first!
                     </p>
-                    <Button onClick={this.setInitialState} style={{marginRight:"250px"}}>
-                        Set Initial State
-                    </Button>
+                    <Checkbox label="Set Initial State" onClick={this.setInitialState} style={{marginRight:"250px"}}/>
                 </Container>
                     <Container style={{textAlign:"center",marginTop:"50px"}}> 
                         <Form onSubmit={this.handleUpdate} style={{marginRight:"250px"}}>
@@ -110,12 +142,17 @@ class UpdateJob extends React.Component{
                                 </Form.Select>
                             </Form.Field>
                             <Form.Field >
+                                <label>Technology</label>
+                                <Form.Select  onChange={this.handleSelectChange} options={jobTechnologyOptions} placeholder="Technology" name="technology" style={{width:"75%"}}>
+                                </Form.Select>
+                            </Form.Field>
+                            <Form.Field >
                                 <label>Number of available positons for this job</label>
-                                <input name="availablePosition" value={availablePosition} onChange={this.handleChange} placeholder={job.availablePosition} type="number" min="1"  style={{width:"75%"}}/>
+                                <input name="availablePosition" value={availablePositions} onChange={this.handleChange} placeholder={job.availablePositions} type="number" min="1"  style={{width:"75%"}}/>
                             </Form.Field>
                             <Form.Field inline>
                                 <label>Remote</label>
-                                <Checkbox value="remote" name="remote" onChange={this.handleChangeRemote} toggle />
+                                <Checkbox value="remote" name="remote" onChange={this.handleChangeRemote} checked={remote} toggle />
                             </Form.Field>
                             <Button disabled={isDisabled} style={{marginTop:"50px",marginBottom:"50px"}} type='submit'>
                                 Update Changes

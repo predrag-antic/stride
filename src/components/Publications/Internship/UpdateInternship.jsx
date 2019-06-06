@@ -8,14 +8,36 @@ import {createInternship} from '../../../store/actions/internshipAction'
 import Spinner from '../../../Spinner'
 import {updateInternship,disableInternship} from '../../../store/actions/internshipAction'
 
-const internshipTechnologyOptions = [
-    {text:'Backend',value:'Backend'},
-    {text:'Frontend',value:'Frontend'},
-    {text:'C#',value:'C#'},
-    {text:'Java',value:'Java'},
+  const internshipTechnologyOptions = [
+    {text:'.NET',value:'.NET'},
+    {text:'ASP.NET',value:'ASP.NET'},
     {text:'Angular',value:'Angular'},
+    {text:'Bach/Shell',value:'Bash/Shell'},
+    {text:'C',value:'C'},
+    {text:'C#',value:'C#'},
+    {text:'C++',value:'C++'},
+    {text:'Django',value:'Django'},
+    {text:'Elixir',value:'Elixir'},
+    {text:'Express',value:'Express'},
+    {text:'Flash',value:'Flash'},
+    {text:'Go',value:'Go'},
+    {text:'HTML/CSS',value:'HTML/CSS'},
+    {text:'Java',value:'Java'},
+    {text:'JavaScript',value:'JavaScript'},
+    {text:'Kotlin',value:'Kotlin'},
+    {text:'Laravel',value:'Laravel'},
+    {text:'Node.js',value:'Node.js'},
+    {text:'Objective-C',value:'Objective-C'},
+    {text:'PHP',value:'PHP'},
+    {text:'Python',value:'Python'},
     {text:'React',value:'React'},
-    {other:'Other',value:'Other'}
+    {text:'React Native',value:'React Native'},
+    {text:'Ruby',value:'Ruby'},
+    {text:'Spring',value:'Spring'},
+    {text:'Swift',value:'Swift'},
+    {text:'TypeScript',value:'TypeScript'},
+    {text:'Vue',value:'Vue'},
+    {text:'jQuery',value:'jQuery'}
   ]
 
   const internshipDurationOptions = [
@@ -27,6 +49,10 @@ const internshipTechnologyOptions = [
     {text:'6 months',value:'6 months'},
   ]
 
+  const internshipPaidOptions= [
+    {text:'Paid',value:'Paid'},
+    {text:'Unpaid',value:'Unpaid'}
+  ]
 
 class UpdateInternship extends React.Component{
  
@@ -35,6 +61,7 @@ class UpdateInternship extends React.Component{
         description: '',
         technology: '',
         duration:'',
+        paidInternship:'',
         errors: [],
         loading: false,
         isDisabled:true,
@@ -61,9 +88,10 @@ class UpdateInternship extends React.Component{
         this.setState({
             title:internship.title,
             description:internship.description,
+            paidInternship:internship.paid,
             technology:internship.technology,
             duration:internship.duration,
-            isDisabled:false
+            isDisabled:!this.state.isDisabled
         })
     }
 
@@ -95,9 +123,7 @@ class UpdateInternship extends React.Component{
                     <p style={{marginRight:"250px"}}>
                         If you want to update Internship, please set initial state first!
                     </p>
-                    <Button onClick={this.setInitialState} style={{marginRight:"250px"}}>
-                        Set Initial State
-                    </Button>
+                    <Checkbox label="Set Initial State" onClick={this.setInitialState} style={{marginRight:"250px"}}/>
                 </Container>
                 <Container style={{textAlign:"center",marginTop:"50px"}}> 
                 <Form onSubmit={this.handleUpdate} style={{marginRight:"250px"}}>
@@ -119,6 +145,11 @@ class UpdateInternship extends React.Component{
                     <Form.Field >
                         <label>Internship duration</label>
                         <Form.Select  onChange={this.handleSelectChange} options={internshipDurationOptions}             placeholder={internship.duration} name="duration" style={{width:"75%"}}>
+                        </Form.Select>
+                    </Form.Field>
+                    <Form.Field >
+                        <label>Paid internship</label>
+                        <Form.Select  onChange={this.handleSelectChange} options={internshipPaidOptions}             placeholder={internship.paid} name="paidInternship" style={{width:"75%"}}>
                         </Form.Select>
                     </Form.Field>
                     <Form.Field inline>

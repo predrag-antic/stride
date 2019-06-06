@@ -4,14 +4,36 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {createInternship} from '../../../store/actions/internshipAction'
 
-const internshipTechnologyOptions = [
-    {text:'Backend',value:'Backend'},
-    {text:'Frontend',value:'Frontend'},
-    {text:'C#',value:'C#'},
-    {text:'Java',value:'Java'},
+  const internshipTechnologyOptions = [
+    {text:'.NET',value:'.NET'},
+    {text:'ASP.NET',value:'ASP.NET'},
     {text:'Angular',value:'Angular'},
+    {text:'Bach/Shell',value:'Bash/Shell'},
+    {text:'C',value:'C'},
+    {text:'C#',value:'C#'},
+    {text:'C++',value:'C++'},
+    {text:'Django',value:'Django'},
+    {text:'Elixir',value:'Elixir'},
+    {text:'Express',value:'Express'},
+    {text:'Flash',value:'Flash'},
+    {text:'Go',value:'Go'},
+    {text:'HTML/CSS',value:'HTML/CSS'},
+    {text:'Java',value:'Java'},
+    {text:'JavaScript',value:'JavaScript'},
+    {text:'Kotlin',value:'Kotlin'},
+    {text:'Laravel',value:'Laravel'},
+    {text:'Node.js',value:'Node.js'},
+    {text:'Objective-C',value:'Objective-C'},
+    {text:'PHP',value:'PHP'},
+    {text:'Python',value:'Python'},
     {text:'React',value:'React'},
-    {other:'Other',value:'Other'}
+    {text:'React Native',value:'React Native'},
+    {text:'Ruby',value:'Ruby'},
+    {text:'Spring',value:'Spring'},
+    {text:'Swift',value:'Swift'},
+    {text:'TypeScript',value:'TypeScript'},
+    {text:'Vue',value:'Vue'},
+    {text:'jQuery',value:'jQuery'}
   ]
 
   const internshipDurationOptions = [
@@ -23,6 +45,11 @@ const internshipTechnologyOptions = [
     {text:'6 months',value:'6 months'},
   ]
 
+  const internshipPaidOptions= [
+    {text:'Paid',value:'Paid'},
+    {text:'Unpaid',value:'Unpaid'}
+  ]
+
 
 class CreateInternship extends React.Component{
  
@@ -31,6 +58,7 @@ class CreateInternship extends React.Component{
         description: '',
         technology: '',
         duration:'',
+        paidInternship:'',
         errors: [],
         loading: false
     }
@@ -81,6 +109,11 @@ class CreateInternship extends React.Component{
                     <Form.Field >
                         <label>Internship duration</label>
                         <Form.Select  onChange={this.handleSelectChange} options={internshipDurationOptions}             placeholder="Internship duration" name="duration" style={{width:"75%"}}>
+                        </Form.Select>
+                    </Form.Field>
+                    <Form.Field >
+                        <label>Paid internship</label>
+                        <Form.Select  onChange={this.handleSelectChange} options={internshipPaidOptions}             placeholder="Internship paid" name="paidInternship" style={{width:"75%"}}>
                         </Form.Select>
                     </Form.Field>
                     <Form.Field inline>

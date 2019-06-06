@@ -18,7 +18,8 @@ export const createInternship= (newInternship) => {
             duration:newInternship.duration,
             createdAt: new Date(),
             internshipAuthorName: internshipAuthor.companyName,
-            isAvailable:true
+            isAvailable:true,
+            paid:newInternship.paidInternship
         })
         .then(()=>{
             dispatch({type:"CREATE_INTERNSHIP_SUCCESS"})
@@ -46,7 +47,8 @@ export const updateInternship= (updatedInternship,updatedInternshipId) => {
             title:updatedInternship.title,
             description:updatedInternship.description,
             technology:updatedInternship.technology,
-            duration:updatedInternship.duration
+            duration:updatedInternship.duration,
+            paid:updatedInternship.paidInternship
         })
         .then(()=>{   //this part is for updating all users 
 

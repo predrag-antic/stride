@@ -46,6 +46,7 @@ export const updateJob= (updatedJob,updatedJobId) => {
             title:updatedJob.title,
             description:updatedJob.description,
             position:updatedJob.position,
+            technology:updatedJob.technology,
             availablePositions:updatedJob.availablePosition,
             remote: updatedJob.remote
         })
