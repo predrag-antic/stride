@@ -1,4 +1,4 @@
-import { Button, Container } from 'semantic-ui-react';
+import { Button, Container, Divider } from 'semantic-ui-react';
 
 import {connect} from 'react-redux';
 import { NavLink } from 'react-router-dom'
@@ -8,34 +8,34 @@ class Welcome extends React.Component{
     
     render(){
 
-        const {userName, userOrCompany}=this.props;
+        const {userName, userOrCompany }=this.props;
 
         return(
-            <Container  style={{width:"100%",height:"100%"}}>
-                <h1 style={{textAlign:"center",marginRight:"250px",marginTop:"50px"}}>
-                     WELCOME {userName} !
+            <Container style={{marginTop:"7em"}}>
+                <h1 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Bold", marginBottom:"40px"}}>
+                     Welcome to Stride !
                 </h1>
-                <Container style={{textAlign:"center",marginTop:"50px"}}> 
-                    <p style={{marginRight:"250px"}}>
-                        We hope your visit will help you understand the opportunities 
-                        and potential rewards that are available when you take a 
-                        proactive approach to your personal financial situation. 
-                        created this website to help you gain a better understanding 
-                        of the financial concepts behind insurance, investing, 
-                        retirement, estate planning, and wealth preservation.
+                <Divider></Divider>
+                <p style={{margin:"60px 0px", fontSize:"16px", textAlign:"center"}}>
+                    We hope your visit will help you understand the opportunities 
+                    and potential rewards that are available when you take a 
+                    proactive approach to your personal financial situation. 
+                    We created this website to help you gain a better understanding 
+                    of the financial concepts behind insurance, investing, 
+                    retirement, estate planning, and wealth preservation.
 
-                    Please click on button "Complete Profile" to coplete your Profile!
+                    Please click on button "Complete Profile" to complete your Profile!
                     </p> 
-                    </Container>
-                <Container style={{textAlign:"center",marginTop:"50px"}}> 
+                    <Divider></Divider>
+                <Container style={{textAlign:"center",marginTop:"60px"}}> 
                     {console.log()}
-                {userOrCompany===undefined?
+                    {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
-                    <Button style={{marginRight:"250px"}} as={NavLink} to="/profile" > 
+                    <Button style={{}} as={NavLink} to="/profile" > 
                         Complete Profile
                     </Button>
                     :
-                    <Button style={{marginRight:"250px"}} as={NavLink} to="/company" > 
+                    <Button style={{}} as={NavLink} to="/company" > 
                         Complete Profile
                     </Button>
                 }

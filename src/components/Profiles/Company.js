@@ -1,4 +1,6 @@
-import {Button, Form, Container, Card, Grid, Message, Divider} from 'semantic-ui-react';
+import {Button, Form, Container, Card, Grid, Message, Divider,Image} from 'semantic-ui-react';
+import firebase from 'firebase';
+import FileUploader from 'react-firebase-file-uploader';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -7,6 +9,8 @@ import { stat } from 'fs';
 
 class Company extends React.Component{
     state={
+        avatar: '',
+        avatarUrl: '',
         userName: '',
         companyName: '',
         founded: '',
@@ -25,7 +29,7 @@ class Company extends React.Component{
         let error;
 
         if(this.isFormEmpty(this.state)) {
-            error = { message: 'Fill in all fields'};
+            error = { message: 'Fill all fields with *'};
             this.setState({errors: errors.concat(error)});
             return false;
         }
@@ -68,12 +72,24 @@ class Company extends React.Component{
             [e.target.name]: e.target.value
         })
     }
+
+    handleUploadSucces = filename => {
+        this.setState({
+            avatar: filename
+        })
+        firebase.storage().ref('avatars').child(filename).getDownloadURL()
+        .then(url => this.setState({
+            avatarUrl: url
+        }))
+    }
     
     render(){
         const {userName, companyName, founded, headquarters, website, phoneNumber, eMail, aboutUs, numOfEmployees, errors, loading} = this.state;
+        const {avatarUrl,avatar,firstAccess}= this.props;
+
         return (
             <Container style={{marginTop:"7em"}}>
-                <h1 style={{textAlign:"center", fontSize:"30px", fontFamily:"Nexa"}}>Company info</h1>
+                <h1 style={{textAlign:"center", fontSize:"30px", fontFamily:"Nexa Bold"}}>Company information</h1>
 
                 <Container style={{textAlign:"left", marginTop:"30px"}}>
                 {errors.length > 0 && (
@@ -84,15 +100,35 @@ class Company extends React.Component{
                 )}
                 <Form onSubmit={this.handleSubmit}>
                 <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
+                    <Form.Field style={{textAlign:"center"}}>
+                    {
+                    firstAccess===true?<Image avatar src={avatar} style={{height:"200px",width:"200px",background:"#d0efff", border:'2px solid #eee'}} />:
+                    avatarUrl===undefined?
+                        <div/>:avatarUrl===""?
+                        <Image avatar src={avatar} style={{height:"200px",width:"200px",background:"#d0efff", border:'2px solid #eee'}} />
+                        :
+                        <Image avatar src={avatarUrl} style={{height:"200px",width:"200px",background:"#d0efff", border:'2px solid #eee'}} />
+                    }
+                    </Form.Field>
+                    <Form.Field style={{marginTop:"10px"}}>
+                        <FileUploader 
+                            accept="image/*"
+                            name='avatar'
+                            randomizeFilename
+                            storageRef={firebase.storage().ref('avatars')}
+                            onUploadSuccess={this.handleUploadSucces}
+                            
+                        />
+                    </Form.Field>
                     <Grid stackable >
                         <Grid.Row columns={2}>
                             <Grid.Column>
-                                <Form.Field>
+                                <Form.Field style={{marginTop:"15px"}}>
                                     <Form.Input fluid name="userName" label={"Username:"} type="text" value={userName} placeholder={this.props.CName} onChange={this.handleChange}  style={{marginTop:"5px"}}/>
                                 </Form.Field>
                             </Grid.Column>
                             <Grid.Column>
-                                <Form.Field>
+                                <Form.Field style={{marginTop:"15px"}}>
                                     <Form.Input fluid name="companyName" label={"Company name:"} type="text" value={companyName} placeholder={this.props.CCompanyName} onChange={this.handleChange}  style={{marginTop:"5px"}}/>
                                 </Form.Field>
                             </Grid.Column>
@@ -155,6 +191,8 @@ const mapDispatchToProps=(dispatch)=>{
 const mapStateToProps = (state) => {
     console.log(state);
     return {
+        avatar: state.firebase.profile.avatar,
+        avatarUrl: state.firebase.profile.avatarUrl,
         CName: state.firebase.profile.name,
         CCompanyName: state.firebase.profile.companyName,
         CFounded: state.firebase.profile.founded,
@@ -164,7 +202,8 @@ const mapStateToProps = (state) => {
         CWebsite: state.firebase.profile.website,
         CNumOfEmpl: state.firebase.profile.numOfEmployees,
         CAboutUs: state.firebase.profile.aboutUs,
-        error: state.auth.authError
+        error: state.auth.authError,
+        firstAccess: state.firebase.profile.firstAccess
     }
 }
 

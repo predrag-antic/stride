@@ -17,22 +17,22 @@ body{
 }
 
 @font-face {
-    font-family: 'Nexa';
+    font-family: 'Nexa Bold';
     font-style: normal;
     font-weight: normal;
-    src: local('Nexa Bold'), url(../assets/nexa-bold-webfont.woff) format('woff');
+    src: local('Nexa Bold'), url('../assets/nexa-bold-webfont.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'Nexa';
+    font-family: 'Nexa Light';
     font-style: normal;
     font-weight: normal;
-    src: local('Nexa Light'), url(../assets/nexa-bold-webfont.woff) format('woff');
+    src: local('Nexa Light'), url('../assets/nexa-light-webfont.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'Nexa';
+    font-family: 'Nexa Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Nexa Regular'), url(../assets/nexa-bold-webfont.woff) format('woff');
+    src: local('Nexa Regular'), url('../assets/nexa-regular-webfont.woff') format('woff');
 }
