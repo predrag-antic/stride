@@ -16,6 +16,10 @@ import MyJobApplicationsPage from './components/Applications/MyJobApplicationsPa
 import UpdateInternship from './components/Publications/Internship/UpdateInternship';
 import CreateProject from './components/Publications/Project/CreateProject';
 import UpdateJob from './components/Publications/Job/UpdateJob';
+import ProjectPage from './components/Publications/Project/ProjectPage';
+import ProjectDetails from './components/Publications/Project/ProjectDetails'
+import UserDetails from './components/Profiles/UserDetails'
+import UserProjects from './components/Publications/Project/UserProjects'
 
 var routes = [
   {
@@ -143,6 +147,34 @@ var routes = [
     icon: "ni ni-tv-2 text-primary",
     component: MyJobApplicationsPage,
     layout: ""
+  },
+  {
+    path: "/projects",
+    name: "Project Page",
+    icon: "ni ni-tv-2 text-primary",
+    component: ProjectPage,
+    layout: ""
+  },
+  {
+    path: "/project-detail/:id",
+    name: "Project Details",
+    icon: "ni ni-tv-2 text-primary",
+    component: ProjectDetails,
+    layout: ""
+  },
+  {
+    path: "/user-detail/:id",
+    name: "User Details",
+    icon: "ni ni-tv-2 text-primary",
+    component: UserDetails,
+    layout: ""
+  }	,
+  {
+    path: "/user-projects",
+    name: "User Projects",
+    icon: "ni ni-tv-2 text-primary",
+    component: UserProjects,
+    layout: ""  
   }
 ];
 

@@ -15,6 +15,7 @@ export const createProject= (newProject) => {
             technology:newProject.technology,
             duration:newProject.duration,
             createdAt: new Date(),
+            projectAuthorName: projectAuthor.fullname
         })
         .then(()=>{
             dispatch({type:"CREATE_PROJECT_SUCCES"})
