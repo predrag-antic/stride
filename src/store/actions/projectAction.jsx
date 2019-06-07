@@ -15,7 +15,8 @@ export const createProject= (newProject) => {
             technology:newProject.technology,
             duration:newProject.duration,
             createdAt: new Date(),
-            projectAuthorName: projectAuthor.userName
+            projectAuthorName: projectAuthor.name,
+            isAvailable: true
         })
         .then(()=>{
             dispatch({type:"CREATE_PROJECT_SUCCES"})
@@ -94,7 +95,7 @@ export const disableProject= (projectId) => {
         const firestore=getFirestore();
         const profile=getState().firebase.profile;
         const uid=getState().firebase.auth.uid;
-        const projectAuthor = getState().firebase.profile;
+        const projectAuthorName = getState().firebase.profile;
 
         console.log(projectId);
 
