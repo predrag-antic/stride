@@ -1,4 +1,4 @@
-import { Button, Menu,Header,Icon, Label, Container, Dropdown, DropdownItem, DropdownMenu} from 'semantic-ui-react';
+import { Button, Menu, Image, Header,Icon, Label, Container, Dropdown, DropdownItem, DropdownMenu} from 'semantic-ui-react';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -11,7 +11,19 @@ class Navbar extends React.Component
 {
     render(){
 
-        const {userOrCompany,userName, }=this.props;
+        const {userOrCompany, userName, firstAccess, avatarUrl, avatar}=this.props;
+        const trigger = (
+            <span>
+                {firstAccess===true? <Image avatar src={avatar}/>:
+                    avatarUrl===null?
+                        <div/>:avatarUrl===""?
+                        <Image avatar src={avatar}/>
+                        :
+                        <Image avatar src={avatarUrl}/>
+                
+                }
+            </span>
+          );
 
         return(
         <>
@@ -21,6 +33,18 @@ class Navbar extends React.Component
                     {userOrCompany===undefined?
                     <p/>:userOrCompany==="User"?
                     //<h3>Welcome, {userName}</h3>
+                    firstAccess===true? 
+                    <div>
+                        <Button animated size="mini" inverted disabled to="/post-project" >
+                            <Button.Content visible>
+                                Post Project
+                            </Button.Content>
+                            <Button.Content hidden>
+                            <Icon name="laptop"/>
+                            </Button.Content>
+                            </Button>
+                    </div>
+                    :
                     <div>
                         <Button animated size="mini" inverted as={NavLink} to="/post-project" >
                             <Button.Content visible>
@@ -30,7 +54,9 @@ class Navbar extends React.Component
                             <Icon name="laptop"/>
                             </Button.Content>
                             </Button>
-                    </div>                    
+                    </div>
+                       
+                    
                     :<NavbarCompanyLinks/>
                     }
                     </Menu.Item>
@@ -45,7 +71,7 @@ class Navbar extends React.Component
                        </Dropdown>
                     </Menu.Item>
                     <Menu.Item>
-                        <Dropdown direction='left' icon='user circle' >
+                        <Dropdown direction='left' trigger={trigger} icon={null}>
                         <Dropdown.Menu>
                         {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
@@ -122,8 +148,11 @@ class Navbar extends React.Component
 
 const mapStateToProps=state=>{
     return{
+        avatarUrl: state.firebase.profile.avatarUrl,
         userOrCompany: state.firebase.profile.userOrCompany,
-        userName: state.firebase.profile.name
+        userName: state.firebase.profile.name,
+        firstAccess: state.firebase.profile.firstAccess,
+        avatar: state.firebase.profile.avatar
     }
 }
 

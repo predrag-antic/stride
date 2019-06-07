@@ -11,7 +11,7 @@ class Home extends React.Component{
 
     render(){
 
-        const { firstAccess }=this.props;
+        const { firstAccess, userName }=this.props;
 
         if(firstAccess===undefined){ // undefine je sasvim malo dok se ne ucitaju podaci iz firebase/profile-a
             console.log(firstAccess);
@@ -22,10 +22,10 @@ class Home extends React.Component{
             return (
                 <Container style={{marginTop:"7em"}}>
                     <h1 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa", marginBottom:"40px"}}>
-                        Welcome to Stride!
+                        Welcome {userName}!
                     </h1>
                     <Divider></Divider>
-                    <p style={{textAlign:"center", margin:"60px 0px", fontSize:"16px"}}>
+                    <p style={{textAlign:"center", margin:"60px 0px", fontSize:"18px"}}>
                     Dolore proident sit excepteur et. Reprehenderit minim anim ut proident pariatur in. 
                     Lorem excepteur culpa consectetur do mollit cupidatat pariatur et tempor tempor fugiat.
                     </p>
@@ -99,6 +99,7 @@ class Home extends React.Component{
 const mapStateToProps=state=>{
     console.log(state);
     return{
+        userName: state.firebase.profile.name,
         firstAccess: state.firebase.profile.firstAccess
 }}
 

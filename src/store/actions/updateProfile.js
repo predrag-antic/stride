@@ -14,6 +14,7 @@ export const updateProfile=(profileInfo)=>{
             .doc(uid)
             .set({
                 avatar:profile.avatar,
+                avatarUrl: profileInfo.avatarUrl,
                 email: profile.email,
                 firstAccess: false,
                 name: profile.name,
@@ -25,7 +26,9 @@ export const updateProfile=(profileInfo)=>{
                 address: profileInfo.address,
                 country: profileInfo.country,
                 postcode: profileInfo.postcode,
-                informations: profileInfo.informations
+                informations: profileInfo.informations,
+                resume: profileInfo.resume,
+                resumeUrl: profileInfo.resumeUrl
 
             })
             .then(()=>{
@@ -42,6 +45,7 @@ export const updateProfile=(profileInfo)=>{
             .doc(uid)
             .set({
                 avatar:profile.avatar,
+                avatarUrl:profileInfo.avatarUrl,
                 email:profile.email,
                 firstAccess:false,
                 name:profile.name,
