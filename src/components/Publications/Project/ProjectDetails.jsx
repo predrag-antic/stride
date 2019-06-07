@@ -21,7 +21,7 @@ class ProjectDetails extends React.Component {
     
         const { project, alreadyApplied, projectAuthorName } = this.props;
         
-    if ( project ) {
+    if ( project && (alreadyApplied!==undefined) ) {
         return (
             <div style={{textAlign:'center', marginRight: 250, marginTop:"250px",
                 borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
@@ -36,7 +36,7 @@ class ProjectDetails extends React.Component {
                                 <h4>Hey there! You already applied for this!</h4>
                                 :
                                 project.isAvailable?
-                                <Button onClick={this.handleApply}> {/* onClick={this.handleApply} */}
+                                <Button onClick={this.handleApply}>   
                                     Apply
                                 </Button>
                                 :

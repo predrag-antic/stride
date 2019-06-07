@@ -78,7 +78,7 @@ class CreateProject extends React.Component{
 
     render(){
 
-        const {title,description,technology,duration} = this.state;
+        const {title,description} = this.state;
 
         return(
             <Container style={{width:"100%",height:"100%"}}>
