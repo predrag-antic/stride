@@ -20,6 +20,7 @@ import ProjectPage from './components/Publications/Project/ProjectPage';
 import ProjectDetails from './components/Publications/Project/ProjectDetails'
 import UserDetails from './components/Profiles/UserDetails'
 import UserProjects from './components/Publications/Project/UserProjects'
+import UpdateProject from './components/Publications/Project/UpdateProject'
 
 var routes = [
   {
@@ -175,6 +176,13 @@ var routes = [
     icon: "ni ni-tv-2 text-primary",
     component: UserProjects,
     layout: ""  
+  },
+  {
+    path: "/update-project/:id",
+    name: "Update Project",
+    icon: "ni ni-tv-2 text-primary",
+    component: UpdateProject,
+    layout: ""
   }
 ];
 

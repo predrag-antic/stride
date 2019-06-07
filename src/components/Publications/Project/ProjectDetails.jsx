@@ -4,9 +4,10 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import {Link} from 'react-router-dom'
 import moment from 'moment'
+import {Button, Container, Form,TextArea,Checkbox,Divider } from 'semantic-ui-react';
 
  const ProjectDetails = (props) => {
-    const { project } = props; 
+    const { project, alreadyApplied } = props; 
     if (project) {
         return (
             <div style={{textAlign:'center', marginRight: 250, marginTop:"250px",
@@ -17,6 +18,17 @@ import moment from 'moment'
                         <p style={{fontSize: 20}}> Description: <br/> { project.description }</p>
                         <p style={{fontSize: 20}}> Technology: <br/> { project.technology }</p>
                         <p style={{fontSize: 20}}> Duration: <br/> { project.duration }</p>
+                        {
+                                alreadyApplied? 
+                                <h4>Hey there! You already applied for this!</h4>
+                                :
+                                project.isAvailable?
+                                <Button>  {/*onClick={this.handleApply} TREBA DA SE DODA ZA APPLY*/}
+                                    Apply
+                                </Button>
+                                :
+                                <h4>This project is closed!</h4>
+                        }
                         <p>Published by:
                             <Link to = {'/user-detail/' + project.authorId} style={{marginLeft:"5px"}}>
                                 {project.projectAuthorName}
