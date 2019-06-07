@@ -13,6 +13,7 @@ import CompanyInternships from './components/Publications/Internship/CompanyInte
 import AppWelcome from './components/AppWelcome';
 import MyApplicationsPage from './components/Applications/MyApplicationsPage';
 import MyJobApplicationsPage from './components/Applications/MyJobApplicationsPage';
+import MyProjectApplicationsPage from './components/Applications/MyProjectApplicationsPage';
 import UpdateInternship from './components/Publications/Internship/UpdateInternship';
 import CreateProject from './components/Publications/Project/CreateProject';
 import UpdateJob from './components/Publications/Job/UpdateJob';
@@ -182,6 +183,13 @@ var routes = [
     name: "Update Project",
     icon: "ni ni-tv-2 text-primary",
     component: UpdateProject,
+    layout: ""
+  },
+  {
+    path: "/my-project-applications",
+    name: "My Project Applications Page",
+    icon: "ni ni-tv-2 text-primary",
+    component: MyProjectApplicationsPage,
     layout: ""
   }
 ];

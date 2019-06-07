@@ -94,7 +94,7 @@ export const disableProject= (projectId) => {
         const firestore=getFirestore();
         const profile=getState().firebase.profile;
         const uid=getState().firebase.auth.uid;
-        const projectAuthor = getState().firebase.profile;
+        const projectAuthorName = getState().firebase.profile;
 
         console.log(projectId);
 
