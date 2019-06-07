@@ -38,9 +38,9 @@ class Company extends React.Component{
         }
     }
 
-    isFormEmpty = ({ companyName ,eMail,numOfEmployees,founded,headquarters,website,aboutUs, phoneNumber}) => {
+    isFormEmpty = ({ companyName ,eMail,founded,headquarters,website,aboutUs}) => {
         return !companyName.length || !eMail.length || 
-        !numOfEmployees.length || !founded.length || !headquarters.length || !website.length || !aboutUs.length || !phoneNumber.length;
+        !founded.length || !headquarters.length || !website.length || !aboutUs.length;
     }
 
     updateProfile=()=>{
@@ -129,19 +129,19 @@ class Company extends React.Component{
                             </Grid.Column>
                             <Grid.Column>
                                 <Form.Field style={{marginTop:"15px"}}>
-                                    <Form.Input fluid name="companyName" label={"Company name:"} type="text" value={companyName} placeholder={this.props.CCompanyName} onChange={this.handleChange}  style={{marginTop:"5px"}}/>
+                                    <Form.Input fluid name="companyName" label={"Company name: *"} type="text" value={companyName} placeholder={this.props.CCompanyName} onChange={this.handleChange}  style={{marginTop:"5px"}}/>
                                 </Form.Field>
                             </Grid.Column>
                             </Grid.Row>
                         <Grid.Row columns={2}>
                             <Grid.Column>
                                 <Form.Field style={{marginTop:"15px"}}>
-                                    <Form.Input fluid name="website" type="text" label={"Website:"} value={website} placeholder={this.props.CWebsite} onChange={this.handleChange}  style={{marginTop:"5px"}} />
+                                    <Form.Input fluid name="website" type="text" label={"Website: *"} value={website} placeholder={this.props.CWebsite} onChange={this.handleChange}  style={{marginTop:"5px"}} />
                                 </Form.Field>
                             </Grid.Column>
                             <Grid.Column>
                                 <Form.Field style={{marginTop:"15px"}}>
-                                    <Form.Input fluid name="eMail" type="text" label={"Email:"} value={eMail} placeholder={this.props.CEmail} onChange={this.handleChange}  style={{marginTop:"5px"}} />
+                                    <Form.Input fluid name="eMail" type="text" label={"Email: *"} value={eMail} placeholder={this.props.CEmail} onChange={this.handleChange}  style={{marginTop:"5px"}} />
                                 </Form.Field>
                             </Grid.Column>
                             </Grid.Row>
@@ -149,12 +149,12 @@ class Company extends React.Component{
                             <Grid.Row columns={3}>
                                 <Grid.Column>
                                     <Form.Field style={{marginTop:"10px"}}>
-                                        <Form.Input fluid name="founded" type="text" label={"Founded:"} value={founded} placeholder={this.props.CFounded} onChange={this.handleChange} style={{marginTop:"5px"}} />
+                                        <Form.Input fluid name="founded" type="text" label={"Founded: *"} value={founded} placeholder={this.props.CFounded} onChange={this.handleChange} style={{marginTop:"5px"}} />
                                     </Form.Field>
                                 </Grid.Column>
                                 <Grid.Column>
                                     <Form.Field style={{marginTop:"10px"}}>
-                                        <Form.Input fluid name="headquarters" type="text" value={headquarters} label={"Headquarters:"} placeholder={this.props.CHeadquarters} onChange={this.handleChange}  style={{marginTop:"5px"}} />
+                                        <Form.Input fluid name="headquarters" type="text" value={headquarters} label={"Headquarters: *"} placeholder={this.props.CHeadquarters} onChange={this.handleChange}  style={{marginTop:"5px"}} />
                                     </Form.Field>
                                 </Grid.Column>
                                 <Grid.Column>
@@ -169,12 +169,13 @@ class Company extends React.Component{
                         </Form.Field>
                         <Divider style={{marginTop:"30px"}}></Divider>
                         <Form.Field style={{marginTop:"15px"}}>
-                            <Form.TextArea rows={3} name="aboutUs" value={aboutUs} type="text" label={"About us:"} placeholder={this.props.CAboutUs} onChange={this.handleChange}  style={{marginTop:"5px"}} />
+                            <Form.TextArea rows={3} name="aboutUs" value={aboutUs} type="text" label={"About us: *"} placeholder={this.props.CAboutUs} onChange={this.handleChange}  style={{marginTop:"5px"}} />
                         </Form.Field>
 
                         <Button style={{marginTop:"30px", background:"#d0efff"}}>Submit</Button>
                     
                     </Card>
+                    
                 </Form>
                 </Container>
             </Container>

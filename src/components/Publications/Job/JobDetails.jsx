@@ -8,7 +8,8 @@ import {Link} from 'react-router-dom'
 import { render } from 'react-dom';
 
 import { applyUserToJob } from '../../../store/actions/jobApplicationsAction';
-import {Button, Container, Form,TextArea,Checkbox,Divider } from 'semantic-ui-react';
+import {Button, Container, Form,TextArea,Checkbox,Divider, Card, Grid } from 'semantic-ui-react';
+import Spinner from '../../../Spinner';
  
 class JobDetails extends React.Component {
 
@@ -23,40 +24,72 @@ class JobDetails extends React.Component {
         
     if (job && (alreadyApplied!==undefined)) {
         return (
-            <div style={{textAlign:'center', marginRight: 250, marginTop:"250px",
-                borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
-                <div>
-                    <div>
-                        <h1 style={{fontSize: 40}}>{ job.title }</h1>
-                        <p style={{fontSize: 20}}> Job description: <br/> { job.description }</p>
-                        <p style={{fontSize: 20}}>Job position: <br/> { job.position }</p>
-                        <p style={{fontSize: 20}}>Available positions: <br/> { job.availablePositions }</p>
-                        {
+            <Container style={{marginTop:"7em"}}>
+                <Container style={{textAlign: 'center', marginTop: '30px'}}>
+                    <Form>
+                    <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
+                    <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", verticalAlign:"middle"}}>
+                         { job.title }
+                    </Form.Field>
+                    <Divider style={{margin:"20px"}}></Divider>  
+                    <Grid stackable >
+                           <Grid.Row columns={3} style={{margin:"0px 50px"}}>
+                                <Grid.Column>
+                                    <label >Position:</label>
+                                    <Form.Field style={{fontSize:"22px", marginTop:"10px", fontWeight:"bold"}}>
+                                        { job.position }
+                                    </Form.Field>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <label >Technology:</label>
+                                    <Form.Field style={{fontSize:"22px", marginTop:"10px",fontWeight:"bold" }}>
+                                        { job.technology }
+                                    </Form.Field>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <label >Available positions:</label>
+                                    <Form.Field style={{fontSize:"22px", marginTop:"10px",fontWeight:"bold" }}>
+                                        { job.availablePositions }
+                                    </Form.Field>
+                                </Grid.Column>
+                            </Grid.Row>
+                    </Grid>
+                    <Divider style={{margin:"30px 20px"}}></Divider>  
+                    <Form.Field>
+                        <h2>Job description</h2>
+                        <p style={{padding:"20px 40px"}}>{job.description}</p>
+                    </Form.Field> 
+                    <Divider style={{margin:"20px"}}></Divider>  
+                    {
                                 alreadyApplied? 
-                                <h4>Hey there! You already applied for this!</h4>
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                    Hey there! You already applied for this!
+                                </Form.Field>
                                 :
                                 job.isAvailable?
-                                <Button onClick={this.handleApply}>
+                                <Button onClick={this.handleApply} style={{marginTop:"20px", background:"#d0efff"}}>
                                     Apply
                                 </Button>
                                 :
-                                <h4>This job is closed!</h4>
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                    This job is closed!
+                                </Form.Field>
                         }
-                        <Link to = {'/company-detail/' + job.authorId}>
-                            <p>Published by: {job.jobAuthorName} </p>
+                        <p style={{marginTop:"20px"}}>Published by:
+                        <Link style={{marginLeft:"5px"}} to = {'/company-detail/' + job.authorId}>
+                             {job.jobAuthorName} 
                         </Link>
-                        <p>Published:  {moment(job.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
-                        
-                    </div>
-                </div>
-            </div>
+                        </p>
+                        <p>{moment(job.createdAt.toDate()).format('MMMM Do YYYY / h:mm:ss a')}</p>
+                    </Card>
+                    </Form>
+                    </Container>
+            </Container>
         )
     }
     else {
         return (
-            <div style={{textAlign: 'center', marginRight: 250}}>
-                <p>Loading job...</p>
-            </div>
+            <Spinner/>
             )
     }
 }

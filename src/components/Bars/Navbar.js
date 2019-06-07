@@ -17,9 +17,9 @@ class Navbar extends React.Component
                 {firstAccess===true? <Image avatar src={avatar}/>:
                     avatarUrl===null?
                         <div/>:avatarUrl===""?
-                        <Image avatar src={avatar}/>
+                        <Image avatar src={avatar} style={{backgroundColor:"white"}}/>
                         :
-                        <Image avatar src={avatarUrl}/>
+                        <Image avatar src={avatarUrl} style={{backgroundColor:"white"}}/>
                 
                 }
             </span>

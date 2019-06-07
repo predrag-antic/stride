@@ -1,4 +1,4 @@
-import {Button, Container, Form,TextArea,Checkbox } from 'semantic-ui-react';
+import {Button, Container, Form,TextArea,Checkbox, Card, Message } from 'semantic-ui-react';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -75,56 +75,91 @@ class CreateInternship extends React.Component{
         this.setState({remote:data.checked})
     }
 
+    isFormValid = () => {
+        let errors = [];
+        let error;
+
+        if(this.isFormEmpty(this.state)) {
+            error = { message: 'Fill all fields with *'};
+            this.setState({errors: errors.concat(error)});
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    isFormEmpty = ({ title ,description, duration, paidInternship}) => {
+        return !title.length || !description.length || 
+                !duration.length || !paidInternship.length ;
+    }
+
+    displayErrors = errors => errors.map((error,i) => <p key={i}>{error.message}</p>);
+
     handlePublish=event=>{
-        console.log(this.state);
-        //ovde da se preko reduxa salju podaci ps. napravi reducer/akcije
-        this.props.createInternship(this.state);
-        this.props.history.push('/home');
+        event.preventDefault();
+        if(this.isFormValid()) {
+            this.props.createInternship(this.state);
+            this.props.history.push('/home');
+            this.setState({errors: [], loading: true});
+            
+            setTimeout(()=>{ 
+                if(this.props.error!==null){
+                    this.setState({
+                        errors:this.state.errors.concat(this.props.error),
+                        loading: false                
+                    });
+            }},1000);
+        }
+
     }
 
     render(){
 
-        const {title,description,technology,duration} = this.state;
+        const {title,description,technology,duration,errors} = this.state;
 
         return(
-            <Container style={{width:"100%",height:"100%"}}>
-                <h1 style={{textAlign:"center",marginRight:"250px"}}> Internship </h1>
-                <Container style={{textAlign:"center",marginTop:"50px"}}> 
-                <Form onSubmit={this.handlePublish} style={{marginRight:"250px"}}>
+            <Container  style={{marginTop:"7em"}}>
+                <h1 style={{textAlign:"center", fontSize:"30px", fontFamily:"Nexa Bold"}}>Internship</h1>
+                
+                <Container style={{textAlign:"left",marginTop:"30px"}}> 
+                {errors.length > 0 && (
+                    <Message error>
+                        <h3>Error</h3>
+                        {this.displayErrors(errors)}
+                    </Message>
+                )}
+                <Form onSubmit={this.handlePublish}>
+                <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
                     <Form.Field >
-                        <label>Title</label>
-                        <input name="title" value={title} onChange={this.handleChange} placeholder='Title' 
-                                style={{width:"75%"}}/>
+                        <Form.Input name="title" value={title} label={"Title: *"} onChange={this.handleChange} placeholder='Title' />
                     </Form.Field>
-                    <Form.Field>
-                        <label>Internship Description</label>
-                        <TextArea name="description" value={description} onChange={this.handleChange} 
-                         placeholder='Please describe a internship...' style={{width:"75%"}}/>
+                    <Form.Field style={{marginTop:"10px"}}>
+                        <Form.TextArea name="description" label={"Internship description: *"} value={description} onChange={this.handleChange} 
+                         placeholder='Please describe a internship...' />
                     </Form.Field>
-                    <Form.Field >
-                        <label>Internship technology</label>
-                        <Form.Select  onChange={this.handleSelectChange} options={internshipTechnologyOptions} placeholder="Internship technology" name="technology" style={{width:"75%"}}>
+                    <Form.Field style={{marginTop:"10px"}}>
+                        <Form.Select label={"Technology: "} onChange={this.handleSelectChange} options={internshipTechnologyOptions} placeholder="Please insert technology" name="technology">
                         </Form.Select>
                     </Form.Field>
-                    <Form.Field >
-                        <label>Internship duration</label>
-                        <Form.Select  onChange={this.handleSelectChange} options={internshipDurationOptions}             placeholder="Internship duration" name="duration" style={{width:"75%"}}>
+                    <Form.Field style={{marginTop:"10px"}}>
+                        <Form.Select label={"Internship duration *"} onChange={this.handleSelectChange} options={internshipDurationOptions} placeholder="Please insert internship duration" name="duration" >
                         </Form.Select>
                     </Form.Field>
-                    <Form.Field >
-                        <label>Paid internship</label>
-                        <Form.Select  onChange={this.handleSelectChange} options={internshipPaidOptions}             placeholder="Internship paid" name="paidInternship" style={{width:"75%"}}>
+                    <Form.Field style={{marginTop:"10px"}}>
+                        <Form.Select label={"Paid internship: *"} onChange={this.handleSelectChange} options={internshipPaidOptions} placeholder="Please inser if internship is paid" name="paidInternship" >
                         </Form.Select>
                     </Form.Field>
-                    <Form.Field inline>
+                    <Form.Field inline style={{marginTop:"10px"}}>
                         <label>Deadline for applying</label>
                         <label>Date picker</label>
-                    </Form.Field>
-                    <Form.Field inline>
+                    </Form.Field >
+                    <Form.Field inline style={{marginTop:"10px"}}>
                         <label>Earliest start date</label>
                         <label>Date picker</label>
                     </Form.Field>
-                    <Button style={{marginTop:"50px"}} type='submit'>Publish</Button>
+                    <Button style={{marginTop:"20px", background:"#d0efff"}} type='submit'>Publish</Button>
+                </Card>
                 </Form>
                 </Container>
             </Container>
@@ -141,7 +176,7 @@ const mapDispatchToProps=(dispatch)=>{
 const mapStateToProps=(state)=>{
     console.log(state);
     return{
-
+        error: state.auth.authError
     }
 }
 

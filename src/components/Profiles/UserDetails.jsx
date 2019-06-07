@@ -1,36 +1,70 @@
 
 import React from 'react'
-import { Container, Form } from 'semantic-ui-react'
+import { Container, Form, Card, Grid, Image, Divider } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import Spinner from '../../Spinner'
+
  
 const UserDetails = (props) => {
     const { profile } = props; 
     if (profile) {
         return (
-            <Container style={{width: '100%', height:'100%'}}>
-                <h1 style={{ color: '#187bcd', fontWeight: 'bold', fontSize: 50, textAlign:'center', marginRight: 250}}>User info</h1>
-                <Container style={{textAlign: 'center', marginTop: '50px', marginRight: 250}}>
-                    <Form style={{marginRight: 250}}>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25, marginBottom: 50}}>Full name: {profile.fullname}</label>
-                        </Form.Field>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25, marginBottom: 50}}>Email: {profile.eMail}</label>
-                        </Form.Field>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25, marginBottom: 50}}>Address: {profile.address}</label>
-                        </Form.Field>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25, marginBottom: 50}}>City: {profile.city}</label>
-                        </Form.Field>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25, marginBottom: 50}}>Country: {profile.country}</label>
-                        </Form.Field>
-                        <Form.Field style={{marginBottom: 50}}>
-                            <label style={{color: '#187bcd', fontWeight: 'bolder', fontSize: 25}}>About user: {profile.informations}</label>
-                        </Form.Field>
+            <Container style={{marginTop:"7em"}}>
+                {/* <h1 style={{ color: '#187bcd', fontWeight: 'bold', fontSize: 50, textAlign:'center', marginRight: 250}}>User info</h1> */}
+                
+                <Container style={{textAlign: 'center', marginTop: '30px'}}>
+                    <Form>
+                    <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
+                    <Grid stackable columns="equal">
+                            <Grid.Column textAlign={"center"}>
+                            {profile.avatarUrl===undefined?
+                                <div/>:profile.avatarUrl===""?
+                                <Image avatar src={profile.avatar} style={{height:"150px",width:"150px",background:"#d0efff", border:'2px solid #eee'}} />
+                                :
+                                <Image avatar src={profile.avatarUrl} style={{height:"150px",width:"150px",background:"#d0efff", border:'2px solid #eee'}} />
+                            }
+                            </Grid.Column>
+                            <Grid.Column verticalAlign={"middle"} width={10} textAlign={"center"}>
+                                <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", verticalAlign:"middle"}}>
+                                    {profile.fullname}
+                                </Form.Field>
+                                    <label style={{display:'block',marginBottom:"10px"}}>Email:</label>
+                                    <Form.Field style={{decoration:"none", fontSize:"18px", color:"black",fontWeight:"bold"}} href={profile.website} target="_blank">
+                                        {profile.email}
+                                    </Form.Field>
+                            </Grid.Column>
+                        </Grid>
+                        <Divider style={{margin:"40px"}}></Divider>
+                        <Grid stackable >
+                           <Grid.Row columns={3} style={{margin:"0px 50px"}}>
+                               <Grid.Column>
+                                    <label >City:</label>
+                                    <Form.Field style={{ fontSize:"22px",fontWeight:"bold", marginTop:"10px"}} >
+                                        {profile.city}
+                                    </Form.Field>
+                               </Grid.Column>
+                               <Grid.Column stretched>
+                                    <label >Country:</label>
+                                    <Form.Field style={{ fontSize:"22px",fontWeight:"bold", marginTop:"10px"}} >
+                                        {profile.country}
+                                    </Form.Field>
+                               </Grid.Column>
+                               <Grid.Column>
+                                   <label>Postcode:</label>
+                            <Form.Field style={{fontWeight:"bold", marginTop:"10px", fontSize:"22px", color:"black"}} href={profile.website} target="_blank">
+                                {profile.postcode}
+                            </Form.Field>
+                               </Grid.Column>
+                           </Grid.Row>
+                           </Grid>
+                           <Divider style={{margin:"40px"}}></Divider>                              
+                            <Form.Field>
+                            <h2>About {profile.fullname}</h2>
+                            <p style={{padding:"20px 40px"}}>{profile.informations}</p>
+                            </Form.Field> 
+                    </Card>
                     </Form>
                 </Container>
             </Container> 
@@ -38,9 +72,7 @@ const UserDetails = (props) => {
     }
     else {
         return (
-            <div style={{textAlign: 'center', marginRight: 250}}>
-                <p>Loading user info...</p>
-            </div>
+            <Spinner/>
             )
     }
 }

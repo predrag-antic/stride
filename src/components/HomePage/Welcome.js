@@ -12,7 +12,7 @@ class Welcome extends React.Component{
 
         return(
             <Container style={{marginTop:"7em"}}>
-                <h1 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Bold", marginBottom:"40px"}}>
+                <h1 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Regular", marginBottom:"40px"}}>
                      Welcome to Stride !
                 </h1>
                 <Divider></Divider>

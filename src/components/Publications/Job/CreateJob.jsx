@@ -1,4 +1,4 @@
-import {Button, Container,Form,Checkbox,TextArea,Select } from 'semantic-ui-react';
+import {Button, Container,Form,Checkbox,TextArea,Select,Card, Message } from 'semantic-ui-react';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -42,7 +42,6 @@ const jobPositionsOptions = [
     {text:'jQuery',value:'jQuery'}
   ]
 
-
 class CreateJob extends React.Component{
     
     state = {
@@ -51,11 +50,12 @@ class CreateJob extends React.Component{
         position: '',
         technology:'',
         availablePosition: '',
-        remote:false,
+        remote: false,
         errors: [],
         loading: false
     }
 
+    
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value})
     }
@@ -63,61 +63,94 @@ class CreateJob extends React.Component{
     handlePositionSelectChange=(event,data)=>{
         this.setState({[data.name]:data.value})
     }
-
+    
     handleTechnologySelectChange=(event,data)=>{
         this.setState({[data.name]:data.value})
     }
-
+    
     handleChangeRemote=(event,data)=>{
         this.setState({remote:data.checked})
     }
+    
+    isFormValid = () => {
+        let errors = [];
+        let error;
 
-    handlePublish=event=>{
-        console.log(this.state);
-        //ovde da se preko reduxa salju podaci ps. napravi reducer/akcije
-        //uhvati greske ovde!
-        this.props.createJob(this.state);
-        this.props.history.push('/home');
+        if(this.isFormEmpty(this.state)) {
+            error = { message: 'Fill all fields with *'};
+            this.setState({errors: errors.concat(error)});
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    isFormEmpty = ({ title ,description,availablePosition}) => {
+        return !title.length || !description.length || 
+                !availablePosition.length ;
+    }
+
+    displayErrors = errors => errors.map((error,i) => <p key={i}>{error.message}</p>);
+
+    handlePublish = event =>{
+        event.preventDefault();
+            if(this.isFormValid()) {
+                this.props.createJob(this.state);
+                this.props.history.push('/home');
+                this.setState({errors: [], loading: true});
+            
+                setTimeout(()=>{ 
+                    if(this.props.error!==null){
+                        this.setState({
+                            errors:this.state.errors.concat(this.props.error),
+                            loading: false                
+                        });
+                }},1000);
+            }
     }
 
     render(){
 
-        const {title,description,position,availablePosition,remote} = this.state;
+        const {title,description,position,availablePosition,remote,errors} = this.state;
 
         return(
-            <Container style={{width:"100%",height:"100%"}}>
-                <h1 style={{textAlign:"center",marginRight:"250px"}}> Job </h1>
-                <Container style={{textAlign:"center",marginTop:"50px"}}> 
-                <Form onSubmit={this.handlePublish} style={{marginRight:"250px"}}>
+
+            <Container style={{marginTop:"7em"}}>
+                <h1 style={{textAlign:"center",fontSize:"30px",fontFamily:"Nexa Bold"}}>Job</h1>
+                
+                <Container style={{textAlign:"left",marginTop:"30px"}}> 
+                {errors.length > 0 && (
+                    <Message error>
+                        <h3>Error</h3>
+                        {this.displayErrors(errors)}
+                    </Message>
+                )}
+                <Form onSubmit={this.handlePublish}>
+                <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
                     <Form.Field >
-                        <label>Title</label>
-                        <input name="title" value={title} onChange={this.handleChange} placeholder='Title' 
-                                style={{width:"75%"}}/>
+                        <Form.Input name="title" label={"Title: *"} value={title} onChange={this.handleChange} placeholder='Please insert job title' />
                     </Form.Field>
-                    <Form.Field>
-                        <label>Job Description</label>
-                        <TextArea name="description" value={description} onChange={this.handleChange} 
-                         placeholder='Please describe a job...' style={{width:"75%"}}/>
+                    <Form.Field style={{marginTop:"10px"}}>
+                        <Form.TextArea name="description" label={"Job description: *"} value={description} onChange={this.handleChange} 
+                        placeholder='Please insert job description'/>
                     </Form.Field>
-                    <Form.Field >
-                        <label>Job position</label>
-                        <Form.Select  onChange={this.handlePositionSelectChange} options={jobPositionsOptions} placeholder="Job position" name="position" style={{width:"75%"}}>
+                    <Form.Field style={{marginTop:"10px"}}>
+                        <Form.Select label={"Job position:"} onChange={this.handlePositionSelectChange} options={jobPositionsOptions} placeholder="Please select job position" name="position" >
                         </Form.Select>
                     </Form.Field>
-                    <Form.Field >
-                        <label>Technology</label>
-                        <Form.Select  onChange={this.handleTechnologySelectChange} options={jobTechnologyOptions} placeholder="Technology" name="technology" style={{width:"75%"}}>
+                    <Form.Field style={{marginTop:"10px"}}>
+                        <Form.Select label={"Technology:"} onChange={this.handleTechnologySelectChange} options={jobTechnologyOptions} placeholder="Please select technology" name="technology" >
                         </Form.Select>
                     </Form.Field>
-                    <Form.Field >
-                        <label>Number of available positon for this jos</label>
-                        <input name="availablePosition" value={availablePosition} onChange={this.handleChange}            placeholder='Available position for this job'type="number" min="1"  style={{width:"75%"}}/>
+                    <Form.Field style={{marginTop:"10px"}}>
+                        <Form.Input name="availablePosition"  label={"Number of available positions: *"} value={availablePosition} onChange={this.handleChange} placeholder='Please insert number of available positions for this job' type="number" min="1" />
                     </Form.Field>
-                    <Form.Field inline>
-                        <label>Remote</label>
-                        <Checkbox value="remote" name="remote" onChange={this.handleChangeRemote} toggle />
+                    <Form.Field inline style={{marginTop:"20px"}}>
+                        <Checkbox value="remote" label={"Remote"} name="remote" onChange={this.handleChangeRemote} toggle />
                     </Form.Field>
-                    <Button style={{marginTop:"50px"}} type='submit'>Publish</Button>
+                    <Button style={{marginTop:"20px", background:"#d0efff"}} type='submit'>Publish</Button>
+                </Card>
                 </Form>
                 </Container>
             </Container>
@@ -134,7 +167,7 @@ const mapDispatchToProps=(dispatch)=>{
 const mapStateToProps=(state)=>{
     console.log(state);
     return{
-
+        error: state.auth.authError
     }
 }
 

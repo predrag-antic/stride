@@ -6,7 +6,8 @@ import { compose } from 'redux'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import {applyUserToInternship} from '../../../store/actions/internshipApplicationsAction'
-import {Button, Container, Form,TextArea,Checkbox,Divider } from 'semantic-ui-react';
+import {Button, Container, Form,TextArea,Checkbox,Divider,Grid,Card } from 'semantic-ui-react';
+import Spinner from '../../../Spinner';
 
  
 class InternshipDetails extends React.Component{
@@ -22,41 +23,71 @@ class InternshipDetails extends React.Component{
 
         if (internship && (alreadyApplied!==undefined)) {
             return (
-                <div style={{textAlign:'center', marginRight: 250, marginTop:"250px",
-                    borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
-                    <div>
-                        <div>
-                            <h1 style={{fontSize: 40}}>{ internship.title }</h1>
-                            <p>{internship.description}</p>
-                            <p>Duration:{internship.duration} </p>
-                            <p>Technology:{internship.technology} </p>
-                            <p>Published:{moment(internship.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
-                            <p>Post by: {internship.name} </p>
-                            {
+                <Container style={{marginTop:"7em"}}>
+                    <Container style={{textAlign: 'center', marginTop: '30px'}}>
+                        <Form>
+                        <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
+                            <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", verticalAlign:"middle"}}>
+                                { internship.title }
+                            </Form.Field>
+                        <Divider style={{margin:"20px"}}></Divider>  
+                            <Grid stackable >
+                            <Grid.Row columns={3} style={{margin:"0px 50px"}}>
+                                <Grid.Column>
+                                    <label >Duration:</label>
+                                    <Form.Field style={{fontSize:"22px", marginTop:"10px",fontWeight:"bold" }}>
+                                        { internship.duration }
+                                    </Form.Field>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <label >Technology:</label>
+                                    <Form.Field style={{fontSize:"22px", marginTop:"10px",fontWeight:"bold" }}>
+                                        { internship.technology }
+                                    </Form.Field>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <label >Paid internship:</label>
+                                    <Form.Field style={{fontSize:"22px", marginTop:"10px", fontWeight:"bold"}}>
+                                        { internship.paid }
+                                    </Form.Field>
+                                </Grid.Column>
+                            </Grid.Row>
+                            </Grid>
+                        <Divider style={{margin:"30px 20px"}}></Divider>  
+                        <Form.Field>
+                            <h2>Internship description</h2>
+                            <p style={{padding:"20px 40px"}}>{internship.description}</p>
+                        </Form.Field> 
+                        <Divider style={{margin:"20px"}}></Divider>
+                        {
                                 alreadyApplied? 
-                                <h4>Hey there! You already applied for this!</h4>
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                Hey there! You already applied for this!
+                                </Form.Field>
                                 :
                                 internship.isAvailable?
-                                <Button onClick={this.handleApply}>
+                                <Button onClick={this.handleApply} style={{marginTop:"20px", background:"#d0efff"}}>
                                     Apply
                                 </Button>
                                 :
-                                <h4>This internship is closed!</h4>
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                    This internship is closed!
+                                </Form.Field>
                             }
-                            <label style={{marginRight:"5px"}}>Published by:</label>
-                            <Link to = {'/company-detail/' + internship.authorId}>
+                            <p style={{marginTop:"20px"}}>Published by:
+                            <Link style={{marginLeft:"5px"}} to = {'/company-detail/' + internship.authorId}>
                                  {internship.internshipAuthorName} 
                             </Link>
-                            <p>Published:  {moment(internship.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
-                        </div>
-                    </div>
-                </div>
-                )
+                            </p>
+                            <p>{moment(internship.createdAt.toDate()).format('MMMM Do YYYY / h:mm:ss a')}</p>
+                        </Card>
+                        </Form>
+                    </Container>
+                </Container>
+            )
             } else {
                 return (
-                    <div style={{textAlign: 'center', marginRight: 250}}>
-                        <p>Loading internship...</p>
-                    </div>
+                    <Spinner/>
                     )
                 } 
         }
