@@ -55,9 +55,20 @@ class ProjectDetails extends React.Component {
                             </Form.Field> 
                             <Divider style={{margin:"20px"}}></Divider>
                             {
+
+                                this.props.userOrCompany==="Company"?
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                    Only users can apply for projects.
+                                </Form.Field>
+                                :
                                 alreadyApplied? 
                                 <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
-                                Hey there! You already applied for this!
+                                    You already applied for this!
+                                </Form.Field>
+                                :
+                                (project.authorId===this.props.userId)?
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                    You can not apply on this project!
                                 </Form.Field>
                                 :
                                 project.isAvailable?
@@ -69,8 +80,28 @@ class ProjectDetails extends React.Component {
                                     This project is closed!
                                 </Form.Field>
                             }
+
+                                {/* alreadyApplied? 
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                Hey there! You already applied for this!
+                                </Form.Field>
+                                :
+                                (project.isAvailable && project.authorId!==this.props.userId && this.props.userOrCompany==="User")?
+                                <Button onClick={this.handleApply} style={{marginTop:"20px", background:"#d0efff"}}>
+                                    Apply
+                                </Button>
+                                :
+                                project.authorId===this.props.userId?
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                    You can not apply on this project.
+                                </Form.Field>
+                                :
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                    This project is closed!
+                                </Form.Field>
+                            } */}
                             <p style={{marginTop:"20px"}}>Published by:
-                            <Link style={{marginLeft:"5px"}} to = {'/company-detail/' + project.authorId}>
+                            <Link style={{marginLeft:"5px"}} to = {'/user-detail/' + project.authorId}>
                                  {project.projectAuthorName} 
                             </Link>
                             </p>
@@ -113,7 +144,9 @@ const mapStateToProps = (state, ovdeProps) => {
     return {
         project: project,
          projectId: projectId,
-         alreadyApplied:alreadyApplied
+         alreadyApplied:alreadyApplied,
+         userOrCompany: state.firebase.profile.userOrCompany,
+         userId: state.firebase.auth.uid
     }
 }
 

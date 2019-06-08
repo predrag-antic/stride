@@ -77,9 +77,14 @@ class JobDetails extends React.Component {
                     </Form.Field> 
                     <Divider style={{margin:"20px"}}></Divider>  
                     {
+                                this.props.userOrCompany==="Company"?
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                    Only users can apply for projects.
+                                </Form.Field>
+                                :
                                 alreadyApplied? 
                                 <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
-                                    Hey there! You already applied for this!
+                                   You already applied for this!
                                 </Form.Field>
                                 :
                                 job.isAvailable?
@@ -135,7 +140,8 @@ const mapStateToProps = (state, ovdeProps) => {
     return {
          job: job,
          jobId: jobId,
-         alreadyApplied:alreadyApplied
+         alreadyApplied:alreadyApplied,
+         userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 

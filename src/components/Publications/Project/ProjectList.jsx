@@ -17,7 +17,8 @@ class ProjectList extends React.Component{
                         {this.props.listOfProjects.map((project)=>{
                                 return (
                                     <Grid.Column key={project.id}>
-                                        <Card color='blue' fluid key={project.id} style={{ marginBottom:"30px", padding:"20px 10px"}}>
+                                        
+                                        <Card color={project.isAvailable?"blue":"red"} fluid key={project.id} style={{ marginBottom:"30px", padding:"20px 10px"}}>
                                             {/* <Image circular src={require("../../../assets/projects.jpg")}></Image> */}
                                             <Card.Header style={{marginBottom:"10px", marginTop:"10px", fontSize:"20px",fontWeight:"600"}}>{project.title}</Card.Header>
                                             <Divider style={{marginBottom:"20px"}}></Divider>
@@ -33,7 +34,7 @@ class ProjectList extends React.Component{
                                                     {project.projectAuthorName}
                                                 </Link>
                                             </p>
-                                            <p>{moment(project.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
+                                            <p>{moment(project.createdAt.toDate()).format('MMMM Do YYYY / h:mm:ss a')}</p>
                                         </Card>
                                     </Grid.Column>
                                 )

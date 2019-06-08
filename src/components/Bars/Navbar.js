@@ -27,7 +27,7 @@ class Navbar extends React.Component
 
         return(
         <>
-            <Menu size="massive" inverted fixed="top" borderless style={{background: '#187bcd',fontSize:'1.2re',paddingLeft:'380px', height:'60px'}} >
+            <Menu size="massive" inverted fixed="top" borderless style={{background: '#187bcd',fontSize:'1.2re',paddingLeft:'19em', height:'60px'}} >
                 <Container fluid>
                     <Menu.Item position="right">
                     {userOrCompany===undefined?
@@ -60,17 +60,8 @@ class Navbar extends React.Component
                     :<NavbarCompanyLinks/>
                     }
                     </Menu.Item>
+                    
                     <Menu.Item position="right">
-                       <Dropdown direction='left' icon='envelope' title='notification'>
-                        <DropdownMenu>
-                            <DropdownItem>Notification 1</DropdownItem>
-                            <DropdownItem>Notification 2</DropdownItem>
-                            <DropdownItem>Notification 3</DropdownItem>
-                            <DropdownItem>Notification 4</DropdownItem>
-                        </DropdownMenu>
-                       </Dropdown>
-                    </Menu.Item>
-                    <Menu.Item>
                         <Dropdown direction='left' trigger={trigger} icon={null}>
                         <Dropdown.Menu>
                         {userOrCompany===undefined?

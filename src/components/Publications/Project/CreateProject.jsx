@@ -135,7 +135,7 @@ class CreateProject extends React.Component{
                         </Form.Select>
                     </Form.Field>
                     <Form.Field style={{marginTop:"10px"}}>
-                        <Form.Select label={"Project duration: *"} onChange={this.handleSelectChange} options={projectDurationOptions} placeholder="Project duration" name="duration" >
+                        <Form.Select label={"Project duration: *"} onChange={this.handleSelectChange} options={projectDurationOptions} placeholder="Please insert duration" name="duration" >
                         </Form.Select>
                     </Form.Field>
                     

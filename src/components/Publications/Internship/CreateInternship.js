@@ -158,7 +158,7 @@ class CreateInternship extends React.Component{
                         <Grid.Row columns={2}>
                             <Grid.Column>
                                 <Form.Field style={{marginTop:"0px"}}>
-                                    <Form.Select label={"Paid internship: *"} onChange={this.handleSelectChange} options={internshipPaidOptions} placeholder="Please inser if internship is paid" name="paidInternship" >
+                                    <Form.Select label={"Paid internship: *"} onChange={this.handleSelectChange} options={internshipPaidOptions} placeholder="Please insert paid/unpaid" name="paidInternship" >
                                     </Form.Select>
                                 </Form.Field>
                             </Grid.Column>

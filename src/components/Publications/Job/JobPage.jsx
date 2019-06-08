@@ -12,9 +12,10 @@ import {setJobFilter} from '../../../store/actions/jobFilterAction'
 
 const jobPositionsOptions = [
     {text:'All',value:'All'},
-    {text:'Junior Developer',value:'junior'},
-    {text:'Senior Developer',value:'senior'},
-    {text:'Other',value:'other'}
+    {text:'Junior',value:'Junior'},
+    {text:'Middle',value:'Middle'},
+    {text:'Senior',value:'Senior'},
+    {text:'Other',value:'Other'}
   ]
 
 const jobTechnologyOptions = [

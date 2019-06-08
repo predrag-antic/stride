@@ -215,13 +215,6 @@ var routes = [
     icon: "ni ni-tv-2 text-primary",
     component: UsersProjectApplication,
     layout: ""
-  },
-  {
-    path: "/",
-    name: "Home",
-    icon: "ni ni-tv-2 text-primary",
-    component: Home,
-    layout: ""
   }
 ];
 

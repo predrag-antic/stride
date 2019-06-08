@@ -9,9 +9,10 @@ import Spinner from '../../../Spinner'
 import {updateJob,disableJob} from '../../../store/actions/jobAction'
 
 const jobPositionsOptions = [
-    {text:'Junior Developer',value:'junior'},
-    {text:'Senior Developer',value:'senior'},
-    {text:'Other',value:'other'}
+    {text:'Junior',value:'Junior'},
+    {text:'Middle',value:'Middle'},
+    {text:'Senior',value:'Senior'},
+    {text:'Other',value:'Other'}
   ]
 
   const jobTechnologyOptions = [

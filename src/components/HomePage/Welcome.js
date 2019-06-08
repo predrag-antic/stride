@@ -31,7 +31,7 @@ class Welcome extends React.Component{
                     {console.log()}
                     {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
-                    <Button style={{}} as={NavLink} to="/profile" > 
+                    <Button style={{}} as={NavLink} to="/profile" style={{background:"#d0efff"}}> 
                         Complete Profile
                     </Button>
                     :

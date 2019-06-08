@@ -16,7 +16,7 @@ class JobList extends React.Component{
                         {this.props.listOfJobs.map((job)=>{
                                 return (
                                     <Grid.Column key={job.id}>
-                                        <Card color='blue' fluid key={job.id} style={{ marginBottom:"30px", padding:"20px 10px"}}>
+                                        <Card color={job.isAvailable?"blue":"red"} fluid key={job.id} style={{ marginBottom:"30px", padding:"20px 10px"}}>
                                             {/* <Image circular src={require("../../../assets/jobs.jpg")}></Image> */}
                                             <Card.Header style={{marginBottom:"10px", marginTop:"10px", fontSize:"20px",fontWeight:"600"}}>{job.title}</Card.Header>
                                             <Divider style={{marginBottom:"20px"}}></Divider>
@@ -32,7 +32,7 @@ class JobList extends React.Component{
                                                     {job.jobAuthorName}
                                                 </Link>
                                             </p>
-                                            <p>{moment(job.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
+                                            <p>{moment(job.createdAt.toDate()).format('MMMM Do YYYY / h:mm:ss a')}</p>
                                         </Card>
                                     </Grid.Column>
                                 )

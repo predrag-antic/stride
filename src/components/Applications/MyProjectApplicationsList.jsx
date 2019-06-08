@@ -1,5 +1,5 @@
 import { Button, Container } from 'semantic-ui-react';
-import {Link } from 'react-router-dom'
+import {Link,NavLink } from 'react-router-dom'
 import Spinner from '../../Spinner'
 import moment from 'moment'
 
@@ -18,13 +18,11 @@ class MyProjectApplicationsList extends React.Component{
                     {
                         this.props.listOfMyProjectApplications.map((myProjectApplication)=>{
                             return (
-                            <div key={myProjectApplication.projectId} style={{textAlign:"center",marginRight:"250px",height:"150px",     marginTop:"5px",borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
+                            <div key={myProjectApplication.projectId} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center",verticalAlign:"middle", margin:"20px 0px", padding:"20px 5px"}}>
                                 <h3>{myProjectApplication.projectTitle}</h3>
-                                <Link to={`project-detail/${myProjectApplication.projectId}`}>
-                                    <Button>
+                                    <Button as={NavLink} to={`project-detail/${myProjectApplication.projectId}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Project Details
                                     </Button>
-                                </Link>
                             </div>
                             )
                         })
