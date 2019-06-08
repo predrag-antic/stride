@@ -138,14 +138,7 @@ class CreateProject extends React.Component{
                         <Form.Select label={"Project duration: *"} onChange={this.handleSelectChange} options={projectDurationOptions} placeholder="Project duration" name="duration" >
                         </Form.Select>
                     </Form.Field>
-                    <Form.Field inline style={{marginTop:"10px"}}>
-                        <label>Deadline for applying</label>
-                        <label>Date picker</label>
-                    </Form.Field>
-                    <Form.Field inline style={{marginTop:"10px"}}>
-                        <label>Earliest start date</label>
-                        <label>Date picker</label>
-                    </Form.Field>
+                    
                     <Button style={{marginTop:"20px", background:"#d0efff"}} type='submit'>Publish</Button>
                 </Card>
                 </Form>

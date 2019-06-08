@@ -50,7 +50,7 @@ export const updateJob= (updatedJob,updatedJobId) => {
             technology:updatedJob.technology,
             availablePositions:updatedJob.availablePosition,
             remote: updatedJob.remote,
-            city:updateJob.city
+            city: updatedJob.city
         })
         .then(()=>{   //this part is for updating all users 
 

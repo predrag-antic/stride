@@ -16,8 +16,8 @@ class MyJobApplicationsList extends React.Component{
             return(
                         this.props.listOfMyJobApplications.map((myJobApplication)=>{
                             return (
-                            <div key={myJobApplication.jobId} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center", height:"120px", marginTop:"20px",verticalAlign:"middle"}}>
-                                <h3 style={{paddingTop:"20px"}}>{myJobApplication.jobTitle}</h3>
+                            <div key={myJobApplication.jobId} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center",verticalAlign:"middle", margin:"20px 0px", padding:"20px 5px"}}>
+                                <h3 >{myJobApplication.jobTitle}</h3>
                                     <Button as={NavLink} to={`job-detail/${myJobApplication.jobId}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Job Details
                                     </Button>

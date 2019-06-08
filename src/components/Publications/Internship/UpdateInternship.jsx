@@ -1,4 +1,4 @@
-import {Button, Container, Form,TextArea,Checkbox,Confirm } from 'semantic-ui-react';
+import {Button, Container, Form,TextArea,Checkbox,Confirm,Card,Grid } from 'semantic-ui-react';
 
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
@@ -62,6 +62,8 @@ class UpdateInternship extends React.Component{
         technology: '',
         duration:'',
         paidInternship:'',
+        date:'',
+        city:'',
         errors: [],
         loading: false,
         isDisabled:true,
@@ -77,7 +79,7 @@ class UpdateInternship extends React.Component{
     }
 
     handleUpdate=()=>{
-        console.log(this.state);
+        console.log("pedja");
         const {internshipId}=this.props;
         this.props.updateInternship(this.state,internshipId);
         this.props.history.push('/company-internships');
@@ -91,6 +93,8 @@ class UpdateInternship extends React.Component{
             paidInternship:internship.paid,
             technology:internship.technology,
             duration:internship.duration,
+            city:internship.city,
+            date:internship.date,
             isDisabled:!this.state.isDisabled
         })
     }
@@ -113,68 +117,73 @@ class UpdateInternship extends React.Component{
 
     render(){
         const {internship}=this.props;
-        const {title,description,isDisabled,conformationIsOpen} = this.state;
+        const {title,description,isDisabled,conformationIsOpen,city,date} = this.state;
 
         if(internship!==null){
         return(
-            <Container style={{width:"100%",height:"100%"}}>
-                <h1 style={{textAlign:"center",marginRight:"250px"}}> Internship </h1>
+            <Container style={{marginTop:"7em"}}>
+                {/* <h1 style={{textAlign:"center",marginRight:"250px"}}> Internship </h1> */}
+                <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
                 <Container style={{textAlign:"center"}}>
-                    <p style={{marginRight:"250px"}}>
-                        If you want to update Internship, please set initial state first!
-                    </p>
-                    <Checkbox label="Set Initial State" onClick={this.setInitialState} style={{marginRight:"250px"}}/>
+                    <Checkbox label="If you want to update Internship, please set initial state first!" onClick={this.setInitialState} />
                 </Container>
-                <Container style={{textAlign:"center",marginTop:"50px"}}> 
-                <Form onSubmit={this.handleUpdate} style={{marginRight:"250px"}}>
+                <Container style={{marginTop:"40px"}}> 
+                <Form onSubmit={this.handleUpdate}>
                     <Form.Field >
-                        <label>Title</label>
-                        <input name="title" value={title} onChange={this.handleChange} placeholder={internship.title}
-                                style={{width:"75%"}}/>
+                        <Form.Input name="title" value={title} label="Title:" onChange={this.handleChange} placeholder={internship.title}/>
                     </Form.Field>
-                    <Form.Field>
-                        <label>Internship Description</label>
-                        <TextArea name="description" value={description} onChange={this.handleChange} 
-                         placeholder={internship.description} style={{width:"75%"}}/>
+                    <Form.Field style={{marginTop:"10px"}}>
+                        <Form.TextArea name="description" label="Internship description:" value={description} onChange={this.handleChange} 
+                         placeholder={internship.description} />
                     </Form.Field>
-                    <Form.Field >
-                        <label>Internship technology</label>
-                        <Form.Select  onChange={this.handleSelectChange} options={internshipTechnologyOptions} placeholder={internship.technology} name="technology" style={{width:"75%"}}>
-                        </Form.Select>
+                    <Grid stackable >
+                        <Grid.Row columns={2} >
+                            <Grid.Column>
+                                <Form.Field style={{marginTop:"10px"}}>
+                                    <Form.Select label="Technology:" onChange={this.handleSelectChange} options={internshipTechnologyOptions} placeholder={internship.technology} name="technology" >
+                                    </Form.Select>
+                                </Form.Field>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Form.Field style={{marginTop:"10px"}}>
+                                    <Form.Select label="Internship duration:"  onChange={this.handleSelectChange} options={internshipDurationOptions}             placeholder={internship.duration} name="duration">
+                                    </Form.Select>
+                                </Form.Field>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row columns={2} >
+                            <Grid.Column>
+                                <Form.Field >
+                                    <Form.Select label="Paid internship" onChange={this.handleSelectChange} options={internshipPaidOptions}             placeholder={internship.paid} name="paidInternship">
+                                    </Form.Select>
+                                </Form.Field>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Form.Field >
+                                    <Form.Input type="date" label="Deadline for applying:" onChange={this.handleSelectChange} value={date} placeholder={internship.date} name="date">
+                                    </Form.Input>
+                                </Form.Field>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                    <Form.Field style={{marginTop:"30px"}}>
+                        <Form.Input name="city"  label={"City: "} value={city} onChange={this.handleChange} placeholder={internship.city} />
                     </Form.Field>
-                    <Form.Field >
-                        <label>Internship duration</label>
-                        <Form.Select  onChange={this.handleSelectChange} options={internshipDurationOptions}             placeholder={internship.duration} name="duration" style={{width:"75%"}}>
-                        </Form.Select>
-                    </Form.Field>
-                    <Form.Field >
-                        <label>Paid internship</label>
-                        <Form.Select  onChange={this.handleSelectChange} options={internshipPaidOptions}             placeholder={internship.paid} name="paidInternship" style={{width:"75%"}}>
-                        </Form.Select>
-                    </Form.Field>
-                    <Form.Field inline>
-                        <label>Deadline for applying</label>
-                        <label>Date picker</label>
-                    </Form.Field>
-                    <Form.Field inline>
-                        <label>Earliest start date</label>
-                        <label>Date picker</label>
-                    </Form.Field>
-                    <Button disabled={isDisabled} style={{marginTop:"50px",marginBottom:"50px"}} type='submit'>
+                    <Container style={{textAlign:"center"}}>
+                    <Button disabled={isDisabled} style={{marginTop:"20px", background:"#d0efff"}} type='submit'>
                         Update Changes
                     </Button>
+                    </Container>
                 </Form>
+                </Container>
                 <Container style={{textAlign:"center"}}>
-                    <p style={{marginRight:"250px"}}>
-                        Disable option:WHAT IS DISABLE OPTION!
-                    </p>
-
-                    <Button onClick={this.handleOpenConformation} style={{marginRight:"250px"}} >
+                    <Button onClick={this.handleOpenConformation} style={{marginTop:"20px", background:"#d0efff"}} >
                         Disable Internship
                     </Button>
+                    
                     <Confirm open={conformationIsOpen} onCancel={this.handleCloseConformation} onConfirm={this.handleDisable}  content='Are you sure that you want to disable this internship?' confirmButton="Disable"/>
                 </Container>    
-                </Container>
+            </Card>
             </Container>
         )
         }else{

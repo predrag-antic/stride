@@ -23,15 +23,15 @@ class UserProjects extends React.Component{
                         <div>
                             {this.props.myProjects.map((project)=>{
                                 return (
-                                <div key={project.id} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center", height:"120px", marginTop:"20px",verticalAlign:"middle"}}>
-                                    <h3 style={{paddingTop:"20px"}}>{project.title}</h3>
-                                    <Button as={NavLink} to={`project-detail/${project.id}`} style={{textAlign:"center", background:"#d0efff"}}>
+                                <div key={project.id} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center",verticalAlign:"middle", margin:"20px 0px", padding:"20px 5px"}}>
+                                    <h3 style={{}}>{project.title}</h3>
+                                    <Button as={NavLink} to={`project-detail/${project.id}`} style={{textAlign:"center", background:"#d0efff", marginTop:"10px"}}>
                                         Details
                                     </Button>
-                                    <Button as={NavLink} to={`update-project/${project.id}`} style={{textAlign:"center", background:"#d0efff"}}>
+                                    <Button as={NavLink} to={`update-project/${project.id}`} style={{textAlign:"center", background:"#d0efff",marginTop:"10px"}}>
                                         Update
                                     </Button>    
-                                    <Button as={NavLink} to={`users-project-applications/${project.id}`} style={{textAlign:"center", background:"#d0efff"}}>
+                                    <Button as={NavLink} to={`users-project-applications/${project.id}`} style={{textAlign:"center", background:"#d0efff",marginTop:"10px"}}>
                                         Users Applications
                                     </Button>                             
                                 </div>

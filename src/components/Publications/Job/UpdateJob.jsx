@@ -1,4 +1,4 @@
-import {Button, Container,Form,Checkbox,TextArea,Select, Confirm } from 'semantic-ui-react';
+import {Button, Container,Form,Checkbox,TextArea,Select, Confirm,Card,Grid } from 'semantic-ui-react';
 
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux' 
@@ -55,6 +55,7 @@ class UpdateJob extends React.Component{
         technology:'',
         availablePosition: '',
         remote:false,
+        city: '',
         errors: [],
         loading: false,
         isDisabled:true,
@@ -83,6 +84,7 @@ class UpdateJob extends React.Component{
             description:job.description,
             position:job.position,
             technology:job.technology,
+            city:job.city,
             availablePosition:job.availablePositions,
             remote: job.remote,
             isDisabled:!this.state.isDisabled
@@ -112,63 +114,70 @@ class UpdateJob extends React.Component{
 
     render(){
         const {job} = this.props;
-        const {title,description,position,availablePositions,remote,isDisabled,conformationIsOpen} = this.state;
+        const {title,description,position,availablePositions,remote,isDisabled,conformationIsOpen,city} = this.state;
         
         if(job!==null) {
             return(
-                <Container style={{width:"100%",height:"100%"}}>
-                    <h1 style={{textAlign:"center",marginRight:"250px"}}> Job </h1>
+                <Container style={{marginTop:"7em"}}>
+                    {/* <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}>Job</h1> */}
+                    <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
                     <Container style={{textAlign:"center"}}>
-                    <p style={{marginRight:"250px"}}>
-                        If you want to update Internship, please set initial state first!
-                    </p>
-                    <Checkbox label="Set Initial State" onClick={this.setInitialState} style={{marginRight:"250px"}}/>
-                </Container>
-                    <Container style={{textAlign:"center",marginTop:"50px"}}> 
-                        <Form onSubmit={this.handleUpdate} style={{marginRight:"250px"}}>
+                        <Checkbox label="If you want to update Internship, please set initial state first!" onClick={this.setInitialState} style={{textAlign:"center"}}/>
+                    </Container>    
+                        <Form onSubmit={this.handleUpdate} style={{marginTop:"40px"}}>
                             <Form.Field >
-                                <label>Title</label>
-                                <input name="title" value={title} onChange={this.handleChange} placeholder={job.title} 
-                                        style={{width:"75%"}}/>
+                                <Form.Input name="title" label="Title: " value={title} onChange={this.handleChange} placeholder={job.title} style={{}}/>
                             </Form.Field>
-                            <Form.Field>
-                                <label>Job Description</label>
-                                <TextArea name="description" value={description} onChange={this.handleChange} 
-                                placeholder={job.description} style={{width:"75%"}}/>
+                            <Form.Field style={{marginTop:"10px"}}>
+                                <Form.TextArea name="description" label="Job description:" value={description} onChange={this.handleChange} 
+                                placeholder={job.description} style={{}}/>
                             </Form.Field>
-                            <Form.Field >
-                                <label>Job position</label>
-                                <Form.Select  onChange={this.handleSelectChange} options={jobPositionsOptions} placeholder={job.position} name="position" style={{width:"75%"}}>
-                                </Form.Select>
+                            <Grid stackable >
+                                <Grid.Row columns={2} >
+                                    <Grid.Column>
+                                    <Form.Field style={{marginTop:"10px"}}>
+                                            <Form.Select label="Job position:" onChange={this.handleSelectChange} options={jobPositionsOptions} placeholder={job.position} name="position" style={{}}>
+                                            </Form.Select>
+                                        </Form.Field>
+                                    </Grid.Column>
+                                    <Grid.Column>
+                                        <Form.Field style={{marginTop:"10px"}}>
+                                            <Form.Select label="Technology:"  onChange={this.handleSelectChange} options={jobTechnologyOptions} placeholder={job.technology} name="technology" style={{}}>
+                                            </Form.Select>
+                                        </Form.Field>
+                                    </Grid.Column>
+                                </Grid.Row>
+                                <Grid.Row columns={2} >
+                                    <Grid.Column>
+                                        <Form.Field style={{marginTop:"0px"}}>
+                                            <Form.Input name="availablePosition" label="Number of available positons :" value={availablePositions} onChange={this.handleChange} placeholder={job.availablePositions} type="number" min="1"  style={{}}/>
+                                        </Form.Field>
+                                    </Grid.Column>
+                                    <Grid.Column>
+                                        <Form.Field style={{paddingTop:"30px"}}>
+                                            <Checkbox value="remote" label="Remote:" name="remote" onChange={this.handleChangeRemote} checked={remote} toggle />
+                                        </Form.Field>
+                                    </Grid.Column>
+                                </Grid.Row>
+                                </Grid>
+                            <Form.Field style={{marginTop:"30px"}}>
+                                <Form.Input name="city"  label={"City: "} value={city} onChange={this.handleChange} placeholder={job.city} />
                             </Form.Field>
-                            <Form.Field >
-                                <label>Technology</label>
-                                <Form.Select  onChange={this.handleSelectChange} options={jobTechnologyOptions} placeholder="Technology" name="technology" style={{width:"75%"}}>
-                                </Form.Select>
-                            </Form.Field>
-                            <Form.Field >
-                                <label>Number of available positons for this job</label>
-                                <input name="availablePosition" value={availablePositions} onChange={this.handleChange} placeholder={job.availablePositions} type="number" min="1"  style={{width:"75%"}}/>
-                            </Form.Field>
-                            <Form.Field inline>
-                                <label>Remote</label>
-                                <Checkbox value="remote" name="remote" onChange={this.handleChangeRemote} checked={remote} toggle />
-                            </Form.Field>
-                            <Button disabled={isDisabled} style={{marginTop:"50px",marginBottom:"50px"}} type='submit'>
+                            <Container style={{textAlign:"center"}}>
+                                <Button  disabled={isDisabled} style={{marginTop:"20px", background:"#d0efff",textAlign:"center"}} type='submit'>
                                 Update Changes
                             </Button>
+                            </Container>
                         </Form>
                         <Container style={{textAlign:"center"}}>
-                            <p style={{marginRight:"250px"}}>
-                                Disable option:
-                            </p>
-
-                            <Button onClick={this.handleOpenConformation} style={{marginRight:"250px"}} >
-                                Disable Internship
+                            <Button onClick={this.handleOpenConformation} style={{marginTop:"20px", background:"#d0efff"}}>
+                                Disable Job
                             </Button>
+
                             <Confirm open={conformationIsOpen} onCancel={this.handleCloseConformation} onConfirm={this.handleDisable}  content='Are you sure that you want to disable this job?' confirmButton="Disable"/>
-                        </Container>    
-                    </Container>
+                        </Container>
+                    
+                    </Card>
                 </Container>
             )
         }

@@ -25,8 +25,8 @@ class CompanyInternships extends React.Component{
                         <div>
                             {this.props.myInternships.map((internship)=>{
                                 return (
-                                <div key={internship.id} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center", height:"120px", marginTop:"20px",verticalAlign:"middle"}}>
-                                    <h3 style={{paddingTop:"20px"}}>{internship.title}</h3>
+                                <div key={internship.id} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center",verticalAlign:"middle", margin:"20px 0px", padding:"20px 5px"}}>
+                                    <h3 >{internship.title}</h3>
                                     <Button as={NavLink} to={`internship-detail/${internship.id}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Details
                                     </Button>
@@ -36,7 +36,7 @@ class CompanyInternships extends React.Component{
                                     <Button as={NavLink} to={`users-internship-applications/${internship.id}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Users Applications
                                     </Button>         
-                                    <p>{moment(internship.createdAt.toDate()).format('MMMM Do YYYY / h:mm:ss a')}</p>                          
+                                    <p style={{marginTop:"10px"}}>{moment(internship.createdAt.toDate()).format('MMMM Do YYYY / h:mm:ss a')}</p>                          
                                 </div>
                                 )
                             })}

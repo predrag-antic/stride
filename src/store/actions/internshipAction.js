@@ -5,6 +5,8 @@ export const createInternship= (newInternship) => {
         const profile=getState().firebase.profile;
         const uid=getState().firebase.auth.uid;
         const internshipAuthor = getState().firebase.profile;
+        console.log(newInternship.city);
+        console.log(newInternship.date);
 
         firestore
         .collection("internships")
@@ -51,8 +53,8 @@ export const updateInternship= (updatedInternship,updatedInternshipId) => {
             technology:updatedInternship.technology,
             duration:updatedInternship.duration,
             paid:updatedInternship.paidInternship,
-            date: updateInternship.date,
-            city: updateInternship.city
+            date: updatedInternship.date,
+            city: updatedInternship.city
         })
         .then(()=>{   //this part is for updating all users 
 
