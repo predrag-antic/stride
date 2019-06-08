@@ -80,7 +80,7 @@ class InternshipPage extends React.Component{
                 <h1 style={{textAlign:"center", fontFamily:"Nexa Regular", fonSize:"30px"}}>Internships</h1>
                 <Container style={{textAlign:"center", marginTop:"30px"}}>
                 <Container  style={{marginBottom:"30px"}}>
-                        <Form onSubmit={this.handleSetFilter} >
+                        <Form onSubmit={this.handleSetFilter}>
                             <Form.Group>
                                 <Form.Select  onChange={this.handleSelect} options={internshipTechnologyOptions} label="Technology:"  placeholder="All" name="internshipTechnology" >
                                 </Form.Select>
@@ -95,7 +95,7 @@ class InternshipPage extends React.Component{
                         </Form>
                     </Container>
                     <Container >
-                    {
+                        {
                             internships!==undefined?
                             internships.length===0?
                             <h3 style={{marginTop:"60px"}}>No internships for this filter</h3> //ovde nesto drugo da ide ne h3

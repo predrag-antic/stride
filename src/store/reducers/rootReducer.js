@@ -9,6 +9,7 @@ import { firebaseReducer } from 'react-redux-firebase';
 import projectReducer from './projectReducer';
 import jobFilterReducer from './jobFilterReducer'
 import internshipFilterReducer from './internshipFilterReducer'
+import projectFilterReducer from './projectFilterReducer'
 import projectApplicationReducer from './projectApplicationsReducer';
 
 const rootReducer = combineReducers({
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     firebase: firebaseReducer,
     jobfilters:jobFilterReducer,
     internshipfilters:internshipFilterReducer,
+    projectfilters:projectFilterReducer,
     projectApplications: projectApplicationReducer
 });
 
