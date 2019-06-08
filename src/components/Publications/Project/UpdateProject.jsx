@@ -159,25 +159,6 @@ class UpdateProject extends React.Component{
                             </Button>
                             <Confirm open={conformationIsOpen} onCancel={this.handleCloseConformation} onConfirm={this.handleDisable}  content='Are you sure that you want to disable this job?' confirmButton="Disable"/>
                         </Container>    
-                        {/*<Container>
-                            {
-                                userApplications===undefined?
-                                <Spinner/>
-                                :
-                                userApplications.length===0?
-                                <h3>0 prijavljenih</h3>
-                                :
-                                userApplications.map((userProfile)=>{
-                                return(
-                                    <div key={userProfile.userId} style={{textAlign:"center",marginRight:"250px",height:"150px",     marginTop:"5px",borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
-                                        <h3>{userProfile.userName}</h3>
-                                        <h3>{userProfile.userEmail}</h3>
-                                    </div>
-                                    )
-                                })
-                            } 
-                        </Container>
-                    */}
                     </Container>
                 </Container>
             )
@@ -212,12 +193,6 @@ export default compose(
     firestoreConnect((props)=>[
         { 
             collection: 'projects' 
-        }//,
-       // {
-        //    collection:'projects',
-        //    doc:props.projectId,
-        //    subcollections:[{collection:'userApplications'}],
-        //    storeAs: 'userApplications'
-       // }
+        }
     ])
 )(UpdateProject)

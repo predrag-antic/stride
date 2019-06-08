@@ -24,6 +24,7 @@ import UserProjects from './components/Publications/Project/UserProjects'
 import UpdateProject from './components/Publications/Project/UpdateProject'
 import UsersJobApplication from './components/Applications/UsersApplications/UsersJobApplication'
 import UsersInternshipApplication from './components/Applications/UsersApplications/UsersInternshipApplication'
+import UsersProjectApplication from './components/Applications/UsersApplications/UsersProjectApplication'
 
 var routes = [
   {
@@ -206,6 +207,13 @@ var routes = [
     name: "Users Internship Application",
     icon: "ni ni-tv-2 text-primary",
     component: UsersInternshipApplication,
+    layout: ""
+  },
+  {
+    path: "/users-project-applications/:id",
+    name: "Users Project Application",
+    icon: "ni ni-tv-2 text-primary",
+    component: UsersProjectApplication,
     layout: ""
   }
 ];

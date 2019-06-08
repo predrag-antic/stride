@@ -30,7 +30,10 @@ class UserProjects extends React.Component{
                                     </Button>
                                     <Button as={NavLink} to={`update-project/${project.id}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Update
-                                    </Button>                                    
+                                    </Button>    
+                                    <Button as={NavLink} to={`users-project-applications/${project.id}`} style={{textAlign:"center", background:"#d0efff"}}>
+                                        Users Applications
+                                    </Button>                             
                                 </div>
                                 )
                             })}
