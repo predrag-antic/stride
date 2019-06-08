@@ -15,6 +15,7 @@ export const createJob= (newJob) => {
             position:newJob.position,
             technology:newJob.technology,
             availablePositions:newJob.availablePosition,
+            city:newJob.city,
             remote:newJob.remote,
             createdAt: new Date(),
             jobAuthorName: jobAuthor.companyName,
@@ -48,7 +49,8 @@ export const updateJob= (updatedJob,updatedJobId) => {
             position:updatedJob.position,
             technology:updatedJob.technology,
             availablePositions:updatedJob.availablePosition,
-            remote: updatedJob.remote
+            remote: updatedJob.remote,
+            city:updateJob.city
         })
         .then(()=>{   //this part is for updating all users 
 

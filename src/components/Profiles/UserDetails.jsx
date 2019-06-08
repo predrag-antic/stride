@@ -31,7 +31,7 @@ const UserDetails = (props) => {
                                     {profile.fullname}
                                 </Form.Field>
                                     <label style={{display:'block',marginBottom:"10px"}}>Email:</label>
-                                    <Form.Field style={{decoration:"none", fontSize:"18px", color:"black",fontWeight:"bold"}} href={profile.website} target="_blank">
+                                    <Form.Field style={{decoration:"none", fontSize:"18px", color:"black",fontWeight:"bold"}} >
                                         {profile.email}
                                     </Form.Field>
                             </Grid.Column>
@@ -53,7 +53,7 @@ const UserDetails = (props) => {
                                </Grid.Column>
                                <Grid.Column>
                                    <label>Postcode:</label>
-                            <Form.Field style={{fontWeight:"bold", marginTop:"10px", fontSize:"22px", color:"black"}} href={profile.website} target="_blank">
+                            <Form.Field style={{fontWeight:"bold", marginTop:"10px", fontSize:"22px", color:"black"}}>
                                 {profile.postcode}
                             </Form.Field>
                                </Grid.Column>

@@ -27,22 +27,36 @@ class InternshipDetails extends React.Component{
                     <Container style={{textAlign: 'center', marginTop: '30px'}}>
                         <Form>
                         <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
-                            <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", verticalAlign:"middle"}}>
+                            <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", lineHeight: 1}}>
                                 { internship.title }
                             </Form.Field>
                         <Divider style={{margin:"20px"}}></Divider>  
                             <Grid stackable >
-                            <Grid.Row columns={3} style={{margin:"0px 50px"}}>
+                            <Grid.Row columns={2} style={{margin:"0px 50px"}}>
+                                <Grid.Column>
+                                    <label >City:</label>
+                                    <Form.Field style={{fontSize:"22px", marginTop:"10px",fontWeight:"bold" }}>
+                                        { internship.city }
+                                    </Form.Field>
+                                </Grid.Column>
                                 <Grid.Column>
                                     <label >Duration:</label>
                                     <Form.Field style={{fontSize:"22px", marginTop:"10px",fontWeight:"bold" }}>
                                         { internship.duration }
                                     </Form.Field>
                                 </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row columns={3} style={{margin:"0px 50px"}}>
                                 <Grid.Column>
                                     <label >Technology:</label>
                                     <Form.Field style={{fontSize:"22px", marginTop:"10px",fontWeight:"bold" }}>
                                         { internship.technology }
+                                    </Form.Field>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <label >Deadline for applying:</label>
+                                    <Form.Field style={{fontSize:"22px", marginTop:"10px", fontWeight:"bold"}}>
+                                        { internship.date }
                                     </Form.Field>
                                 </Grid.Column>
                                 <Grid.Column>

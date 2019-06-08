@@ -28,16 +28,16 @@ class JobDetails extends React.Component {
                 <Container style={{textAlign: 'center', marginTop: '30px'}}>
                     <Form>
                     <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
-                    <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", verticalAlign:"middle"}}>
+                    <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", lineHeight: 1}}>
                          { job.title }
                     </Form.Field>
                     <Divider style={{margin:"20px"}}></Divider>  
                     <Grid stackable >
-                           <Grid.Row columns={3} style={{margin:"0px 50px"}}>
+                           <Grid.Row columns={2} style={{margin:"0px 50px"}}>
                                 <Grid.Column>
-                                    <label >Position:</label>
+                                    <label >City:</label>
                                     <Form.Field style={{fontSize:"22px", marginTop:"10px", fontWeight:"bold"}}>
-                                        { job.position }
+                                        { job.city }
                                     </Form.Field>
                                 </Grid.Column>
                                 <Grid.Column>
@@ -46,13 +46,29 @@ class JobDetails extends React.Component {
                                         { job.technology }
                                     </Form.Field>
                                 </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row columns={3} style={{margin:"0px 50px"}}>
+                                <Grid.Column>
+                                    <label >Position:</label>
+                                    <Form.Field style={{fontSize:"22px", marginTop:"10px", fontWeight:"bold"}}>
+                                        { job.position }
+                                    </Form.Field>
+                                </Grid.Column>
                                 <Grid.Column>
                                     <label >Available positions:</label>
                                     <Form.Field style={{fontSize:"22px", marginTop:"10px",fontWeight:"bold" }}>
                                         { job.availablePositions }
                                     </Form.Field>
                                 </Grid.Column>
-                            </Grid.Row>
+                                <Grid.Column>
+                                    <label >Remote:</label>
+                                    <Form.Field style={{fontSize:"22px",fontWeight:"bold" }}>
+                                        {job.remote===true?
+                                        <p>Yes</p>:<p>No</p>
+                                        }
+                                    </Form.Field>
+                                </Grid.Column>
+                            </Grid.Row> 
                     </Grid>
                     <Divider style={{margin:"30px 20px"}}></Divider>  
                     <Form.Field>

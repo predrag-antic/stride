@@ -1,4 +1,4 @@
-import {Button, Container,Form,Checkbox,TextArea,Select,Card, Message } from 'semantic-ui-react';
+import {Button, Container,Form,Checkbox,TextArea,Select,Card, Message, Grid } from 'semantic-ui-react';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -47,6 +47,7 @@ class CreateJob extends React.Component{
     state = {
         title: '',
         description: '',
+        city: '',
         position: '',
         technology:'',
         availablePosition: '',
@@ -86,9 +87,9 @@ class CreateJob extends React.Component{
         }
     }
 
-    isFormEmpty = ({ title ,description,availablePosition}) => {
+    isFormEmpty = ({ title ,description,availablePosition, city}) => {
         return !title.length || !description.length || 
-                !availablePosition.length ;
+                !availablePosition.length || !city.length;
     }
 
     displayErrors = errors => errors.map((error,i) => <p key={i}>{error.message}</p>);
@@ -112,7 +113,7 @@ class CreateJob extends React.Component{
 
     render(){
 
-        const {title,description,position,availablePosition,remote,errors} = this.state;
+        const {title,description,city,position,availablePosition,remote,errors} = this.state;
 
         return(
 
@@ -135,20 +136,38 @@ class CreateJob extends React.Component{
                         <Form.TextArea name="description" label={"Job description: *"} value={description} onChange={this.handleChange} 
                         placeholder='Please insert job description'/>
                     </Form.Field>
-                    <Form.Field style={{marginTop:"10px"}}>
-                        <Form.Select label={"Job position:"} onChange={this.handlePositionSelectChange} options={jobPositionsOptions} placeholder="Please select job position" name="position" >
-                        </Form.Select>
+                    <Grid stackable >
+                           <Grid.Row columns={2} >
+                               <Grid.Column>
+                                    <Form.Field style={{marginTop:"10px"}}>
+                                        <Form.Select label={"Job position:"} onChange={this.handlePositionSelectChange} options={jobPositionsOptions} placeholder="Please select job position" name="position" >
+                                        </Form.Select>
+                                    </Form.Field>
+                               </Grid.Column>
+                               <Grid.Column>
+                                   <Form.Field style={{marginTop:"10px"}}>
+                                        <Form.Select label={"Technology:"} onChange={this.handleTechnologySelectChange} options={jobTechnologyOptions} placeholder="Please select technology" name="technology" >
+                                        </Form.Select>
+                                    </Form.Field>
+                               </Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row columns={2}>
+                               <Grid.Column>
+                                    <Form.Field style={{marginTop:"0px"}}>
+                                        <Form.Input name="availablePosition"  label={"Number of available positions: *"} value={availablePosition} onChange={this.handleChange} placeholder='Please insert number of available positions for this job' type="number" min="1" />
+                                    </Form.Field>
+                               </Grid.Column>
+                               <Grid.Column>
+                                   <Form.Field style={{paddingTop:"30px"}}>
+                                        <Checkbox value="remote" label={"Remote"} name="remote" onChange={this.handleChangeRemote} toggle />
+                                    </Form.Field>
+                               </Grid.Column>
+                            </Grid.Row>
+                    </Grid>
+                    <Form.Field style={{marginTop:"30px"}}>
+                        <Form.Input name="city"  label={"City: *"} value={city} onChange={this.handleChange} placeholder='Please insert city' />
                     </Form.Field>
-                    <Form.Field style={{marginTop:"10px"}}>
-                        <Form.Select label={"Technology:"} onChange={this.handleTechnologySelectChange} options={jobTechnologyOptions} placeholder="Please select technology" name="technology" >
-                        </Form.Select>
-                    </Form.Field>
-                    <Form.Field style={{marginTop:"10px"}}>
-                        <Form.Input name="availablePosition"  label={"Number of available positions: *"} value={availablePosition} onChange={this.handleChange} placeholder='Please insert number of available positions for this job' type="number" min="1" />
-                    </Form.Field>
-                    <Form.Field inline style={{marginTop:"20px"}}>
-                        <Checkbox value="remote" label={"Remote"} name="remote" onChange={this.handleChangeRemote} toggle />
-                    </Form.Field>
+                    
                     <Button style={{marginTop:"20px", background:"#d0efff"}} type='submit'>Publish</Button>
                 </Card>
                 </Form>

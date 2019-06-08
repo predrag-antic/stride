@@ -54,19 +54,19 @@ const CompanyDetails = (props) => {
                            <Grid.Row columns={3} style={{marginTop:"10px"}}>
                                 <Grid.Column stretched>
                                     <label >Founded:</label>
-                                    <Form.Field style={{fontWeight:"bold", marginTop:"10px", fontSize:"22px", color:"black"}} href={profile.website} target="_blank">
+                                    <Form.Field style={{fontWeight:"bold", marginTop:"10px", fontSize:"22px", color:"black"}}>
                                         {profile.founded}
                                     </Form.Field>
                                 </Grid.Column>
                                 <Grid.Column stretched>
                                     <label>Headquarters:</label>
-                                    <Form.Field style={{fontWeight:"bold", marginTop:"10px",fontSize:"22px", color:"black"}} href={profile.website} target="_blank">
+                                    <Form.Field style={{fontWeight:"bold", marginTop:"10px",fontSize:"22px", color:"black"}}>
                                         {profile.headquarters}
                                     </Form.Field>
                                 </Grid.Column>
                                 <Grid.Column stretched>
                                     <label>Number of employees:</label>
-                                    <Form.Field style={{fontWeight:"bold", marginTop:"10px", fontSize:"22px", color:"black"}} href={profile.website} target="_blank">
+                                    <Form.Field style={{fontWeight:"bold", marginTop:"10px", fontSize:"22px", color:"black"}}>
                                         {profile.numOfEmployees}
                                     </Form.Field>
                                 </Grid.Column> 

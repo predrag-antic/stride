@@ -55,7 +55,7 @@ class Login extends React.Component {
         return (
             <Grid textAlign="center" verticalAlign="middle" className="welcome" style={{marginLeft:'0rem',marginTop:'0rem'}}>
                 <Grid.Column style={{maxWidth: 450}}>
-                    <Header as="h1" textAlign="center" style={{color:"white",fontSize:"px",fontFamily:"Nexa",fontWeight:"600"}}>
+                    <Header as="h1" textAlign="center" style={{color:"white",fontFamily:"Nexa Bold",fontWeight:"600"}}>
                         <Image src={require('../../assets/logo.png')} to='/appWelcome' as={NavLink}/><br></br>
                         Login to Stride
                     </Header>

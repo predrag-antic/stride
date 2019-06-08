@@ -25,10 +25,10 @@ class AppWelcome extends React.Component{
                 </Container>  
                 </Menu>
                 <div style={{textAlign:'center',verticalAlign:'middle',paddingTop:'200px'}}>
-                    <p style={{color:'white',fontSize:'50px',zIndex:'1',position:'relative',textAlign:'center',verticalAlign:'center',fontFamily:'Nexa', fontWeight:'600'}}>
+                    <p style={{color:'white',fontSize:'50px',zIndex:'1',position:'relative',textAlign:'center',verticalAlign:'center',fontFamily:'Nexa Bold'}}>
                         Welcome to Stride!
                     </p>
-                    <p style={{color:'white',fontSize:'20px',zIndex:'1',textAlign:'center',fontFamily:'Nexa', fontWeight:'400',padding:'0px 300px'}}>
+                    <p style={{color:'white',fontSize:'20px',zIndex:'1',textAlign:'center',fontFamily:'Nexa Regular',padding:'0px 300px'}}>
                         Esse excepteur do eu et duis dolore nostrud.Ad exercitation duis aute aliquip. 
                         Sit consectetur Lorem eu velit est ut proident deserunt irure. Culpa minim aliqua sint velit excepteur minim est ex id Lorem. 
                         Occaecat et officia commodo ipsum commodo enim aute ipsum ea consectetur esse exercitation. 

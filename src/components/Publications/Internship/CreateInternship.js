@@ -1,4 +1,4 @@
-import {Button, Container, Form,TextArea,Checkbox, Card, Message } from 'semantic-ui-react';
+import {Button, Container, Form,TextArea,Checkbox, Card, Message,Grid } from 'semantic-ui-react';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -59,6 +59,8 @@ class CreateInternship extends React.Component{
         technology: '',
         duration:'',
         paidInternship:'',
+        date:'',
+        city:'',
         errors: [],
         loading: false
     }
@@ -89,9 +91,9 @@ class CreateInternship extends React.Component{
         }
     }
 
-    isFormEmpty = ({ title ,description, duration, paidInternship}) => {
-        return !title.length || !description.length || 
-                !duration.length || !paidInternship.length ;
+    isFormEmpty = ({ title ,description, duration, paidInternship,city,date}) => {
+        return !title.length || !description.length  || !date.length ||
+                !duration.length || !paidInternship.length || !city.length;
     }
 
     displayErrors = errors => errors.map((error,i) => <p key={i}>{error.message}</p>);
@@ -116,7 +118,7 @@ class CreateInternship extends React.Component{
 
     render(){
 
-        const {title,description,technology,duration,errors} = this.state;
+        const {title,description,date,technology,duration,city,errors} = this.state;
 
         return(
             <Container  style={{marginTop:"7em"}}>
@@ -132,32 +134,46 @@ class CreateInternship extends React.Component{
                 <Form onSubmit={this.handlePublish}>
                 <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
                     <Form.Field >
-                        <Form.Input name="title" value={title} label={"Title: *"} onChange={this.handleChange} placeholder='Title' />
+                        <Form.Input name="title" value={title} label={"Title: *"} onChange={this.handleChange} placeholder='Please insert internship title' />
                     </Form.Field>
                     <Form.Field style={{marginTop:"10px"}}>
                         <Form.TextArea name="description" label={"Internship description: *"} value={description} onChange={this.handleChange} 
-                         placeholder='Please describe a internship...' />
+                         placeholder='Please insert internship description' />
                     </Form.Field>
-                    <Form.Field style={{marginTop:"10px"}}>
-                        <Form.Select label={"Technology: "} onChange={this.handleSelectChange} options={internshipTechnologyOptions} placeholder="Please insert technology" name="technology">
-                        </Form.Select>
+                    <Grid>
+                        <Grid.Row columns={2}>
+                            <Grid.Column>
+                                <Form.Field style={{marginTop:"10px"}}>
+                                    <Form.Select label={"Technology: "} onChange={this.handleSelectChange} options={internshipTechnologyOptions} placeholder="Please insert technology" name="technology">
+                                    </Form.Select>
+                                </Form.Field>
+                            </Grid.Column>
+                            <Grid.Column>
+                                <Form.Field style={{marginTop:"10px"}}>
+                                    <Form.Select label={"Internship duration *"} onChange={this.handleSelectChange} options={internshipDurationOptions} placeholder="Please insert internship duration" name="duration" >
+                                    </Form.Select>
+                                </Form.Field>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row columns={2}>
+                            <Grid.Column>
+                                <Form.Field style={{marginTop:"0px"}}>
+                                    <Form.Select label={"Paid internship: *"} onChange={this.handleSelectChange} options={internshipPaidOptions} placeholder="Please inser if internship is paid" name="paidInternship" >
+                                    </Form.Select>
+                                </Form.Field>
+                            </Grid.Column>
+                            <Grid.Column>
+                                 <Form.Field style={{marginTop:"0px"}}>
+                                    <Form.Input type="date" name="date" min={new Date()} label={"Deadline for applying: *"} onChange={this.handleChange} placeholder={"Insert date"}/>
+                                </Form.Field >
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                    <Form.Field style={{marginTop:"30px"}}>
+                        <Form.Input name="city"  label={"City: *"} value={city} onChange={this.handleChange} placeholder='Please insert city' />
                     </Form.Field>
-                    <Form.Field style={{marginTop:"10px"}}>
-                        <Form.Select label={"Internship duration *"} onChange={this.handleSelectChange} options={internshipDurationOptions} placeholder="Please insert internship duration" name="duration" >
-                        </Form.Select>
-                    </Form.Field>
-                    <Form.Field style={{marginTop:"10px"}}>
-                        <Form.Select label={"Paid internship: *"} onChange={this.handleSelectChange} options={internshipPaidOptions} placeholder="Please inser if internship is paid" name="paidInternship" >
-                        </Form.Select>
-                    </Form.Field>
-                    <Form.Field inline style={{marginTop:"10px"}}>
-                        <label>Deadline for applying</label>
-                        <label>Date picker</label>
-                    </Form.Field >
-                    <Form.Field inline style={{marginTop:"10px"}}>
-                        <label>Earliest start date</label>
-                        <label>Date picker</label>
-                    </Form.Field>
+                    
+                    
                     <Button style={{marginTop:"20px", background:"#d0efff"}} type='submit'>Publish</Button>
                 </Card>
                 </Form>
