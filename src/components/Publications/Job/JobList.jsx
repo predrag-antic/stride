@@ -11,7 +11,6 @@ class JobList extends React.Component{
             return  <Spinner/>;
         }else{ 
             return(
-                <div>
                     <Grid stackable >
                         <Grid.Row columns={3}>
                         {this.props.listOfJobs.map((job)=>{
@@ -40,7 +39,6 @@ class JobList extends React.Component{
                         })}
                         </Grid.Row>
                     </Grid>
-                </div>
             )
             }
         

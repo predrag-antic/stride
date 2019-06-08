@@ -17,22 +17,22 @@ class CompanyJobs extends React.Component{
                    
         if(myJobs){
             return(
-                <Container style={{width:"100%",height:"100%"}}>
-                    <h1 style={{textAlign:"center",marginRight:"250px"}}> COMPANY JOBS </h1>
-                    <Container style={{textAlign:"center",marginTop:"50px",width:"100%",height:"100%"}}>
+                <Container style={{marginTop:"7em"}}>
+                    <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> Company jobs </h1>
+                    
+                    <Container style={{textAlign:"center",marginTop:"50px"}}>
                         <Container >
                         <div>
                             {this.props.myJobs.map((job)=>{
                                 return (
-                                <div key={job.id} style={{textAlign:"center",marginRight:"250px",height:"150px",marginTop:"5px",
-                                borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
-                                    <h3>{job.title}</h3>
-                                    <Button as={NavLink} to={`job-detail/${job.id}`}>
+                                <div key={job.id} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center", height:"120px", marginTop:"20px",verticalAlign:"middle"}}>
+                                    <h3 style={{paddingTop:"20px"}}>{job.title}</h3>
+                                    <Button as={NavLink} to={`job-detail/${job.id}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Details
                                     </Button>
-                                    <Button as={NavLink} to={`update-job/${job.id}`} style={{textAlign:"center", borderColor:"#dee2e8",borderWidth:"1px"}}>
+                                    <Button as={NavLink} to={`update-job/${job.id}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Update
-                                    </Button>   
+                                    </Button> 
                                 </div>
                                 )
                             })}
@@ -45,8 +45,8 @@ class CompanyJobs extends React.Component{
         else
         {
             return (
-                <div style={{textAlign: 'center', marginRight: "250px"}}>
-                    <p>You didn't add jobs publication yet</p>
+                <div style={{textAlign:'center'}}>
+                    <h3 style={{marginTop:"60px"}}>You haven't added any jobs yet.</h3>
                 </div>
                 )
         }

@@ -14,13 +14,12 @@ class MyJobApplicationsPage extends React.Component{
     render(){
         const {myJobApplications}=this.props;
         return(
-            <Container style={{width:"100%",height:"100%"}}>
-                <h1 style={{textAlign:"center",marginRight:"250px"}}> My Job Applications </h1>
-                <Container style={{textAlign:"center",marginTop:"50px",width:"100%",height:"100%"}}>
+            <Container style={{marginTop:"7em"}}>
+                <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> My Job Applications </h1>
+                <Container style={{textAlign:"center",marginTop:"50px"}}>
                     <Container >
                         <MyJobApplicationsList listOfMyJobApplications={myJobApplications}>
                         </MyJobApplicationsList>
-                        <h3>Lista poslova za koje je user prijavljen!</h3>
                     </Container>
                 </Container>
             </Container>

@@ -8,7 +8,8 @@ import {Link} from 'react-router-dom'
 import { render } from 'react-dom';
 
 import  { applyToProject } from '../../../store/actions/projectAplicationAciton';
-import {Button, Container, Form,TextArea,Checkbox,Divider } from 'semantic-ui-react';
+import {Button, Container, Form,TextArea,Checkbox,Divider,Grid,Card } from 'semantic-ui-react';
+import Spinner from '../../../Spinner';
  
 class ProjectDetails extends React.Component {
 
@@ -23,40 +24,66 @@ class ProjectDetails extends React.Component {
         
     if ( project && (alreadyApplied!==undefined) ) {
         return (
-            <div style={{textAlign:'center', marginRight: 250, marginTop:"250px",
-                borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
-                <div>
-                    <div>
-                        <h1 style={{fontSize: 40}}>{ project.title }</h1>
-                        <p style={{fontSize: 20}}> Project description: <br/> { project.description }</p>
-                        <p style={{fontSize: 20}}>Project tehnology: <br/> { project.tehnology }</p>
-                        <p style={{fontSize: 20}}>Project duration: <br/> { project.duration }</p>
-                        {
+            <Container style={{marginTop:"7em"}}>
+                    <Container style={{textAlign: 'center', marginTop: '30px'}}>
+                        <Form>
+                        <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
+                            <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", verticalAlign:"middle"}}>
+                                { project.title }
+                            </Form.Field>
+                            <Divider style={{margin:"20px"}}></Divider>
+                            <Grid stackable >
+                            <Grid.Row columns={2} style={{margin:"0px 50px"}}>
+                                <Grid.Column>
+                                    <label >Duration:</label>
+                                    <Form.Field style={{fontSize:"22px", marginTop:"10px",fontWeight:"bold" }}>
+                                        { project.duration }
+                                    </Form.Field>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <label >Technology:</label>
+                                    <Form.Field style={{fontSize:"22px", marginTop:"10px",fontWeight:"bold" }}>
+                                        { project.technology }
+                                    </Form.Field>
+                                </Grid.Column>
+                            </Grid.Row>
+                            </Grid>
+                            <Divider style={{margin:"30px 20px"}}></Divider>  
+                            <Form.Field>
+                                <h2>Project description</h2>
+                                <p style={{padding:"20px 40px"}}>{project.description}</p>
+                            </Form.Field> 
+                            <Divider style={{margin:"20px"}}></Divider>
+                            {
                                 alreadyApplied? 
-                                <h4>Hey there! You already applied for this!</h4>
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                Hey there! You already applied for this!
+                                </Form.Field>
                                 :
                                 project.isAvailable?
-                                <Button onClick={this.handleApply}>   
+                                <Button onClick={this.handleApply} style={{marginTop:"20px", background:"#d0efff"}}>
                                     Apply
                                 </Button>
                                 :
-                                <h4>This project is closed!</h4>
-                        }
-                        <Link to = {'/company-detail/' + project.authorId}>
-                            <p>Published by: {project.projectAuthorName} </p>
-                        </Link>
-                        <p>Published:  {moment(project.createdAt.toDate()).format('MMMM Do YYYY h:mm:ss a')}</p>
-                        
-                    </div>
-                </div>
-            </div>
+                                <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
+                                    This project is closed!
+                                </Form.Field>
+                            }
+                            <p style={{marginTop:"20px"}}>Published by:
+                            <Link style={{marginLeft:"5px"}} to = {'/company-detail/' + project.authorId}>
+                                 {project.projectAuthorName} 
+                            </Link>
+                            </p>
+                            <p>{moment(project.createdAt.toDate()).format('MMMM Do YYYY / h:mm:ss a')}</p>
+                        </Card>
+                        </Form>
+                    </Container>
+            </Container>
         )
     }
     else {
         return (
-            <div style={{textAlign: 'center', marginRight: 250}}>
-                <p>Loading project...</p>
-            </div>
+            <Spinner/>
             )
     }
 }

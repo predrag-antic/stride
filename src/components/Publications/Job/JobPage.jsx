@@ -74,17 +74,17 @@ class JobPage extends React.Component{
     render(){
         const {jobs}=this.props;
         return(
-            <Container style={{width:"100%",height:"100%",marginTop:"5em"}}>
-                <h1 style={{textAlign:"center"}}> JOBS PAGE </h1>
-                <Container style={{textAlign:"center",width:"100%",height:"100%"}}>
-                    <Container  style={{marginBottom:"10px"}}>
-                        <Form onSubmit={this.handleSetFilter} style={{marginRight:"250px"}}>
+            <Container style={{marginTop:"7em"}}>
+                <h1 style={{textAlign:"center", fontFamily:"Nexa Regular", fonSize:"30px"}}>Jobs</h1>
+                <Container style={{textAlign:"center",marginTop:"30px"}}>
+                    <Container style={{marginBottom:"30px"}}> 
+                        <Form onSubmit={this.handleSetFilter}>
                             <Form.Group>
-                                <Form.Select  onChange={this.handleSelectJobPosition} options={jobPositionsOptions}              label="Position"  placeholder="All" name="jobPosition" style={{width:"20px"}}>
+                                <Form.Select  onChange={this.handleSelectJobPosition} options={jobPositionsOptions} label="Position:"  placeholder="All" name="jobPosition" >
                                 </Form.Select>
-                                <Form.Select  onChange={this.handleSelectJobTechnology} options={jobTechnologyOptions}           label="Technology" placeholder="All" name="jobTechnology" style={{width:"20px"}}>
+                                <Form.Select  onChange={this.handleSelectJobTechnology} options={jobTechnologyOptions}  label="Technology:" placeholder="All" name="jobTechnology" >
                                 </Form.Select>
-                                <Button  type='submit'>
+                                <Button style={{width:"190px", background:"#d0efff", marginTop:"24px",marginLeft:"10px"}} type='submit'>
                                     Search
                                 </Button >
                             </Form.Group>
@@ -94,7 +94,7 @@ class JobPage extends React.Component{
                         {
                             jobs!==undefined?
                             jobs.length===0?
-                            <h3>No jobs for this filter</h3> //ovde nesto drugo da ide ne h3
+                            <h3 style={{marginTop:"60px"}}>No jobs for this filter</h3> //ovde nesto drugo da ide ne h3
                             :
                             <JobList listOfJobs={jobs}/>
                             :

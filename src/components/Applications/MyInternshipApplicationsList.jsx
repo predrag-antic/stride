@@ -1,5 +1,5 @@
 import { Button, Container } from 'semantic-ui-react';
-import {Link } from 'react-router-dom'
+import {Link,NavLink } from 'react-router-dom'
 import Spinner from '../../Spinner'
 import moment from 'moment'
 
@@ -18,13 +18,11 @@ class MyInternshipApplicationsList extends React.Component{
                     {
                         this.props.listOfMyInternshipApplications.map((myApplication)=>{
                             return (
-                            <div key={myApplication.internshipId} style={{textAlign:"center",marginRight:"250px",height:"150px",     marginTop:"5px",borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
+                            <div key={myApplication.internshipId} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center", height:"120px", marginTop:"20px",verticalAlign:"middle"}}>
                                 <h3>{myApplication.internshipTitle}</h3>
-                                <Link to={`internship-detail/${myApplication.internshipId}`}>
-                                    <Button>
+                                    <Button as={NavLink} to={`internship-detail/${myApplication.internshipId}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Internship Details
                                     </Button>
-                                </Link>
                             </div>
                             )
                         })

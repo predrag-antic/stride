@@ -17,20 +17,19 @@ class CompanyInternships extends React.Component{
                    
         if(myInternships){
             return(
-                <Container style={{width:"100%",height:"100%"}}>
-                    <h1 style={{textAlign:"center",marginRight:"250px"}}> COMPANY INTERNSHIPS </h1>
-                    <Container style={{textAlign:"center",marginTop:"50px",width:"100%",height:"100%"}}>
+                <Container style={{marginTop:"7em"}}>
+                    <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> Company internships </h1>
+                    <Container style={{textAlign:"center",marginTop:"50px"}}>
                         <Container >
                         <div>
                             {this.props.myInternships.map((internship)=>{
                                 return (
-                                <div key={internship.id} style={{textAlign:"center",marginRight:"250px",height:"150px",marginTop:"5px",
-                                borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
-                                    <h3>{internship.title}</h3>
-                                    <Button as={NavLink} to={`internship-detail/${internship.id}`}>
+                                <div key={internship.id} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center", height:"120px", marginTop:"20px",verticalAlign:"middle"}}>
+                                    <h3 style={{paddingTop:"20px"}}>{internship.title}</h3>
+                                    <Button as={NavLink} to={`internship-detail/${internship.id}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Details
                                     </Button>
-                                    <Button as={NavLink} to={`update-internship/${internship.id}`} style={{textAlign:"center", borderColor:"#dee2e8",borderWidth:"1px"}}>
+                                    <Button as={NavLink} to={`update-internship/${internship.id}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Update
                                     </Button>                                    
                                 </div>
@@ -45,8 +44,8 @@ class CompanyInternships extends React.Component{
         else if(myInternships!=undefined)
         {
             return (
-                <div style={{textAlign: 'center', marginRight: "250px"}}>
-                    <h1>You didn't add internship publication yet</h1>
+                <div style={{textAlign:'center'}}>
+                    <h3 style={{marginTop:"60px"}}>You havent't added any internship yet.</h3>
                 </div>
                 )
         }

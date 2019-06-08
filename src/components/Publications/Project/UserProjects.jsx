@@ -16,20 +16,19 @@ class UserProjects extends React.Component{
                    
         if(myProjects){
             return(
-                <Container style={{width:"100%",height:"100%"}}>
-                    <h1 style={{textAlign:"center",marginRight:"250px"}}> User's projects </h1>
-                    <Container style={{textAlign:"center",marginTop:"50px",width:"100%",height:"100%"}}>
+                <Container style={{marginTop:"7em"}}>
+                    <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> User projects </h1>
+                    <Container style={{textAlign:"center",marginTop:"50px"}}>
                         <Container >
                         <div>
                             {this.props.myProjects.map((project)=>{
                                 return (
-                                <div key={project.id} style={{textAlign:"center",marginRight:"250px",height:"150px",marginTop:"5px",
-                                borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
-                                    <h3>{project.title}</h3>
-                                    <Button as={NavLink} to={`project-detail/${project.id}`}>
+                                <div key={project.id} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center", height:"120px", marginTop:"20px",verticalAlign:"middle"}}>
+                                    <h3 style={{paddingTop:"20px"}}>{project.title}</h3>
+                                    <Button as={NavLink} to={`project-detail/${project.id}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Details
                                     </Button>
-                                    <Button as={NavLink} to={`update-project/${project.id}`} style={{textAlign:"center", borderColor:"#dee2e8",borderWidth:"1px"}}>
+                                    <Button as={NavLink} to={`update-project/${project.id}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Update
                                     </Button>                                    
                                 </div>
@@ -44,8 +43,8 @@ class UserProjects extends React.Component{
         else if(myProjects!=undefined)
         {
             return (
-                <div style={{textAlign: 'center', marginRight: "250px"}}>
-                    <h1>You haven't added any projects yet!</h1>
+                <div style={{textAlign: 'center'}}>
+                    <h3 style={{marginTop:"60px"}}>You haven't added any projects yet!</h3>
                 </div>
                 )
         }

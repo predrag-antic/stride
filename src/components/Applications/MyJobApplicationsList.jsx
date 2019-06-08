@@ -1,5 +1,5 @@
 import { Button, Container } from 'semantic-ui-react';
-import {Link } from 'react-router-dom'
+import {Link,NavLink } from 'react-router-dom'
 import Spinner from '../../Spinner'
 import moment from 'moment'
 
@@ -14,22 +14,18 @@ class MyJobApplicationsList extends React.Component{
             return  <Spinner/>;
         }else{ 
             return(
-                <div>
-                    {
                         this.props.listOfMyJobApplications.map((myJobApplication)=>{
                             return (
-                            <div key={myJobApplication.jobId} style={{textAlign:"center",marginRight:"250px",height:"150px",     marginTop:"5px",borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
-                                <h3>{myJobApplication.jobTitle}</h3>
-                                <Link to={`job-detail/${myJobApplication.jobId}`}>
-                                    <Button>
+                            <div key={myJobApplication.jobId} style={{borderLeft:"10px solid #03254c",background:"white", textAlign:"center", height:"120px", marginTop:"20px",verticalAlign:"middle"}}>
+                                <h3 style={{paddingTop:"20px"}}>{myJobApplication.jobTitle}</h3>
+                                    <Button as={NavLink} to={`job-detail/${myJobApplication.jobId}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Job Details
                                     </Button>
-                                </Link>
+                                
                             </div>
                             )
                         })
-                    }
-                </div>
+                    
                 )
             }
         }

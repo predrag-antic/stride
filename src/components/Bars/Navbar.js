@@ -89,13 +89,21 @@ class Navbar extends React.Component
                             null
                             :
                             <DropdownItem to='/company-jobs' as={NavLink}>
-                                <i /> Company jobs
+                                <i /> Posted jobs
                             </DropdownItem>
                              }
                              {/*<DropdownItem to='/profile-posts' as={NavLink}>
                                 <i /> My posts
                             </DropdownItem>*/}
                             
+                        {userOrCompany===undefined?
+                        <div/>:userOrCompany==="User"?
+                            <DropdownItem to='/my-job-applications' as={NavLink}>
+                                <i /> My job applications
+                            </DropdownItem>
+                            :
+                            null
+                        }
                         {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
                             <DropdownItem to='/my-applications' as={NavLink}>
@@ -106,16 +114,8 @@ class Navbar extends React.Component
                              }
                         {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
-                            <DropdownItem to='/my-job-applications' as={NavLink}>
-                                <i /> My job applications
-                            </DropdownItem>
-                            :
-                            null
-                             }
-                        {userOrCompany===undefined?
-                        <div/>:userOrCompany==="User"?
                             <DropdownItem to='/user-projects' as={NavLink}>
-                                <i /> My projects
+                                <i /> Posted projects
                             </DropdownItem>
                             :
                             null
@@ -125,14 +125,10 @@ class Navbar extends React.Component
                             null
                             :
                             <DropdownItem to='/company-internships' as={NavLink}>
-                                <i /> Company's Internships
+                                <i /> Posted Internships
                             </DropdownItem>
                              }
 
-                            <DropdownItem to='/resume' as={NavLink}>
-                            <i />
-                                Resume
-                            </DropdownItem>
                             <Dropdown.Item>
                                 <Logout />
                             </Dropdown.Item>

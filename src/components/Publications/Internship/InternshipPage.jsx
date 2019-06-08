@@ -76,19 +76,19 @@ class InternshipPage extends React.Component{
     render(){
         const {internships}=this.props;
         return(
-            <Container style={{width:"100%",height:"100%",marginTop:"7em"}}>
-                <h1 style={{textAlign:"center", fontFamily:"Nexa", fonSize:"30px"}}>Internships</h1>
+            <Container style={{marginTop:"7em"}}>
+                <h1 style={{textAlign:"center", fontFamily:"Nexa Regular", fonSize:"30px"}}>Internships</h1>
                 <Container style={{textAlign:"center", marginTop:"30px"}}>
-                <Container  style={{marginBottom:"10px"}}>
-                        <Form onSubmit={this.handleSetFilter} style={{marginRight:"250px"}}>
+                <Container  style={{marginBottom:"30px"}}>
+                        <Form onSubmit={this.handleSetFilter} >
                             <Form.Group>
-                                <Form.Select  onChange={this.handleSelect} options={internshipTechnologyOptions}    label="Technology"  placeholder="All" name="internshipTechnology" style={{width:"20px"}}>
+                                <Form.Select  onChange={this.handleSelect} options={internshipTechnologyOptions} label="Technology:"  placeholder="All" name="internshipTechnology" >
                                 </Form.Select>
-                                <Form.Select  onChange={this.handleSelect} options={internshipDurationOptions}           label="Duration" placeholder="All" name="internshipDuration" style={{width:"20px"}}>
+                                <Form.Select  onChange={this.handleSelect} options={internshipDurationOptions}  label="Duration:" placeholder="All" name="internshipDuration" >
                                 </Form.Select>
-                                <Form.Select  onChange={this.handleSelect} options={internshipPaidOptions}           label="Paid/Unpaid" placeholder="All" name="internshipPaid" style={{width:"20px"}}>
+                                <Form.Select  onChange={this.handleSelect} options={internshipPaidOptions}  label="Paid/Unpaid" placeholder="All" name="internshipPaid">
                                 </Form.Select>
-                                <Button  type='submit'>
+                                <Button style={{width:"190px", background:"#d0efff", marginTop:"24px",marginLeft:"10px"}} type='submit'>
                                     Search
                                 </Button >
                             </Form.Group>
@@ -98,7 +98,7 @@ class InternshipPage extends React.Component{
                     {
                             internships!==undefined?
                             internships.length===0?
-                            <h3>No internships for this filter</h3> //ovde nesto drugo da ide ne h3
+                            <h3 style={{marginTop:"60px"}}>No internships for this filter</h3> //ovde nesto drugo da ide ne h3
                             :
                             <InternshipList listOfInternships={internships}/>
                             :
