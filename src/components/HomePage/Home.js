@@ -3,7 +3,8 @@ import { Button, Container, Grid, Card, Image, Icon, Divider } from 'semantic-ui
 import {connect} from 'react-redux';
 import React from 'react';
 import {Link,NavLink} from 'react-router-dom';
-
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 import Welcome from './Welcome';
 import Spinner from '../../Spinner'
 
@@ -47,7 +48,7 @@ class Home extends React.Component{
                                 </Card.Content>
                                 <Card.Content extra>
                                     <Icon name='briefcase' />
-                                       300+ jobs
+                                       {this.props.jobsNumber}+ jobs
                                 </Card.Content>
                             </Card>
                         </Grid.Column>
@@ -65,7 +66,7 @@ class Home extends React.Component{
                                 </Card.Content>
                                 <Card.Content extra>
                                     <Icon name='graduation cap' />
-                                    100+ internships
+                                    {this.props.internshipsNumber}+ internships
                                 </Card.Content>
                             </Card>
                         </Grid.Column>
@@ -83,7 +84,7 @@ class Home extends React.Component{
                                 </Card.Content>
                                 <Card.Content extra>
                                     <Icon name='laptop' />
-                                        50+ projects
+                                        {this.props.projectsNumber}+ projects
                                 </Card.Content>
                             </Card>
                         </Grid.Column>
@@ -98,9 +99,47 @@ class Home extends React.Component{
 
 const mapStateToProps=state=>{
     console.log(state);
+
+    var jobsNumber=0;
+    var internshipsNumber=0;
+    var projectsNumber=0;
+
+    var jobs=state.firestore.ordered.jobs;
+    var internships=state.firestore.ordered.internships;
+    var projects=state.firestore.ordered.projects;
+
+    if(jobs!==undefined){
+        jobsNumber=jobs.length;
+    }
+
+    if(internships!==undefined){
+        internshipsNumber=internships.length;
+    }
+
+    if(projects!==undefined){
+        projectsNumber=projects.length;
+    }
+
+
     return{
         userName: state.firebase.profile.name,
-        firstAccess: state.firebase.profile.firstAccess
+        firstAccess: state.firebase.profile.firstAccess,
+        jobsNumber:jobsNumber,
+        internshipsNumber:internshipsNumber,
+        projectsNumber:projectsNumber
 }}
 
-export default connect(mapStateToProps,null)(Home);
+export default compose(
+    connect(mapStateToProps,null),
+    firestoreConnect([
+        { 
+            collection: 'jobs'
+        },
+        { 
+            collection: 'internships' 
+        },
+        { 
+            collection: 'projects' 
+        }
+    ])
+    )(Home);

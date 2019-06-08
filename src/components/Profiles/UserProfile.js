@@ -1,4 +1,4 @@
-import {Button, Container, Checkbox, Form, Card, Grid, Divider, Message, Image, Icon } from 'semantic-ui-react';
+import {Button, Container, Checkbox, Form, Card, Grid, Divider, Message, Image, Icon,Progress } from 'semantic-ui-react';
 import FileUploader from 'react-firebase-file-uploader';
 import React from 'react';
 import {connect} from 'react-redux';
@@ -22,7 +22,8 @@ class UserProfile extends React.Component{
         avatar: '',
         avatarUrl: '',
         resume: '',
-        resumeUrl: ''
+        resumeUrl: '',
+        progress:0
     }
 
     isFormValid = () => {
@@ -91,6 +92,10 @@ class UserProfile extends React.Component{
         .then(url => this.setState({
             resumeUrl: url
         }))
+    }
+
+    handleProgress=(event)=>{
+        this.setState({progress:event})
     }
 
     render(){
@@ -184,12 +189,13 @@ class UserProfile extends React.Component{
                                 randomizeFilename
                                 storageRef={firebase.storage().ref('resumes')}
                                 onUploadSuccess={this.handleResumeUploadSucces}
+                                onProgress ={this.handleProgress}
                         />
+                        <Progress percent={this.state.progress} progress  indicating />
                     </Form.Field>
                     <Button style={{marginTop:"15px", background:"#d0efff"}}>Submit</Button>
                 </Card>
                 </Form>
-                
                 </Container>
             </Container>
             )  

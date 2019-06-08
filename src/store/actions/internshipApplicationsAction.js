@@ -24,7 +24,8 @@ export const applyUserToInternship= (internship,internshipId) => {
             .add({   //random ID for this doc
                 userId:userId,
                 userName:profile.name,
-                userEmail:profile.email
+                userEmail:profile.email,
+                userResumeUrl:profile.resumeUrl
             })
             .then(()=>{
                 console.log(internshipId);

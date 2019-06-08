@@ -114,6 +114,14 @@ class Navbar extends React.Component
                              }
                         {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
+                            <DropdownItem to='/my-project-applications' as={NavLink}>
+                                <i /> My projects applications
+                            </DropdownItem>
+                            :
+                            null
+                             }
+                        {userOrCompany===undefined?
+                        <div/>:userOrCompany==="User"?
                             <DropdownItem to='/user-projects' as={NavLink}>
                                 <i /> Posted projects
                             </DropdownItem>
