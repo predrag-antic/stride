@@ -130,24 +130,24 @@ export default compose(connect(mapStateToProps,mapStateToDispatch),
                     ["position","==",props.position],
                     ["technology","==",props.technology]
                 ],
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }else if(props.position!=="All" && props.technology==="All"){
             return [{
                 collection:'jobs',
                 where:["position","==",props.position],
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }else if(props.position==="All" && props.technology!=="All"){
             return [{
                 collection:'jobs',
                 where:["technology","==",props.technology],
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }else{
             return [{
                 collection:'jobs',
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }
 }

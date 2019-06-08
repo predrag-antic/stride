@@ -137,7 +137,7 @@ export default compose(connect(mapStateToProps,mapDispatchToProps),
                     ["duration","==",props.duration],
                     ["paid","==",props.paid]
                 ],
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }else if(props.technology!=="All" && props.duration==="All" && props.paid==="All"){
             return [{
@@ -145,7 +145,7 @@ export default compose(connect(mapStateToProps,mapDispatchToProps),
                 where:[
                     ["technology","==",props.technology]
                 ],
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }else if(props.technology==="All" && props.duration!=="All" && props.paid==="All"){
             return [{
@@ -153,7 +153,7 @@ export default compose(connect(mapStateToProps,mapDispatchToProps),
                 where:[
                     ["duration","==",props.duration]
                 ],
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }else if(props.technology==="All" && props.duration==="All" && props.paid!=="All"){
             return [{
@@ -161,7 +161,7 @@ export default compose(connect(mapStateToProps,mapDispatchToProps),
                 where:[
                     ["paid","==",props.paid]
                 ],
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }else if(props.technology!=="All" && props.duration!=="All" && props.paid==="All"){
             return [{
@@ -170,7 +170,7 @@ export default compose(connect(mapStateToProps,mapDispatchToProps),
                     ["technology","==",props.technology],
                     ["duration","==",props.duration]
                 ],
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }else if(props.technology!=="All" && props.duration==="All" && props.paid!=="All"){
             return [{
@@ -179,7 +179,7 @@ export default compose(connect(mapStateToProps,mapDispatchToProps),
                     ["technology","==",props.technology],
                     ["paid","==",props.paid]
                 ],
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }else if(props.technology==="All" && props.duration!=="All" && props.paid!=="All"){
             return [{
@@ -188,12 +188,12 @@ export default compose(connect(mapStateToProps,mapDispatchToProps),
                     ["duration","==",props.duration],
                     ["paid","==",props.paid]
                 ],
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }else{
             return [{
                 collection:'internships',
-                orderBy:['createdAt']
+                orderBy:['createdAt','desc']
             }]
         }
     }

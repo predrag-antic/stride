@@ -111,7 +111,7 @@ class UpdateJob extends React.Component{
 
 
     render(){
-        const {job,userApplications} = this.props;
+        const {job} = this.props;
         const {title,description,position,availablePositions,remote,isDisabled,conformationIsOpen} = this.state;
         
         if(job!==null) {
@@ -168,24 +168,6 @@ class UpdateJob extends React.Component{
                             </Button>
                             <Confirm open={conformationIsOpen} onCancel={this.handleCloseConformation} onConfirm={this.handleDisable}  content='Are you sure that you want to disable this job?' confirmButton="Disable"/>
                         </Container>    
-                        <Container>
-                            {
-                                userApplications===undefined?
-                                <Spinner/>
-                                :
-                                userApplications.length===0?
-                                <h3>0 prijavljenih</h3>
-                                :
-                                userApplications.map((userProfile)=>{
-                                return(
-                                    <div key={userProfile.userId} style={{textAlign:"center",marginRight:"250px",height:"150px",     marginTop:"5px",borderRadius:"10px",borderStyle:"solid",borderColor:"#dee2e8",borderWidth:"1px"}}>
-                                        <h3>{userProfile.userName}</h3>
-                                        <h3>{userProfile.userEmail}</h3>
-                                    </div>
-                                    )
-                                })
-                            }
-                        </Container>
                     </Container>
                 </Container>
             )
@@ -211,7 +193,6 @@ const mapStateToProps = (state, ownProps) => {
     return {
         job: job,
         jobId:thisJobId,
-        userApplications:state.firestore.ordered.userApplications
     }
 }
 
@@ -220,12 +201,6 @@ export default compose(
     firestoreConnect((props)=>[
         { 
             collection: 'jobs' 
-        },
-        {
-            collection:'jobs',
-            doc:props.jobId,
-            subcollections:[{collection:'userApplications'}],
-            storeAs: 'userApplications'
         }
     ])
 )(UpdateJob)

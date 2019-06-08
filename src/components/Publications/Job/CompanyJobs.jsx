@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
 import {Link } from 'react-router-dom';
+import moment from 'moment'
 
 import { NavLink } from 'react-router-dom';
 
@@ -33,6 +34,10 @@ class CompanyJobs extends React.Component{
                                     <Button as={NavLink} to={`update-job/${job.id}`} style={{textAlign:"center", background:"#d0efff"}}>
                                         Update
                                     </Button> 
+                                    <Button as={NavLink} to={`users-job-applications/${job.id}`} style={{textAlign:"center", background:"#d0efff"}}>
+                                        Users applications 
+                                    </Button> 
+                                    <p>{moment(job.createdAt.toDate()).format('MMMM Do YYYY / h:mm:ss a')}</p>
                                 </div>
                                 )
                             })}
