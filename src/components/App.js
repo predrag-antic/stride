@@ -14,6 +14,7 @@ import { Container } from 'semantic-ui-react';
 import {getAllMyInternshipApplications} from '../store/actions/internshipApplicationsAction'
 import { getAllMyProjectApplications} from '../store/actions/projectAplicationAciton'
 import { getAllMyJobApplications } from '../store/actions/jobApplicationsAction';
+import { Responsive, Segment } from 'semantic-ui-react'
 
 class App extends React.Component{
 
@@ -44,9 +45,11 @@ class App extends React.Component{
     return(
           <Container>
           <BrowserRouter>
-            <Navbar/>
-            <Sidebar/>
-            <div style={{marginLeft:"18em",marginTop:"4em"}}> 
+            <Navbar className="topNav2"/>
+            <Responsive as={Segment} minWidth={768}>
+              <Sidebar/>
+            </Responsive>
+            <div className="centar"> 
               <Switch>{this.getRoutes(routes)}</Switch>
             </div>
           </BrowserRouter> 

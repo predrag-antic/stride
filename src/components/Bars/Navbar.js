@@ -6,6 +6,7 @@ import { NavLink,Link } from 'react-router-dom';
 
 import Logout from '../Auth/Logout';
 import NavbarCompanyLinks from './NavbarLinks/NavbarCompanyLinks'
+import "../App.css"
 
 class Navbar extends React.Component
 {
@@ -17,9 +18,9 @@ class Navbar extends React.Component
                 {firstAccess===true? <Image avatar src={avatar}/>:
                     avatarUrl===null?
                         <div/>:avatarUrl===""?
-                        <Image avatar src={avatar} style={{backgroundColor:"white"}}/>
+                        <Image avatar src={avatar} style={{backgroundColor:"white", objectFit:"cover"}}/>
                         :
-                        <Image avatar src={avatarUrl} style={{backgroundColor:"white"}}/>
+                        <Image avatar src={avatarUrl} style={{backgroundColor:"white", objectFit:"cover"}}/>
                 
                 }
             </span>
@@ -27,8 +28,21 @@ class Navbar extends React.Component
 
         return(
         <>
-            <Menu size="massive" inverted fixed="top" borderless style={{background: '#187bcd',fontSize:'1.2re',paddingLeft:'19em', height:'60px'}} >
+            <Menu size="massive" className="topNav2" inverted fixed="top" borderless style={{background: '#187bcd'}}>
                 <Container fluid>
+
+                    <Menu.Item className="navButton">
+                    <Dropdown text='Stride'>
+                        <Dropdown.Menu>s
+                            <Dropdown.Item to='/home' as={NavLink}><Icon name="home" ></Icon> Home</Dropdown.Item>
+                            <Dropdown.Item to='/aboutUs' as={NavLink}><Icon name="question circle"/>About us</Dropdown.Item>
+                            <Dropdown.Item to='/jobs' as={NavLink}><Icon name="briefcase"/>Jobs</Dropdown.Item>
+                            <Dropdown.Item to='/internships' as={NavLink}><Icon name="graduation" />Internships</Dropdown.Item>
+                            <Dropdown.Item to='/projects' as={NavLink}> <Icon name="laptop"/>Projects</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    </Menu.Item>
+
                     <Menu.Item position="right">
                     {userOrCompany===undefined?
                     <p/>:userOrCompany==="User"?
@@ -90,7 +104,7 @@ class Navbar extends React.Component
                         {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
                             <DropdownItem to='/my-job-applications' as={NavLink}>
-                                <i /> My job applications
+                                <i /> Job applications
                             </DropdownItem>
                             :
                             null
@@ -98,7 +112,7 @@ class Navbar extends React.Component
                         {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
                             <DropdownItem to='/my-applications' as={NavLink}>
-                                <i /> My internship applications
+                                <i /> Internship applications
                             </DropdownItem>
                             :
                             null
@@ -106,7 +120,7 @@ class Navbar extends React.Component
                         {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
                             <DropdownItem to='/my-project-applications' as={NavLink}>
-                                <i /> My projects applications
+                                <i /> Projects applications
                             </DropdownItem>
                             :
                             null

@@ -119,12 +119,12 @@ class UserProfile extends React.Component{
                 <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
                     <Form.Field style={{textAlign:"center"}}>
                     {                    
-                        firstAccess===true?<Image avatar src={avatar} style={{height:"200px",width:"200px",background:"#d0efff", border:'2px solid #eee'}} />:
+                        firstAccess===true?<Image avatar src={avatar} style={{height:"20vw",objectFit:"cover",width:"20vw",overflow:'hidden',position:'relative',background:"#d0efff", border:'2px solid #eee'}} />:
                         avatarUrl===undefined?
                         <div/>:avatarUrl===""?
-                        <Image avatar src={avatar} style={{height:"200px",width:"200px",background:"#d0efff", border:'2px solid #eee'}} />
+                        <Image avatar src={avatar} style={{height:"20vw",objectFit:"cover",width:"20vw",overflow:'hidden',position:'relative',background:"#d0efff", border:'2px solid #eee'}} />
                         :
-                        <Image avatar src={avatarUrl} style={{height:"200px",width:"200px",background:"#d0efff", border:'2px solid #eee'}} />
+                        <Image avatar src={avatarUrl} style={{height:"20vw",objectFit:"cover",width:"20vw",overflow:'hidden',position:'relative',background:"#d0efff", border:'2px solid #eee'}} />
                     }
                     </Form.Field>
                     <Form.Field style={{marginTop:"10px"}}>

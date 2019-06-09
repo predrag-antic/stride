@@ -35,7 +35,7 @@ class Home extends React.Component{
                     <Grid stackable >
                         <Grid.Row columns={3}>
                         <Grid.Column>
-                        <Card as={NavLink} to='/jobs'>
+                        <Card as={NavLink} to='/jobs' centered>
                                 <Image src={require('../../assets/jobs.jpg')} wrapped ui={false} />
                                 <Card.Content>
                                 <Card.Header>Explore Jobs</Card.Header>
@@ -53,7 +53,7 @@ class Home extends React.Component{
                             </Card>
                         </Grid.Column>
                         <Grid.Column>
-                            <Card as={NavLink} to='/internships'>
+                            <Card as={NavLink} to='/internships' centered>
                                 <Image src={require('../../assets/internships.jpg')} wrapped ui={false} />
                                 <Card.Content>
                                 <Card.Header>Explore Internships</Card.Header>
@@ -71,7 +71,7 @@ class Home extends React.Component{
                             </Card>
                         </Grid.Column>
                         <Grid.Column>
-                        <Card as={NavLink} to='/projects'>
+                        <Card as={NavLink} to='/projects' centered>
                                 <Image src={require('../../assets/projects.jpg')} wrapped ui={false} />
                                 <Card.Content>
                                 <Card.Header>Explore Projects</Card.Header>
