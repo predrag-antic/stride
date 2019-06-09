@@ -16,7 +16,7 @@ class UserProjects extends React.Component{
                    
         if(myProjects){
             return(
-                <Container style={{marginTop:"7em"}}>
+                <Container>
                     <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> User projects </h1>
                     <Container style={{textAlign:"center",marginTop:"50px"}}>
                         <Container >

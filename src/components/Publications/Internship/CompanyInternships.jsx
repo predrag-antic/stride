@@ -18,7 +18,7 @@ class CompanyInternships extends React.Component{
                    
         if(myInternships){
             return(
-                <Container style={{marginTop:"7em"}}>
+                <Container>
                     <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> Company internships </h1>
                     <Container style={{textAlign:"center",marginTop:"50px"}}>
                         <Container >
@@ -34,7 +34,7 @@ class CompanyInternships extends React.Component{
                                         Update
                                     </Button>  
                                     <Button as={NavLink} to={`users-internship-applications/${internship.id}`} style={{textAlign:"center", background:"#d0efff"}}>
-                                        Users Applications
+                                        User applications
                                     </Button>         
                                     <p style={{marginTop:"10px"}}>{moment(internship.createdAt.toDate()).format('MMMM Do YYYY / h:mm:ss a')}</p>                          
                                 </div>

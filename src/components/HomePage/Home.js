@@ -21,7 +21,7 @@ class Home extends React.Component{
             return  <Welcome/>
         }else{
             return (
-                <Container style={{marginTop:"7em"}}>
+                <Container>
                     <h1 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Regular", marginBottom:"40px"}}>
                         Welcome {userName}!
                     </h1>

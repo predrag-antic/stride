@@ -88,7 +88,7 @@ class Company extends React.Component{
         const {avatarUrl,avatar,firstAccess}= this.props;
 
         return (
-            <Container style={{marginTop:"7em"}}>
+            <Container >
                 <h1 style={{textAlign:"center", fontSize:"30px", fontFamily:"Nexa Bold"}}>Company information</h1>
 
                 <Container style={{textAlign:"left", marginTop:"30px"}}>

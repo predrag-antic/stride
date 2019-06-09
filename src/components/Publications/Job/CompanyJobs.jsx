@@ -18,7 +18,7 @@ class CompanyJobs extends React.Component{
                    
         if(myJobs){
             return(
-                <Container style={{marginTop:"7em"}}>
+                <Container>
                     <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> Company jobs </h1>
                     
                     <Container style={{textAlign:"center",marginTop:"50px"}}>
@@ -35,7 +35,7 @@ class CompanyJobs extends React.Component{
                                         Update
                                     </Button> 
                                     <Button as={NavLink} to={`users-job-applications/${job.id}`} style={{textAlign:"center", background:"#d0efff"}}>
-                                        Users applications 
+                                        User applications 
                                     </Button> 
                                     <p style={{marginTop:"10px"}}>{moment(job.createdAt.toDate()).format('MMMM Do YYYY / h:mm:ss a')}</p>
                                 </div>

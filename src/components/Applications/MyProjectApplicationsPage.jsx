@@ -14,7 +14,7 @@ class MyProjectApplicationsPage extends React.Component{
     render(){
         const {myProjectApplications}=this.props;
         return(
-            <Container style={{marginTop:"7em"}}>
+            <Container >
                 <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> My Project Applications </h1>
                 <Container style={{textAlign:"center",marginTop:"50px"}}>
                     <Container >

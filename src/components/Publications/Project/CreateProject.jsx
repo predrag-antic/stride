@@ -111,7 +111,7 @@ class CreateProject extends React.Component{
         const {title,description,technology,duration, errors} = this.state;
 
         return(
-            <Container style={{marginTop:"7em"}}>
+            <Container>
                 <h1 style={{textAlign:"center",fontSize:"30px",fontFamily:"Nexa Bold"}}>Project</h1>
                 
                 <Container style={{textAlign:"left",marginTop:"30px"}}> 

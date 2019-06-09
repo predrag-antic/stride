@@ -58,7 +58,7 @@ import {setProjectFilter} from '../../../store/actions/projectFilterAction'
      render(){
         const {projects}=this.props;
         return(
-            <Container style={{marginTop:"7em"}}>
+            <Container >
                  <h1 style={{textAlign:"center", fontFamily:"Nexa Regular", fonSize:"30px"}}>Projects</h1>
                 <Container style={{textAlign:"center",marginTop:"30px"}}>
                     <Container  style={{marginBottom:"30px"}}>

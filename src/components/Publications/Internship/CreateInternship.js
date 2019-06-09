@@ -121,7 +121,7 @@ class CreateInternship extends React.Component{
         const {title,description,date,technology,duration,city,errors} = this.state;
 
         return(
-            <Container  style={{marginTop:"7em"}}>
+            <Container>
                 <h1 style={{textAlign:"center", fontSize:"30px", fontFamily:"Nexa Bold"}}>Internship</h1>
                 
                 <Container style={{textAlign:"left",marginTop:"30px"}}> 

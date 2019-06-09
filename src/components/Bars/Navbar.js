@@ -32,8 +32,8 @@ class Navbar extends React.Component
                 <Container fluid>
 
                     <Menu.Item className="navButton">
-                    <Dropdown text='Stride'>
-                        <Dropdown.Menu>s
+                    <Dropdown text="Stride" style={{fontFamily:"Nexa Regular"}}>
+                        <Dropdown.Menu>
                             <Dropdown.Item to='/home' as={NavLink}><Icon name="home" ></Icon> Home</Dropdown.Item>
                             <Dropdown.Item to='/aboutUs' as={NavLink}><Icon name="question circle"/>About us</Dropdown.Item>
                             <Dropdown.Item to='/jobs' as={NavLink}><Icon name="briefcase"/>Jobs</Dropdown.Item>

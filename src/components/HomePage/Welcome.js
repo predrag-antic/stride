@@ -11,7 +11,7 @@ class Welcome extends React.Component{
         const {userName, userOrCompany }=this.props;
 
         return(
-            <Container style={{marginTop:"7em"}}>
+            <Container>
                 <h1 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Regular", marginBottom:"40px"}}>
                      Welcome to Stride !
                 </h1>
@@ -31,11 +31,11 @@ class Welcome extends React.Component{
                     {console.log()}
                     {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
-                    <Button style={{}} as={NavLink} to="/profile" style={{background:"#d0efff"}}> 
+                    <Button style={{background:"#d0efff"}} as={NavLink} to="/profile"> 
                         Complete Profile
                     </Button>
                     :
-                    <Button style={{}} as={NavLink} to="/company" > 
+                    <Button style={{background:"#d0efff"}} as={NavLink} to="/company" > 
                         Complete Profile
                     </Button>
                 }

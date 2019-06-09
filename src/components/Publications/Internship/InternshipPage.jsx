@@ -76,7 +76,7 @@ class InternshipPage extends React.Component{
     render(){
         const {internships}=this.props;
         return(
-            <Container style={{marginTop:"7em"}}>
+            <Container>
                 <h1 style={{textAlign:"center", fontFamily:"Nexa Regular", fonSize:"30px"}}>Internships</h1>
                 <Container style={{textAlign:"center", marginTop:"30px"}}>
                 <Container  style={{marginBottom:"30px"}}>

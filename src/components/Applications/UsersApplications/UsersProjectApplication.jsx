@@ -15,7 +15,7 @@ class UsersProjectApplication extends React.Component{
                  
         if(userApplications!==null) {
             return(
-                <Container style={{marginTop:"7em"}}>
+                <Container>
                     <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}>Applications for this project</h1>   
                         <Container style={{textAlign:"center",marginTop:"30px"}}>
                             {
