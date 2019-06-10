@@ -27,11 +27,12 @@ class UsersJobApplication extends React.Component{
                                 <h3>There is no applications yet.</h3>
                                 :
                                 userApplications.map((userProfile)=>{
+                                    console.log(userProfile)
                                 return(
                                     <div key={userProfile.userId} style={{display:'flex',verticalAlign:"middle",alignItems:"center",justifyContent:"space-between" ,borderLeft:"10px solid #03254c",background:"white", margin:"20px 0px", padding:"20px 20px"}}>
                                         <p style={{fontSize:"20px",margin:"0px"}}>{userProfile.userName}</p>
                                         <p style={{fontSize:"20px",margin:"0px"}}>{userProfile.userEmail}</p>
-                                        <div>Resume  <Image src={require("../../../assets/icon2.png")} as='a' href={userProfile.resumeUrl} target="_blank" ></Image></div>
+                                        <div>Resume  <Image src={require("../../../assets/icon2.png")} as='a' href={userProfile.userResumeUrl} target="_blank" ></Image></div>
                                     </div>
                                     )
                                 })

@@ -16,12 +16,19 @@ class MyApplicationsPage extends React.Component{
         return(
             <Container>
                 <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> My Internship Applications </h1>
-                <Container style={{textAlign:"center",marginTop:"50px"}}>
-                    <Container >
-                        <MyInternshipApplicationsList listOfMyInternshipApplications={myIntApplications}>
-                        </MyInternshipApplicationsList>
+                {
+                    myIntApplications!==undefined && myIntApplications.length===0?
+                    <Container style={{textAlign:"center",marginTop:"50px"}}>
+                        <h3>You have not applied for any internship jet.</h3>
                     </Container>
-                </Container>
+                    :
+                    <Container style={{textAlign:"center",marginTop:"50px"}}>
+                        <Container >
+                            <MyInternshipApplicationsList listOfMyInternshipApplications={myIntApplications}>
+                            </MyInternshipApplicationsList>
+                        </Container>
+                    </Container>
+                }
             </Container>
         )
     }
