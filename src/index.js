@@ -21,6 +21,7 @@ import Register from './components/Auth/Register'
 
 import firebase from './firebase'
 import AppWelcome from './components/AppWelcome';
+import AboutUsWelcome from './components/HomePage/AboutUsWelcome';
 
 const store=createStore(rootReducer,
     composeWithDevTools(
@@ -37,6 +38,7 @@ class Root extends React.Component{
         <div>
         <Switch>
             <Route exact path="/" component={App}/>
+            <Route path='/about-us-welcome' component={AboutUsWelcome}/>
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
             <Route path='/app-welcome' component={AppWelcome}/>

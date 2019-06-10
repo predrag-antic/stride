@@ -79,12 +79,12 @@ class JobDetails extends React.Component {
                     {
                                 this.props.userOrCompany==="Company"?
                                 <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
-                                    Only users can apply for projects.
+                                    Only users can apply for jobs.
                                 </Form.Field>
                                 :
                                 alreadyApplied? 
                                 <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
-                                   You already applied for this!
+                                   You already applied for this job!
                                 </Form.Field>
                                 :
                                 job.isAvailable?

@@ -63,7 +63,7 @@ class ProjectDetails extends React.Component {
                                 :
                                 alreadyApplied? 
                                 <Form.Field style={{fontSize:"18px", fontWeight:"bold"}}>
-                                    You already applied for this!
+                                    You already applied for this projects!
                                 </Form.Field>
                                 :
                                 (project.authorId===this.props.userId)?

@@ -26,6 +26,9 @@ import UsersJobApplication from './components/Applications/UsersApplications/Use
 import UsersInternshipApplication from './components/Applications/UsersApplications/UsersInternshipApplication'
 import UsersProjectApplication from './components/Applications/UsersApplications/UsersProjectApplication'
 import About from './components/HomePage/About'
+import AboutUsWelcome from './components/HomePage/AboutUsWelcome'
+
+
 
 var routes = [
   {
@@ -222,6 +225,13 @@ var routes = [
     name: "About",
     icon: "ni ni-tv-2 text-primary",
     component: About,
+    layout: ""
+  },
+  {
+    path: "/about-us-welcome",
+    name: "About Us Welcome",
+    icon: "ni ni-tv-2 text-primary",
+    component: AboutUsWelcome,
     layout: ""
   },
   {
