@@ -49,9 +49,6 @@ class Sidebar extends React.Component
                         <Menu.Item as={NavLink} to="/home" style={{paddingLeft:"50px"}}>
                             <Icon name="home" style={{float:"none", marginRight:"10px"}}></Icon> Home
                         </Menu.Item>
-                        <Menu.Item as={NavLink} to="/about-us" style={{paddingLeft:"50px"}}>
-                            <Icon name="question circle" style={{float:"none", marginRight:"10px"}}></Icon> About us
-                        </Menu.Item>
                         <Menu.Item as={NavLink} to="/jobs" style={{paddingLeft:"50px"}}>
                             <Icon name="briefcase" style={{float:"none", marginRight:"10px"}}></Icon> Jobs
                         </Menu.Item>
@@ -60,6 +57,9 @@ class Sidebar extends React.Component
                         </Menu.Item>
                         <Menu.Item as={NavLink} to="/projects" style={{paddingLeft:"50px"}}>
                             <Icon name="laptop" style={{float:"none", marginRight:"10px"}}></Icon> Projects
+                        </Menu.Item>
+                        <Menu.Item as={NavLink} to="/about-us" style={{paddingLeft:"50px"}}>
+                            <Icon name="question circle" style={{float:"none", marginRight:"10px"}}></Icon> About us
                         </Menu.Item>
 
                     </Container>   

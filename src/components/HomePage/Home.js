@@ -22,12 +22,12 @@ class Home extends React.Component{
         }else{
             return (
                 <Container>
-                    <h1 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Regular", marginBottom:"40px"}}>
+                    <h1 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Bold", marginBottom:"40px"}}>
                         Welcome {userName}!
                     </h1>
                     <Divider></Divider>
                     <p style={{textAlign:"center", margin:"60px 0px", fontSize:"18px"}}>
-                    Stride is the #1 job site in the Serbia with over 20 hundred unique visitors every month. Stride strives to put job seekers first, giving them free access to search for jobs, post resumes, and research companies. Every day, we connect thousands of people to new opportunities.
+                    Stride is the #1 job site in the Serbia with 200+ unique visitors every month. Stride strives to put job seekers first, giving them free access to search for jobs, post resumes, and research companies. Every day, we connect thousands of people to new opportunities.
                     </p>
                     <Divider></Divider>
                     <Container style={{textAlign:"center", marginTop:"60px", marginBottom:"60px"}}>

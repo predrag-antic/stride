@@ -19,7 +19,7 @@ class MyApplicationsPage extends React.Component{
                 {
                     myIntApplications!==undefined && myIntApplications.length===0?
                     <Container style={{textAlign:"center",marginTop:"50px"}}>
-                        <h3>You have not applied for any internship jet.</h3>
+                        <h3>You have not applied for any internship yet.</h3>
                     </Container>
                     :
                     <Container style={{textAlign:"center",marginTop:"50px"}}>
