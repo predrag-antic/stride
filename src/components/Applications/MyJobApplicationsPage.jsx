@@ -19,7 +19,7 @@ class MyJobApplicationsPage extends React.Component{
                 {
                     myJobApplications!==undefined && myJobApplications.length===0?
                     <Container style={{textAlign:"center",marginTop:"50px"}}>
-                        <h3>You have not applied for any job jet.</h3>
+                        <h3>You have not applied for any job yet.</h3>
                     </Container>
                     :
                     <Container style={{textAlign:"center",marginTop:"50px"}}>

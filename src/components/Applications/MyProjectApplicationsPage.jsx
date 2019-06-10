@@ -19,7 +19,7 @@ class MyProjectApplicationsPage extends React.Component{
                 {
                     myProjectApplications!==undefined && myProjectApplications.length===0?
                     <Container style={{textAlign:"center",marginTop:"50px"}}>
-                        <h3>You have not applied for any project jet.</h3>
+                        <h3>You have not applied for any project yet.</h3>
                     </Container>
                     :
                     <Container style={{textAlign:"center",marginTop:"50px"}}>
