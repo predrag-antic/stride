@@ -16,12 +16,19 @@ class MyProjectApplicationsPage extends React.Component{
         return(
             <Container >
                 <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> My Project Applications </h1>
-                <Container style={{textAlign:"center",marginTop:"50px"}}>
-                    <Container >
-                        <MyProjectApplicationsList listOfMyProjectApplications={myProjectApplications}>
-                        </MyProjectApplicationsList>
+                {
+                    myProjectApplications!==undefined && myProjectApplications.length===0?
+                    <Container style={{textAlign:"center",marginTop:"50px"}}>
+                        <h3>You have not applied for any project jet.</h3>
                     </Container>
-                </Container>
+                    :
+                    <Container style={{textAlign:"center",marginTop:"50px"}}>
+                        <Container >
+                            <MyProjectApplicationsList listOfMyProjectApplications={myProjectApplications}>
+                            </MyProjectApplicationsList>
+                        </Container>
+                    </Container>
+                }
             </Container>
         )
     }

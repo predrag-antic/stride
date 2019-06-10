@@ -16,12 +16,19 @@ class MyJobApplicationsPage extends React.Component{
         return(
             <Container>
                 <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> My Job Applications </h1>
-                <Container style={{textAlign:"center",marginTop:"50px"}}>
-                    <Container >
-                        <MyJobApplicationsList listOfMyJobApplications={myJobApplications}>
-                        </MyJobApplicationsList>
+                {
+                    myJobApplications!==undefined && myJobApplications.length===0?
+                    <Container style={{textAlign:"center",marginTop:"50px"}}>
+                        <h3>You have not applied for any job jet.</h3>
                     </Container>
-                </Container>
+                    :
+                    <Container style={{textAlign:"center",marginTop:"50px"}}>
+                        <Container >
+                            <MyJobApplicationsList listOfMyJobApplications={myJobApplications}>
+                            </MyJobApplicationsList>
+                        </Container>
+                    </Container>
+                }
             </Container>
         )
     }
