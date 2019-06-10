@@ -25,7 +25,6 @@ class Welcome extends React.Component{
                     </p> 
                     <Divider></Divider>
                 <Container style={{textAlign:"center",marginTop:"60px"}}> 
-                    {console.log()}
                     {userOrCompany===undefined?
                         <div/>:userOrCompany==="User"?
                     <Button style={{background:"#d0efff"}} as={NavLink} to="/profile"> 

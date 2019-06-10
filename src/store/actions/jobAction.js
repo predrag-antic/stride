@@ -36,9 +36,6 @@ export const updateJob= (updatedJob,updatedJobId) => {
         const firestore=getFirestore();
         const companyName=getState().firebase.profile.name;
 
-        console.log(updatedJob);
-        console.log(updatedJobId);
-
         firestore
         .collection("jobs")
         .doc(updatedJobId)
@@ -99,11 +96,6 @@ export const disableJob= (jobId) => {
     return(dispatch, getState, {getFirebase, getFirestore})=>{
 
         const firestore=getFirestore();
-        const profile=getState().firebase.profile;
-        const uid=getState().firebase.auth.uid;
-        const jobAuthor = getState().firebase.profile;
-
-        console.log(jobId);
 
         firestore
         .collection("jobs")

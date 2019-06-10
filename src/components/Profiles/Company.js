@@ -5,7 +5,6 @@ import FileUploader from 'react-firebase-file-uploader';
 import React from 'react';
 import {connect} from 'react-redux';
 import { updateProfile } from '../../store/actions/updateProfile'
-import { stat } from 'fs';
 
 class Company extends React.Component{
     state={
@@ -44,7 +43,6 @@ class Company extends React.Component{
     }
 
     updateProfile=()=>{
-        console.log(this.state)
         this.props.updateProfile(this.state);
     }
 
@@ -191,7 +189,6 @@ const mapDispatchToProps=(dispatch)=>{
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         avatar: state.firebase.profile.avatar,
         avatarUrl: state.firebase.profile.avatarUrl,

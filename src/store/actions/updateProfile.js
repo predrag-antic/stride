@@ -5,10 +5,8 @@ export const updateProfile=(profileInfo)=>{
         const profile=getState().firebase.profile;
         const uid=getState().firebase.auth.uid;
 
-        console.log("Profile uid: "+uid);
 
         if(profile.userOrCompany==="User"){
-            console.log("USER UPDATE");
             firestore
             .collection("profiles")
             .doc(uid)
@@ -39,7 +37,6 @@ export const updateProfile=(profileInfo)=>{
             })
         }
         else{
-            console.log("COMPANY UPDATE");
             firestore
             .collection("profiles")
             .doc(uid)

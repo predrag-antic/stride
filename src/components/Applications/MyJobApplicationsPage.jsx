@@ -1,4 +1,4 @@
-import { Button, Container } from 'semantic-ui-react';
+import {  Container } from 'semantic-ui-react';
 
 import MyJobApplicationsList from './MyJobApplicationsList'
 

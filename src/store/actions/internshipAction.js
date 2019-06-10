@@ -5,8 +5,6 @@ export const createInternship= (newInternship) => {
         const profile=getState().firebase.profile;
         const uid=getState().firebase.auth.uid;
         const internshipAuthor = getState().firebase.profile;
-        console.log(newInternship.city);
-        console.log(newInternship.date);
 
         firestore
         .collection("internships")
@@ -39,9 +37,6 @@ export const updateInternship= (updatedInternship,updatedInternshipId) => {
 
         const firestore=getFirestore();
         const companyeName=getState().firebase.profile.name;
-
-        console.log(updatedInternship);
-        console.log(updatedInternshipId);
 
         firestore
         .collection("internships")
@@ -103,11 +98,6 @@ export const disableInternship= (internshipId) => {
     return(dispatch, getState, {getFirebase, getFirestore})=>{
 
         const firestore=getFirestore();
-        const profile=getState().firebase.profile;
-        const uid=getState().firebase.auth.uid;
-        const internshipAuthor = getState().firebase.profile;
-
-        console.log(internshipId);
 
         firestore
         .collection("internships")

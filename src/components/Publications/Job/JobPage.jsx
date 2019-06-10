@@ -5,8 +5,6 @@ import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
 
-import {getAllJobsFromFirestore} from '../../../store/actions/jobAction'
-
 import React from 'react';
 import {setJobFilter} from '../../../store/actions/jobFilterAction'
 
@@ -68,7 +66,6 @@ class JobPage extends React.Component{
     }
 
     handleSetFilter=()=>{
-        console.log("HI")
         const {jobPosition,jobTechnology}=this.state;
         this.props.setJobFilter(jobPosition,jobTechnology);
     }
@@ -115,7 +112,6 @@ const mapStateToDispatch=(dispatch)=>{
 }
 
 const mapStateToProps=(state)=>{
-    console.log(state);
     return{
         jobs:state.firestore.ordered.jobs,
         position:state.jobfilters.position,

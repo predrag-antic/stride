@@ -4,7 +4,6 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux' 
 import React from 'react';
 import {connect} from 'react-redux';
-import {createJob} from '../../../store/actions/jobAction'
 import Spinner from '../../../Spinner'
 import {updateJob,disableJob} from '../../../store/actions/jobAction'
 
@@ -72,7 +71,6 @@ class UpdateJob extends React.Component{
     }
 
     handleUpdate=()=>{
-        console.log(this.state);
         const {jobId}=this.props;
         this.props.updateJob(this.state,jobId);
         this.props.history.push('/company-jobs');
@@ -102,7 +100,6 @@ class UpdateJob extends React.Component{
 
     handleDisable=()=>{
         const {jobId}=this.props;
-        console.log("Disable");
         
         this.props.disableJob(jobId);
         this.props.history.push('/company-jobs');

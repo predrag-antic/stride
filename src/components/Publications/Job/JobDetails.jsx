@@ -5,16 +5,14 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import moment from 'moment'
 import {Link} from 'react-router-dom'
-import { render } from 'react-dom';
 
 import { applyUserToJob } from '../../../store/actions/jobApplicationsAction';
-import {Button, Container, Form,TextArea,Checkbox,Divider, Card, Grid } from 'semantic-ui-react';
+import {Button, Container, Form,Divider, Card, Grid } from 'semantic-ui-react';
 import Spinner from '../../../Spinner';
  
 class JobDetails extends React.Component {
 
     handleApply=()=>{
-        console.log("APPLY");
         this.props.applyUserToJob(this.props.job,this.props.jobId);
     }
 
@@ -132,7 +130,6 @@ const mapStateToProps = (state, ovdeProps) => {
         if(myJobId===jobId)
         alreadyApplied=true
     })
-    console.log(alreadyApplied);
 
 
     const jobs = state.firestore.data.jobs;

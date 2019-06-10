@@ -5,16 +5,14 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import moment from 'moment'
 import {Link} from 'react-router-dom'
-import { render } from 'react-dom';
 
 import  { applyToProject } from '../../../store/actions/projectAplicationAciton';
-import {Button, Container, Form,TextArea,Checkbox,Divider,Grid,Card } from 'semantic-ui-react';
+import {Button, Container, Form,Divider,Grid,Card } from 'semantic-ui-react';
 import Spinner from '../../../Spinner';
  
 class ProjectDetails extends React.Component {
 
     handleApply=()=>{
-        console.log("APPLY");
         this.props.applyToProject(this.props.project,this.props.projectId);
     }
 
@@ -136,7 +134,6 @@ const mapStateToProps = (state, ovdeProps) => {
         if(myProjectId===projectId)
         alreadyApplied=true
     })
-    console.log(alreadyApplied);
 
 
     const projects = state.firestore.data.projects;

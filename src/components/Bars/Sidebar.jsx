@@ -70,7 +70,6 @@ class Sidebar extends React.Component
 }
 
 const mapStateToProps=state=>{
-    console.log(state);
     return{
         firstAccess: state.firebase.profile.firstAccess
 }}

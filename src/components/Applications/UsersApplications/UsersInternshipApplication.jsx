@@ -1,4 +1,4 @@
-import {Button, Container,Form,Checkbox,TextArea,Image,Select, Confirm } from 'semantic-ui-react';
+import {Button, Container,Image,Select, Confirm } from 'semantic-ui-react';
 
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux' 

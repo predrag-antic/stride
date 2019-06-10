@@ -28,7 +28,6 @@ export const applyUserToInternship= (internship,internshipId) => {
                 userResumeUrl:profile.resumeUrl
             })
             .then(()=>{
-                console.log(internshipId);
                 dispatch({type:"APPLY_USER_TO_INTERNSHIP_SUCCES",internshipId:internshipId})
             })
         })
@@ -54,7 +53,6 @@ export const getAllMyInternshipApplications= () => {
         .then((snapshot)=>{
             var internshipsId=[];
             snapshot.docs.map((internship)=>{
-                console.log(internship.data().internshipId);
                 internshipsId.push(internship.data().internshipId);
             })
             dispatch({type:"GET_ALL_MY_INTERNSHIP_APPLICATIONS_SUCCESS",internshipsId:internshipsId})

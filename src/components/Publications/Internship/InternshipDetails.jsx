@@ -6,14 +6,13 @@ import { compose } from 'redux'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import {applyUserToInternship} from '../../../store/actions/internshipApplicationsAction'
-import {Button, Container, Form,TextArea,Checkbox,Divider,Grid,Card } from 'semantic-ui-react';
+import {Button, Container, Form,Divider,Grid,Card } from 'semantic-ui-react';
 import Spinner from '../../../Spinner';
 
  
 class InternshipDetails extends React.Component{
 
     handleApply=()=>{
-        console.log("APPLY");
         this.props.applyUserToInternship(this.props.internship,this.props.internshipId);
     }
 
@@ -131,7 +130,6 @@ const mapStateToProps = (state, ownProps) => {
         if(myInternshipId===thisInternshipId)
         alreadyApplied=true
     })
-    console.log(alreadyApplied);
     
     const internships = state.firestore.data.internships;
     const internship = internships ? internships[thisInternshipId] : null

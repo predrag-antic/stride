@@ -1,11 +1,10 @@
-import {Button, Container,Form,Checkbox,TextArea,Select, Confirm, Image, Icon } from 'semantic-ui-react';
+import {Button, Container, Image } from 'semantic-ui-react';
 
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux' 
 import React from 'react';
 import {connect} from 'react-redux';
 import Spinner from '../../../Spinner'
-import {Link} from 'react-router-dom'
 
 
 class UsersProjectApplication extends React.Component{

@@ -33,9 +33,6 @@ export const updateProject= (updatedProject,updatedProjectId) => {
         const firestore=getFirestore();
         const userName=getState().firebase.profile.name;
 
-        console.log(updatedProject);
-        console.log(updatedProjectId);
-
         firestore
         .collection("projects")
         .doc(updatedProjectId)
@@ -96,8 +93,6 @@ export const disableProject= (projectId) => {
         const profile=getState().firebase.profile;
         const uid=getState().firebase.auth.uid;
         const projectAuthorName = getState().firebase.profile;
-
-        console.log(projectId);
 
         firestore
         .collection("projects")

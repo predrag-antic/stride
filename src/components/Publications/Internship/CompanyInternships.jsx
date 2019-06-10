@@ -3,7 +3,6 @@ import { Button, Container } from 'semantic-ui-react';
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
-import {Link } from 'react-router-dom';
 import moment from 'moment'
 
 import { NavLink } from 'react-router-dom';
@@ -66,7 +65,7 @@ const mapStateToProps = (state) => {
         internships.map((internship)=>{
             if(internship.authorId===userId){
                 myInternships.push(internship);
-                console.log(internship.title);
+               
             }
         })
     }

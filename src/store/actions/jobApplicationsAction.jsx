@@ -28,7 +28,6 @@ export const applyUserToJob= (job,jobId) => {
                 userResumeUrl:profile.resumeUrl
             })
             .then(()=>{
-                console.log(jobId);
                 dispatch({type:"APPLY_USER_TO_JOB_SUCCES", jobId: jobId})
             })
         })
@@ -54,7 +53,6 @@ export const getAllMyJobApplications= () => {
         .then((snapshot)=>{
             var jobsId=[];
             snapshot.docs.map((job)=>{
-                console.log(job.data().jobId);
                 jobsId.push(job.data().jobId);
             })
             dispatch({type:"GET_ALL_MY_JOB_APPLICATIONS_SUCCESS",jobsId:jobsId})

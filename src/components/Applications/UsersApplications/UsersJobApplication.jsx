@@ -1,10 +1,9 @@
-import {Button, Container,Form,Checkbox,TextArea,Select, Confirm,Image } from 'semantic-ui-react';
+import {Button, Container,Image } from 'semantic-ui-react';
 
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux' 
 import React from 'react';
 import {connect} from 'react-redux';
-import {createJob} from '../../../store/actions/jobAction'
 import Spinner from '../../../Spinner'
 
 

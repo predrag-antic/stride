@@ -3,7 +3,6 @@ import { Button, Container } from 'semantic-ui-react';
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
-import {Link } from 'react-router-dom';
 import moment from 'moment'
 
 import { NavLink } from 'react-router-dom';
@@ -67,7 +66,6 @@ const mapStateToProps = (state) => {
         jobs.map((job)=>{
             if(job.authorId===userId){
                 myJobs.push(job);
-                console.log(job.title);
             }
         })
     }

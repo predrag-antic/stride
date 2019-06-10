@@ -2,7 +2,7 @@ import { Button, Container, Grid, Card, Image, Icon, Divider } from 'semantic-ui
 
 import {connect} from 'react-redux';
 import React from 'react';
-import {Link,NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import Welcome from './Welcome';
@@ -15,7 +15,6 @@ class Home extends React.Component{
         const { firstAccess, userName }=this.props;
 
         if(firstAccess===undefined){ // undefine je sasvim malo dok se ne ucitaju podaci iz firebase/profile-a
-            console.log(firstAccess);
             return  <Spinner/>;
         }else if(firstAccess===true){
             return  <Welcome/>
@@ -97,7 +96,6 @@ class Home extends React.Component{
 }
 
 const mapStateToProps=state=>{
-    console.log(state);
 
     var jobsNumber=0;
     var internshipsNumber=0;

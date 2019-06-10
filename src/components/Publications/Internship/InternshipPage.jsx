@@ -69,7 +69,6 @@ class InternshipPage extends React.Component{
     }
 
     handleSetFilter=()=>{
-        console.log("Set Filter Handle");
         this.props.setInternshipFilter(this.state);
     }
 
@@ -118,7 +117,6 @@ const mapDispatchToProps=(dispatch)=>{
 }
 
 const mapStateToProps=(state)=>{
-    console.log(state);
     return{
         internships:state.firestore.ordered.internships,
         technology:state.internshipfilters.technology,

@@ -70,7 +70,6 @@ const mapStateToProps = (state) => {
         projects.map((project)=>{
             if(project.authorId===userId){
                 myProjects.push(project);
-                console.log(project.title);
             }
         })
     }

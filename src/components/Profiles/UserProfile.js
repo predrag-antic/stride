@@ -1,10 +1,9 @@
-import {Button, Container, Checkbox, Form, Card, Grid, Divider, Message, Image, Icon,Progress } from 'semantic-ui-react';
+import {Button, Container, Checkbox, Form, Card, Grid, Divider, Message, Image,Progress } from 'semantic-ui-react';
 import FileUploader from 'react-firebase-file-uploader';
 import React from 'react';
 import {connect} from 'react-redux';
 import { updateProfile } from '../../store/actions/updateProfile'
 import firebase from 'firebase';
-import { NavLink,Link } from 'react-router-dom';
 
 
 class UserProfile extends React.Component{
@@ -46,7 +45,6 @@ class UserProfile extends React.Component{
     }
     
     updateProfile=()=>{
-        console.log(this.state);
         this.props.updateProfile(this.state);
     }
     
@@ -211,7 +209,6 @@ const mapDispatchToProps=(dispatch)=>{
 }
 
 const mapStateToProps=(state)=>{
-    console.log(state);
     return{
         avatar: state.firebase.profile.avatar,
         avatarUrl: state.firebase.profile.avatarUrl,

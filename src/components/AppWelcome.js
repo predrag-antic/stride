@@ -1,6 +1,6 @@
 import React from "react";
-import {Menu, Button, Container, Image, Icon, Label} from 'semantic-ui-react';
-import { NavLink,Link } from 'react-router-dom';
+import {Menu, Button, Container, Image, Icon} from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 class AppWelcome extends React.Component{
     

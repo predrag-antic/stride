@@ -4,7 +4,6 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux' 
 import React from 'react';
 import {connect} from 'react-redux';
-import {createProject} from '../../../store/actions/projectAction'
 import Spinner from '../../../Spinner'
 import {updateProject,disableProject} from '../../../store/actions/projectAction'
 
@@ -71,7 +70,6 @@ class UpdateProject extends React.Component{
     }
 
     handleUpdate=()=>{
-        console.log(this.state);
         const { projectId } =this.props;
         this.props.updateProject(this.state, projectId);
         this.props.history.push('/user-projects');
@@ -98,7 +96,6 @@ class UpdateProject extends React.Component{
 
     handleDisable=()=>{
         const {projectId}=this.props;
-        console.log("Disable");
 
         this.props.disableProject(projectId);
         this.props.history.push('/user-projects');

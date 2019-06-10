@@ -51,7 +51,6 @@ render(){
 }
 
 const mapStateToProps=state=>{
-    console.log(state);
 
     var jobsNumber=0;
     var internshipsNumber=0;

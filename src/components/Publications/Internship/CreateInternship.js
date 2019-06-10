@@ -1,4 +1,4 @@
-import {Button, Container, Form,TextArea,Checkbox, Card, Message,Grid } from 'semantic-ui-react';
+import {Button, Container, Form, Card, Message,Grid } from 'semantic-ui-react';
 
 import React from 'react';
 import {connect} from 'react-redux';
@@ -190,7 +190,6 @@ const mapDispatchToProps=(dispatch)=>{
 }
 
 const mapStateToProps=(state)=>{
-    console.log(state);
     return{
         error: state.auth.authError
     }

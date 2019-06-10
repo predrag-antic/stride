@@ -4,7 +4,6 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import React from 'react';
 import {connect} from 'react-redux';
-import {createInternship} from '../../../store/actions/internshipAction'
 import Spinner from '../../../Spinner'
 import {updateInternship,disableInternship} from '../../../store/actions/internshipAction'
 
@@ -79,7 +78,6 @@ class UpdateInternship extends React.Component{
     }
 
     handleUpdate=()=>{
-        console.log("pedja");
         const {internshipId}=this.props;
         this.props.updateInternship(this.state,internshipId);
         this.props.history.push('/company-internships');
@@ -109,7 +107,6 @@ class UpdateInternship extends React.Component{
 
     handleDisable=()=>{
         const {internshipId}=this.props;
-        console.log("Disable");
         
         this.props.disableInternship(internshipId);
         this.props.history.push('/company-internships');

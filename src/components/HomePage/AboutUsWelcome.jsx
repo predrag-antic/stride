@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Redirect,NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -56,7 +56,6 @@ render(){
 }
 
 const mapStateToProps=state=>{
-    console.log(state);
 
     var jobsNumber=0;
     var internshipsNumber=0;

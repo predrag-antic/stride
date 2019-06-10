@@ -28,7 +28,6 @@ export const applyToProject= (project,projectId) => {
                 userResumeUrl: profile.resumeUrl
             })
             .then(()=>{
-                console.log(projectId);
                 dispatch({type:"APPLY_USER_TO_PROJECT_SUCCES",projectId:projectId})
             })
         })
@@ -54,7 +53,6 @@ export const getAllMyProjectApplications= () => {
         .then((snapshot)=>{
             var projectsId=[];
             snapshot.docs.map((project)=>{
-                console.log(project.data().projectId);
                 projectsId.push(project.data().projectId);
             })
             dispatch({type:"GET_ALL_MY_PROJECT_APPLICATIONS_SUCCESS",projectsId:projectsId})
