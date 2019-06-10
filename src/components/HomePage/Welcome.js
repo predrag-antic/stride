@@ -17,12 +17,9 @@ class Welcome extends React.Component{
                 </h1>
                 <Divider></Divider>
                 <p style={{margin:"60px 0px", fontSize:"16px", textAlign:"center"}}>
-                    We hope your visit will help you understand the opportunities 
-                    and potential rewards that are available when you take a 
-                    proactive approach to your personal financial situation. 
-                    We created this website to help you gain a better understanding 
-                    of the financial concepts behind insurance, investing, 
-                    retirement, estate planning, and wealth preservation.
+                    Stride is a platform for job and internship search. 
+                    The purpose of the system is to facilitate students, graduates and postgraduates the way to the desired job, 
+                    internship or professional development, and to connect them with companies and employers who will get a young, motivated, and above all, expert staff.
 
                     Please click on button "Complete Profile" to complete your Profile!
                     </p> 

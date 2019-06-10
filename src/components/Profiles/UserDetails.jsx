@@ -21,13 +21,13 @@ const UserDetails = (props) => {
                             <Grid.Column textAlign={"center"}>
                             {profile.avatarUrl===undefined?
                                 <div/>:profile.avatarUrl===""?
-                                <Image avatar src={profile.avatar} style={{height:"150px",width:"150px",background:"#d0efff", border:'2px solid #eee'}} />
+                                <Image avatar src={profile.avatar} style={{height:"15vw",objectFit:"cover",width:"15vw",overflow:'hidden',position:'relative',background:"#d0efff", border:'2px solid #eee'}} />
                                 :
-                                <Image avatar src={profile.avatarUrl} style={{height:"150px",width:"150px",background:"#d0efff", border:'2px solid #eee'}} />
+                                <Image avatar src={profile.avatarUrl} style={{height:"15vw",objectFit:"cover",width:"15vw",overflow:'hidden',position:'relative',background:"#d0efff", border:'2px solid #eee'}} />
                             }
                             </Grid.Column>
                             <Grid.Column verticalAlign={"middle"} width={10} textAlign={"center"}>
-                                <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", verticalAlign:"middle"}}>
+                                <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", verticalAlign:"middle",  lineHeight: 1}}>
                                     {profile.fullname}
                                 </Form.Field>
                                     <label style={{display:'block',marginBottom:"10px"}}>Email:</label>

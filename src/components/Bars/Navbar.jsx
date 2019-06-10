@@ -30,7 +30,19 @@ class Navbar extends React.Component
         <>
             <Menu size="massive" className="topNav2" inverted fixed="top" borderless style={{background: '#187bcd'}}>
                 <Container fluid>
-
+                {firstAccess===true?
+                    <Menu.Item className="navButton">
+                    <Dropdown text="Stride" style={{fontFamily:"Nexa Regular"}}>
+                        <Dropdown.Menu>
+                            <Dropdown.Item to='/home' as={NavLink}><Icon name="home" ></Icon> Home</Dropdown.Item>
+                            <Dropdown.Item to='/aboutUs' as={NavLink}><Icon name="question circle"/>About us</Dropdown.Item>
+                            <Dropdown.Item disabled to='/jobs' as={NavLink}><Icon name="briefcase"/>Jobs</Dropdown.Item>
+                            <Dropdown.Item disabled to='/internships' as={NavLink}><Icon name="graduation" />Internships</Dropdown.Item>
+                            <Dropdown.Item disabled to='/projects' as={NavLink}> <Icon name="laptop"/>Projects</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    </Menu.Item>
+                    :
                     <Menu.Item className="navButton">
                     <Dropdown text="Stride" style={{fontFamily:"Nexa Regular"}}>
                         <Dropdown.Menu>
@@ -42,6 +54,7 @@ class Navbar extends React.Component
                         </Dropdown.Menu>
                     </Dropdown>
                     </Menu.Item>
+                }
 
                     <Menu.Item position="right">
                     {userOrCompany===undefined?

@@ -28,10 +28,10 @@ class AppWelcome extends React.Component{
                     <p style={{color:'white',fontSize:'50px',zIndex:'1',position:'relative',textAlign:'center',verticalAlign:'center',fontFamily:'Nexa Bold'}}>
                         Welcome to Stride!
                     </p>
-                    <p style={{color:'white',fontSize:'20px',zIndex:'1',textAlign:'center',fontFamily:'Nexa Regular',padding:'0px 300px'}}>
-                        Esse excepteur do eu et duis dolore nostrud.Ad exercitation duis aute aliquip. 
-                        Sit consectetur Lorem eu velit est ut proident deserunt irure. Culpa minim aliqua sint velit excepteur minim est ex id Lorem. 
-                        Occaecat et officia commodo ipsum commodo enim aute ipsum ea consectetur esse exercitation. 
+                    <p style={{color:'white',fontSize:'20px',textAlign:'center',fontFamily:'Nexa Regular',padding:'0px 300px'}}>
+                    Stride is a platform for job and internship search. 
+                    The purpose of the system is to facilitate students, graduates and postgraduates the way to the desired job, 
+                    internship or professional development, and to connect them with companies and employers who will get a young, motivated, and above all, expert staff.
                     </p>
                     <Button as={NavLink} to="/login" style={{marginRight:'30px',marginTop:'30px'}} size='big' inverted>Log In</Button>
                     <Button as={NavLink} to="/register" size='big' inverted>Register</Button>

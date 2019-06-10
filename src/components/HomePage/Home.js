@@ -27,11 +27,10 @@ class Home extends React.Component{
                     </h1>
                     <Divider></Divider>
                     <p style={{textAlign:"center", margin:"60px 0px", fontSize:"18px"}}>
-                    Dolore proident sit excepteur et. Reprehenderit minim anim ut proident pariatur in. 
-                    Lorem excepteur culpa consectetur do mollit cupidatat pariatur et tempor tempor fugiat.
+                    Stride is the #1 job site in the Serbia with over 20 hundred unique visitors every month. Stride strives to put job seekers first, giving them free access to search for jobs, post resumes, and research companies. Every day, we connect thousands of people to new opportunities.
                     </p>
                     <Divider></Divider>
-                    <Container style={{textAlign:"center", marginTop:"60px"}}>
+                    <Container style={{textAlign:"center", marginTop:"60px", marginBottom:"60px"}}>
                     <Grid stackable >
                         <Grid.Row columns={3}>
                         <Grid.Column>
@@ -43,7 +42,7 @@ class Home extends React.Component{
                                     <span className='date'>Jobs</span>
                                 </Card.Meta>
                                 <Card.Description>
-                                    Nisi elit commodo occaecat ut exercitation minim qui laborum eu.
+                                    See jobs tailored to your background and interests.
                                 </Card.Description>
                                 </Card.Content>
                                 <Card.Content extra>
@@ -61,7 +60,7 @@ class Home extends React.Component{
                                     <span className='date'>Internships</span>
                                 </Card.Meta>
                                 <Card.Description>
-                                    Nisi elit commodo occaecat ut exercitation minim qui laborum eu.
+                                    Boost your experience with various internships.
                                 </Card.Description>
                                 </Card.Content>
                                 <Card.Content extra>
@@ -79,7 +78,7 @@ class Home extends React.Component{
                                     <span className='date'>Projects</span>
                                 </Card.Meta>
                                 <Card.Description>
-                                    Nisi elit commodo occaecat ut exercitation minim qui laborum eu.
+                                    If you prefer smaller groups, this is the right choice for you.
                                 </Card.Description>
                                 </Card.Content>
                                 <Card.Content extra>

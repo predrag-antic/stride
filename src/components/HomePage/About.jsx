@@ -2,28 +2,48 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Statistic, Divider } from 'semantic-ui-react'
+
 class About extends React.Component{
 
 render(){
 
     return(
-        <div>
-            <h1 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Regular", marginBottom:"40px"}}>About</h1>
-            <h4 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Regular", marginBottom:"40px"}}>
-                Users : {this.props.userProfilesNumber}
-            </h4>
-            <h4 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Regular", marginBottom:"40px"}}>
-                Companies : {this.props.companyProfilesNumber}
-            </h4>
-            <h4 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Regular", marginBottom:"40px"}}>
-                Projects: {this.props.projectsNumber}
-            </h4>
-            <h4 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Regular", marginBottom:"40px"}}>
-                Internships: {this.props.internshipsNumber}
-            </h4>
-            <h4 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Regular", marginBottom:"40px"}}>
-                Jobs: {this.props.jobsNumber}
-            </h4>
+        <div style={{padding:"0px 30px"}}>
+            <h1 style={{textAlign:"center",fontSize:"40px", fontFamily:"Nexa Regular", marginBottom:"40px"}}>About Stride</h1>
+           
+           <p style={{textAlign:"center",fontSize:"20px", fontFamily:"Nexa Regular"}}>
+           The Stride system is a web application for employment that provides information to companies and individuals on the supply and demand of jobs, provides a quality and practical service of advertising, selection and search of jobs and internships and consequently influences the expansion and improvement of the employment opportunities of people in our country.
+           </p>
+           <Divider style={{margin:"40px 0px"}}></Divider>
+           <Statistic.Group widths="5">
+                <Statistic >
+                    <Statistic.Value>{this.props.userProfilesNumber}</Statistic.Value>
+                    <Statistic.Label>Users</Statistic.Label>
+                </Statistic>
+                <Statistic>
+                    <Statistic.Value>{this.props.companyProfilesNumber}</Statistic.Value>
+                    <Statistic.Label>Companies</Statistic.Label>
+                </Statistic>
+                <Statistic>
+                    <Statistic.Value>{this.props.jobsNumber}</Statistic.Value>
+                    <Statistic.Label>Jobs</Statistic.Label>
+                </Statistic>
+                <Statistic>
+                    <Statistic.Value>{this.props.internshipsNumber}</Statistic.Value>
+                    <Statistic.Label>Internships</Statistic.Label>
+                </Statistic>
+                <Statistic>
+                    <Statistic.Value>{this.props.projectsNumber}</Statistic.Value>
+                    <Statistic.Label>Projects</Statistic.Label>
+                </Statistic>
+            </Statistic.Group>
+        
+            <Divider style={{margin:"40px 0px"}}></Divider>
+        <p style={{textAlign:"center",fontSize:"20px", fontFamily:"Nexa Regular", marginTop:"50px"}}>
+        The application will also enable people to form teams for the implementation of various projects, and employers to use methods for easier selection of workers.
+        </p>
+
         </div>
     )
 }

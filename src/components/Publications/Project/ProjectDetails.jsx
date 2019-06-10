@@ -28,7 +28,7 @@ class ProjectDetails extends React.Component {
                     <Container style={{textAlign: 'center', marginTop: '30px'}}>
                         <Form>
                         <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
-                            <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", verticalAlign:"middle"}}>
+                            <Form.Field style={{fontSize:"40px", marginTop:"20px" , fontFamily:"Nexa Bold", verticalAlign:"middle",lineHeight: 1}}>
                                 { project.title }
                             </Form.Field>
                             <Divider style={{margin:"20px"}}></Divider>

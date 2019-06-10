@@ -56,6 +56,7 @@ class Company extends React.Component{
         if(this.isFormValid()) {
             this.setState({errors: [], loading: true});
             this.updateProfile();
+            this.props.history.push('/home');
 
             setTimeout(()=>{ 
                 if(this.props.error!==null){
