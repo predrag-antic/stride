@@ -3,6 +3,9 @@ import {Button, Container, Form, Card, Message,Grid } from 'semantic-ui-react';
 import React from 'react';
 import {connect} from 'react-redux';
 import {createInternship} from '../../../store/actions/internshipAction'
+import {BrowserRouter , Switch, Route,Redirect} from 'react-router-dom';
+
+
 
   const internshipTechnologyOptions = [
     {text:'.NET',value:'.NET'},
@@ -120,6 +123,8 @@ class CreateInternship extends React.Component{
 
         const {title,description,date,technology,duration,city,errors} = this.state;
 
+        if(this.props.userOrCompany==="User") return <Redirect to="/home" />
+
         return(
             <Container>
                 <h1 style={{textAlign:"center", fontSize:"30px", fontFamily:"Nexa Bold"}}>Internship</h1>
@@ -191,7 +196,8 @@ const mapDispatchToProps=(dispatch)=>{
 
 const mapStateToProps=(state)=>{
     return{
-        error: state.auth.authError
+        error: state.auth.authError,
+        userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 

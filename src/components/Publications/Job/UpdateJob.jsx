@@ -6,6 +6,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Spinner from '../../../Spinner'
 import {updateJob,disableJob} from '../../../store/actions/jobAction'
+import {Redirect} from 'react-router-dom';
 
 const jobPositionsOptions = [
     {text:'Junior',value:'Junior'},
@@ -114,13 +115,15 @@ class UpdateJob extends React.Component{
         const {job} = this.props;
         const {title,description,position,availablePositions,remote,isDisabled,conformationIsOpen,city} = this.state;
         
+        if(this.props.userOrCompany==="User") return <Redirect to="/home" />
+
         if(job!==null) {
             return(
                 <Container style={{marginTop:"7em"}}>
                     {/* <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}>Job</h1> */}
                     <Card fluid style={{padding:"40px", marginBottom:"50px"}}>
                     <Container style={{textAlign:"center"}}>
-                        <Checkbox label="If you want to update Internship, please set initial state first!" onClick={this.setInitialState} style={{textAlign:"center"}}/>
+                        <Checkbox label="If you want to update Job, please set initial state first!" onClick={this.setInitialState} style={{textAlign:"center"}}/>
                     </Container>    
                         <Form onSubmit={this.handleUpdate} style={{marginTop:"40px"}}>
                             <Form.Field >
@@ -200,6 +203,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         job: job,
         jobId:thisJobId,
+        userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 

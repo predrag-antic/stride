@@ -35,10 +35,10 @@ class Navbar extends React.Component
                     <Dropdown text="Stride" style={{fontFamily:"Nexa Regular"}}>
                         <Dropdown.Menu>
                             <Dropdown.Item to='/home' as={NavLink}><Icon name="home" ></Icon> Home</Dropdown.Item>
-                            <Dropdown.Item to='/aboutUs' as={NavLink}><Icon name="question circle"/>About us</Dropdown.Item>
                             <Dropdown.Item disabled to='/jobs' as={NavLink}><Icon name="briefcase"/>Jobs</Dropdown.Item>
                             <Dropdown.Item disabled to='/internships' as={NavLink}><Icon name="graduation" />Internships</Dropdown.Item>
                             <Dropdown.Item disabled to='/projects' as={NavLink}> <Icon name="laptop"/>Projects</Dropdown.Item>
+                            <Dropdown.Item to='/about-us' as={NavLink}><Icon name="question circle"/>About us</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     </Menu.Item>
@@ -47,10 +47,10 @@ class Navbar extends React.Component
                     <Dropdown text="Stride" style={{fontFamily:"Nexa Regular"}}>
                         <Dropdown.Menu>
                             <Dropdown.Item to='/home' as={NavLink}><Icon name="home" ></Icon> Home</Dropdown.Item>
-                            <Dropdown.Item to='/aboutUs' as={NavLink}><Icon name="question circle"/>About us</Dropdown.Item>
                             <Dropdown.Item to='/jobs' as={NavLink}><Icon name="briefcase"/>Jobs</Dropdown.Item>
                             <Dropdown.Item to='/internships' as={NavLink}><Icon name="graduation" />Internships</Dropdown.Item>
                             <Dropdown.Item to='/projects' as={NavLink}> <Icon name="laptop"/>Projects</Dropdown.Item>
+                            <Dropdown.Item to='/about-us' as={NavLink}><Icon name="question circle"/>About us</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     </Menu.Item>

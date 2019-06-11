@@ -5,6 +5,7 @@ import MyJobApplicationsList from './MyJobApplicationsList'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
+import {Redirect} from 'react-router-dom';
 
 
 import React from 'react';
@@ -13,6 +14,9 @@ class MyJobApplicationsPage extends React.Component{
 
     render(){
         const {myJobApplications}=this.props;
+
+        if(this.props.userOrCompany==="Company") return <Redirect to="/home" />
+
         return(
             <Container>
                 <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> My Job Applications </h1>
@@ -37,7 +41,8 @@ class MyJobApplicationsPage extends React.Component{
 const mapStateToProps=(state)=>{
     return{
         firebaseConn:state.firebase,
-        myJobApplications:state.firestore.ordered.myJobApplications
+        myJobApplications:state.firestore.ordered.myJobApplications,
+        userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 

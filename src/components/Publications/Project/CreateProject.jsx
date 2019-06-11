@@ -3,6 +3,8 @@ import {Button, Container,Form,Checkbox,TextArea,Select, Card, Message } from 's
 import React from 'react';
 import {connect} from 'react-redux';
 import {createProject} from '../../../store/actions/projectAction'
+import {BrowserRouter , Switch, Route,Redirect} from 'react-router-dom';
+
 
 const projectTechnologyOptions = [
     {text:'.NET',value:'.NET'},
@@ -110,6 +112,8 @@ class CreateProject extends React.Component{
 
         const {title,description,technology,duration, errors} = this.state;
 
+        if(this.props.userOrCompany==="Company") return <Redirect to="/home" />
+
         return(
             <Container>
                 <h1 style={{textAlign:"center",fontSize:"30px",fontFamily:"Nexa Bold"}}>Project</h1>
@@ -156,7 +160,8 @@ const mapDispatchToProps=(dispatch)=>{
 
 const mapStateToProps=(state)=>{
     return{
-        error: state.auth.authError
+        error: state.auth.authError,
+        userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 

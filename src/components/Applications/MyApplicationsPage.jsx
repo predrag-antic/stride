@@ -5,6 +5,7 @@ import MyInternshipApplicationsList from './MyInternshipApplicationsList'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
+import {Redirect} from 'react-router-dom';
 
 
 import React from 'react';
@@ -13,6 +14,9 @@ class MyApplicationsPage extends React.Component{
 
     render(){
         const {myIntApplications}=this.props;
+
+        if(this.props.userOrCompany==="Company") return <Redirect to="/home" />        
+
         return(
             <Container>
                 <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> My Internship Applications </h1>
@@ -37,7 +41,8 @@ class MyApplicationsPage extends React.Component{
 const mapStateToProps=(state)=>{
     return{
         firebaseConn:state.firebase,
-        myIntApplications:state.firestore.ordered.myInternshipApplications
+        myIntApplications:state.firestore.ordered.myInternshipApplications,
+        userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 

@@ -5,7 +5,7 @@ import MyProjectApplicationsList from './MyProjectApplicationsList'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
-
+import {Redirect} from 'react-router-dom';
 
 import React from 'react';
 
@@ -13,6 +13,9 @@ class MyProjectApplicationsPage extends React.Component{
 
     render(){
         const {myProjectApplications}=this.props;
+
+        if(this.props.userOrCompany==="Company") return <Redirect to="/home" />
+
         return(
             <Container >
                 <h1 style={{textAlign:"center",fontSize:"30px", fontFamily:"Nexa Bold"}}> My Project Applications </h1>
@@ -37,7 +40,8 @@ class MyProjectApplicationsPage extends React.Component{
 const mapStateToProps=(state)=>{
     return{
         firebaseConn:state.firebase,
-        myProjectApplications:state.firestore.ordered.myProjectApplications
+        myProjectApplications:state.firestore.ordered.myProjectApplications,
+        userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 

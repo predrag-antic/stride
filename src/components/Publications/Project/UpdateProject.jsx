@@ -6,6 +6,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Spinner from '../../../Spinner'
 import {updateProject,disableProject} from '../../../store/actions/projectAction'
+import {Redirect} from 'react-router-dom';
 
 const projectTechnologyOptions = [
     {text:'.NET',value:'.NET'},
@@ -110,6 +111,8 @@ class UpdateProject extends React.Component{
         const {project /*,userApplications*/} = this.props;
         const {title, description, duration, tehnology, isDisabled, conformationIsOpen} = this.state;
 
+        if(this.props.userOrCompany==="Company") return <Redirect to="/home" />
+
         if(project!==null) {
             return(
                 <Container style={{marginTop:"7em"}}>
@@ -173,7 +176,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         project: project,
         projectId:thisProjectId,
-        userApplications:state.firestore.ordered.userApplications
+        userApplications:state.firestore.ordered.userApplications,
+        userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 

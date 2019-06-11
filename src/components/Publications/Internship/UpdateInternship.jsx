@@ -6,6 +6,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Spinner from '../../../Spinner'
 import {updateInternship,disableInternship} from '../../../store/actions/internshipAction'
+import {Redirect} from 'react-router-dom';
 
   const internshipTechnologyOptions = [
     {text:'.NET',value:'.NET'},
@@ -116,6 +117,8 @@ class UpdateInternship extends React.Component{
         const {internship}=this.props;
         const {title,description,isDisabled,conformationIsOpen,city,date} = this.state;
 
+        if(this.props.userOrCompany==="User") return <Redirect to="/home" />
+
         if(internship!==null){
         return(
             <Container style={{marginTop:"7em"}}>
@@ -205,6 +208,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         internship: internship,
         internshipId:thisInternshipId,
+        userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 

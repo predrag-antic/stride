@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
 import moment from 'moment'
+import {Redirect} from 'react-router-dom';
+
 
 import { NavLink } from 'react-router-dom';
 
@@ -15,6 +17,8 @@ class CompanyJobs extends React.Component{
     render(){
         const {myJobs}=this.props;
                    
+        if(this.props.userOrCompany==="User") return <Redirect to="/home" />
+        
         if(myJobs){
             return(
                 <Container>
@@ -71,7 +75,8 @@ const mapStateToProps = (state) => {
     }
     
     return {
-         myJobs: myJobs
+         myJobs: myJobs,
+         userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 

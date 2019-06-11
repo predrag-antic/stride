@@ -3,6 +3,8 @@ import {Button, Container,Form,Checkbox,Card, Message, Grid } from 'semantic-ui-
 import React from 'react';
 import {connect} from 'react-redux';
 import {createJob} from '../../../store/actions/jobAction'
+import {BrowserRouter , Switch, Route,Redirect} from 'react-router-dom';
+
 
 const jobPositionsOptions = [
     {text:'Junior',value:'Junior'},
@@ -116,6 +118,8 @@ class CreateJob extends React.Component{
 
         const {title,description,city,position,availablePosition,remote,errors} = this.state;
 
+        if(this.props.userOrCompany==="User") return <Redirect to="/home" />
+
         return(
 
             <Container>
@@ -186,7 +190,8 @@ const mapDispatchToProps=(dispatch)=>{
 
 const mapStateToProps=(state)=>{
     return{
-        error: state.auth.authError
+        error: state.auth.authError,
+        userOrCompany: state.firebase.profile.userOrCompany
     }
 }
 
